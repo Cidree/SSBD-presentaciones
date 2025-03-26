@@ -1,0 +1,73 @@
+---
+title: "Introducción al análisis geoespatial con R"
+subtitle: "Parte 1"
+author: "Adrián Cidre González"
+institute: "Universidad de Córdoba"
+---
+
+## Adrián Cidre González {.unnumbered}
+
+::::: columns
+::: {.column width="55%"}
+-   Ingeniero Forestal (USC)
+
+-   Máster Geoforest (UCO)
+
+-   Análisis de datos, ciencia de datos, teledetección
+
+{{< fa link size=xl >}} [adrian-cidre.com](https://adrian-cidre.com/)
+
+{{< fa brands youtube size=xl >}} [\@CidreRForest](https://www.youtube.com/@CidreRForest)
+
+{{< fa brands linkedin size=xl >}} [linkedin.com/in/adrian-cidre/](https://www.linkedin.com/in/adrian-cidre-gonz%C3%A1lez-8a50371b0/)
+
+{{< fa brands github size=xl >}} [Cidree](https://github.com/Cidree/)
+:::
+
+::: {.column width="45%"}
+![](00_assets/figures/me-modified.png){style="border-radius:1em;margin-top:auto" fig-alt="Norway picture" fig-align="center"}
+:::
+:::::
+
+# Objetivos
+
+-   Entender datos espaciales
+
+-   Datos vectoriales vs datos raster vs datos tabulares
+
+-   Sistemas de Referencia de Coordenadas
+
+-   Operaciones
+
+# Parte 1 - Primeros pasos {.main-part .unnumbered}
+
+-   Datos espaciales vs datos no espaciales
+
+-   Formatos de datos espaciales
+
+-   Paquetes de R para análisis espacial
+
+-   Leer/Guardar datos espaciales en R
+
+-   Manipulación básica de datos
+
+{{< fa clock size=xl >}} 15min
+
+```{r}
+## install.packages("pacman")
+library(pacman)
+
+p_load(sf, terra, tidyverse)
+```
+
+## Datos de trabajo
+
+## Datos espaciales vs datos no espaciales
+
+## Formatos vectoriales
+
+## Formatos raster
+
+## Paquetes de R para análisis espacial
+
+![](00_assets/figures/rpackages-spatial-2025.jpg){fig-alt="R packages" fig-align="center" width="800"}

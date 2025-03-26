@@ -1,5 +1,5 @@
 project:
-  title: "FMP_presentacion"
+  title: "SSBD_presentaciones"
 
 # Tables of contents -----------------
 toc: false
@@ -19,3 +19,35 @@ background-transition: fade
 ## Code -----------------------------
 execute: 
   echo: true
+
+## Figures -------------------------
+fig-responsive: true
+logo: 00_assets/figures/logo-geoforest.png
+
+## Filters -------------------------
+lightbox: true
+# filters: 
+# webr:
+#   packages: ["dplyr", "ggplot2", "gapminder", "forcats"]
+# revealjs-plugins:
+#   - drop
+
+## Slides --------------------------
+title-slide-attributes: 
+  data-background-image: 00_assets/figures/logo-geoforest.png, 00_assets/figures/logo_uco.png
+  data-background-repeat: no-repeat
+  data-background-position: 15% 90%, 85% 90%
+  data-background-size: 20%, 20%
+format: 
+  revealjs:
+    ## Extensions
+    #       - dplyr
+    #       - ggplot2
+    theme: [serif, 00_assets/styles/serif-style.scss]
+    highlight-style: oblivion # Others: haddock, tango, kate
+    transition: fade
+    fig-align: center
+    # drop:
+    #   engine: webr
+    #   webr:
+    #     packages:
