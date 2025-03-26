@@ -1,0 +1,21 @@
+project:
+  title: "FMP_presentacion"
+
+# Tables of contents -----------------
+toc: false
+toc-title: "Contents"
+number-sections: false
+number-offset: 1
+
+# Slides -----------------------------
+slide-number: true
+center-title-slide: true
+
+# Transition ------------------------
+transition: fade
+transition-speed: slow
+background-transition: fade
+
+## Code -----------------------------
+execute: 
+  echo: true
