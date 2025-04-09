@@ -72,6 +72,14 @@ h1, h2, h3 {
   }
 }
 
+.special-size-smaller {
+  font-size: 20px;
+  & .cell-output-display:not(.no-overflow-x), 
+  .knitsql-table:not(.no-overflow-x) {
+    font-size: 15px;
+  }
+}
+
 .exercise {
   font-size: 25px;
   

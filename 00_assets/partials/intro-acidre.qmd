@@ -1,0 +1,27 @@
+
+
+## Adrián Cidre González {.unnumbered}
+
+::::: columns
+::: {.column width="55%"}
+-   Ingeniero Forestal (USC)
+
+-   Máster Geoforest (UCO)
+
+-   Análisis de datos, ciencia de datos, teledetección
+
+-   Estudiante PhD biociencias y ciencias agroalimentarias
+
+{{< fa link size=xl >}} [adrian-cidre.com](https://adrian-cidre.com/)
+
+{{< fa brands youtube size=xl >}} [\@CidreRForest](https://www.youtube.com/@CidreRForest)
+
+{{< fa brands linkedin size=xl >}} [linkedin.com/in/adrian-cidre/](https://www.linkedin.com/in/adrian-cidre-gonz%C3%A1lez-8a50371b0/)
+
+{{< fa brands github size=xl >}} [Cidree](https://github.com/Cidree/)
+:::
+
+::: {.column width="45%"}
+![](00_assets/figures/me-modified.png){style="border-radius:1em;margin-top:auto" fig-alt="Norway picture" fig-align="center"}
+:::
+:::::

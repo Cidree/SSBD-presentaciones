@@ -40,9 +40,7 @@ title-slide-attributes:
   data-background-size: 20%, 20%
 format: 
   revealjs:
-    ## Extensions
-    #       - dplyr
-    #       - ggplot2
+    preview-links: auto
     theme: [serif, 00_assets/styles/serif-style.scss]
     highlight-style: oblivion # Others: haddock, tango, kate
     transition: fade
