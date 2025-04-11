@@ -1,0 +1,38 @@
+---
+title: "Introducción al análisis geoespacial con R"
+subtitle: "Parte 2"
+author: "Adrián Cidre González"
+institute: "Universidad de Córdoba"
+---
+
+```{r}
+#| label: internal_packages
+#| include: false
+library(pacman)
+
+p_load(sf, terra)
+```
+
+{{< include 00_assets/partials/intro-acidre.qmd >}}
+
+# Objetivos
+
+-   3 ejercicios prácticos (~ 30min cada uno)
+
+-   Manejar datos vectoriales con `sf`
+
+-   Manejar datos raster con `terra`
+
+# Parte 1 - Datos vectoriales {.main-part .unnumbered}
+
+-   Datos espaciales vs datos no espaciales
+
+-   Datos vectoriales
+
+-   Paquete `sf`
+
+-   Formatos de datos vectoriales
+
+-   Práctica 1
+
+{{< fa clock size=xl >}} 15min
