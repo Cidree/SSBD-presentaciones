@@ -1,0 +1,8 @@
+---
+title: "Presentaciones Summer School"
+format: html
+---
+
+## Introducción al análisis geoespacial con R - Parte 1
+
+- [Presentation 1](01_basic.html)
