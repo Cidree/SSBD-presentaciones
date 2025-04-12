@@ -3,6 +3,27 @@ title: "Introducción al análisis geoespacial con R"
 subtitle: "Parte 1"
 author: "Adrián Cidre González"
 institute: "Universidad de Córdoba"
+title-slide-attributes: 
+  data-background-image: 00_assets/figures/logo-geoforest.png, 00_assets/figures/logo_uco.png
+  data-background-repeat: no-repeat
+  data-background-position: 15% 90%, 85% 90%
+  data-background-size: 20%, 20%
+format: 
+  revealjs:
+    preview-links: auto
+    theme: [serif, 00_assets/styles/serif-style.scss]
+    highlight-style: oblivion # Others: haddock, tango, kate
+    transition: fade
+    fig-align: center
+
+# Slides -----------------------------
+slide-number: true
+center-title-slide: true
+
+# Transition ------------------------
+transition: fade
+transition-speed: slow
+background-transition: fade
 ---
 
 ```{r}

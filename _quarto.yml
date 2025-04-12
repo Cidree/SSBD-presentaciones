@@ -1,20 +1,12 @@
 project:
   title: "SSBD_presentaciones"
+  type: website
 
 # Tables of contents -----------------
 toc: false
 toc-title: "Contents"
 number-sections: false
 number-offset: 1
-
-# Slides -----------------------------
-slide-number: true
-center-title-slide: true
-
-# Transition ------------------------
-transition: fade
-transition-speed: slow
-background-transition: fade
 
 ## Code -----------------------------
 execute: 
@@ -33,19 +25,6 @@ lightbox: true
 #   - drop
 
 ## Slides --------------------------
-title-slide-attributes: 
-  data-background-image: 00_assets/figures/logo-geoforest.png, 00_assets/figures/logo_uco.png
-  data-background-repeat: no-repeat
-  data-background-position: 15% 90%, 85% 90%
-  data-background-size: 20%, 20%
 format: 
-  revealjs:
-    preview-links: auto
-    theme: [serif, 00_assets/styles/serif-style.scss]
-    highlight-style: oblivion # Others: haddock, tango, kate
-    transition: fade
-    fig-align: center
-    # drop:
-    #   engine: webr
-    #   webr:
-    #     packages:
+  html:
+    theme: lux

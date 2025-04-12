@@ -1,0 +1,394 @@
+[
+  {
+    "objectID": "index.html#introducción-al-análisis-geoespacial-con-r---parte-1",
+    "href": "index.html#introducción-al-análisis-geoespacial-con-r---parte-1",
+    "title": "Presentaciones Summer School",
+    "section": "",
+    "text": "Presentation 1"
+  },
+  {
+    "objectID": "01_basic.html#adrián-cidre-gonzález",
+    "href": "01_basic.html#adrián-cidre-gonzález",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Adrián Cidre González",
+    "text": "Adrián Cidre González\n\n\n\nIngeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
+  },
+  {
+    "objectID": "01_basic.html#gis-escritorio-vs-gis-programación",
+    "href": "01_basic.html#gis-escritorio-vs-gis-programación",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "GIS escritorio vs GIS programación",
+    "text": "GIS escritorio vs GIS programación"
+  },
+  {
+    "objectID": "01_basic.html#datos-espaciales-vs-datos-no-espaciales",
+    "href": "01_basic.html#datos-espaciales-vs-datos-no-espaciales",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Datos espaciales vs datos no espaciales",
+    "text": "Datos espaciales vs datos no espaciales\n\n\nDatos no espaciales: datos que no tienen una localización geográfica asignada\n\n\n\n\n\n\n\n\nSepal.Length\nSepal.Width\nPetal.Length\nPetal.Width\nSpecies\n\n\n\n\n5.1\n3.5\n1.4\n0.2\nsetosa\n\n\n4.9\n3.0\n1.4\n0.2\nsetosa\n\n\n4.7\n3.2\n1.3\n0.2\nsetosa\n\n\n4.6\n3.1\n1.5\n0.2\nsetosa\n\n\n5.0\n3.6\n1.4\n0.2\nsetosa\n\n\n5.4\n3.9\n1.7\n0.4\nsetosa\n\n\n\n\n\n\n\n\nDatos espaciales: datos asignados a una localización geográfica (tabla de atributos + coordenadas)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ncodauto\nine.ccaa.name\n\n\n\n\n01\nAndalucía\n\n\n02\nAragón\n\n\n03\nAsturias, Principado de"
+  },
+  {
+    "objectID": "01_basic.html#datos-vectoriales",
+    "href": "01_basic.html#datos-vectoriales",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Datos vectoriales",
+    "text": "Datos vectoriales\n\nDatos vectoriales: representación de objetos a través de puntos, líneas o polígonos definidos por coordenadas"
+  },
+  {
+    "objectID": "01_basic.html#paquetes-de-r-para-análisis-espacial",
+    "href": "01_basic.html#paquetes-de-r-para-análisis-espacial",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Paquetes de R para análisis espacial",
+    "text": "Paquetes de R para análisis espacial"
+  },
+  {
+    "objectID": "01_basic.html#paquete-sf",
+    "href": "01_basic.html#paquete-sf",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Paquete sf",
+    "text": "Paquete sf\n\nPaquete principal para datos vectoriales con interfaz a GDAL, PROJ y GEOS. Optimización a través de Rcpp\nTODAS las funciones empiezan por st_\n27º paquete de R más descargado (&gt; 71 millones)\nBasado en Simple Features, estándar del OGC (igual que geopandas)\nDatos guardados como data.frame o tibble con columna de geometría\nDatos tidy. Manipulación de tabla de atributos con tidyverse"
+  },
+  {
+    "objectID": "01_basic.html#formatos-vectoriales",
+    "href": "01_basic.html#formatos-vectoriales",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Formatos vectoriales",
+    "text": "Formatos vectoriales\n\nShapefile:\n\nEl más extendido, propiedad ESRI, aceptado por muchos SIG\nFormado por varios archivos\nMáximo 255 atributos / Limitación tipo de dato (254 caracteres)\nMáximo 2 GB de archivo / Limitación en codificación (non-ASCII)"
+  },
+  {
+    "objectID": "01_basic.html#formatos-vectoriales-1",
+    "href": "01_basic.html#formatos-vectoriales-1",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Formatos vectoriales",
+    "text": "Formatos vectoriales\n\nGeoPackage (.gpkg):\n\nBasado en SQLite, propiedad OGC\nBase de datos que puede almacenar múltiples archivos vectoriales"
+  },
+  {
+    "objectID": "01_basic.html#otros-formatos",
+    "href": "01_basic.html#otros-formatos",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Otros formatos",
+    "text": "Otros formatos\n\nKML (.kml): formato de Google ideal para uso en Google Earth (solo WGS 84)\nGeoJSON (.geojson): formato ligero con estructura JSON. Recomendado para intercambio de datos para servicios web y visores webmapping (limitado en CRS)"
+  },
+  {
+    "objectID": "01_basic.html#otros-formatos-1",
+    "href": "01_basic.html#otros-formatos-1",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Otros formatos",
+    "text": "Otros formatos\n\nGeoParquet (.parquet):\n\nEl futuro.\nExtensión del formato parquet optimizada para almacenar datos geoespaciales de forma eficiente y escalable.\nSe utiliza a través de los paquetes arrow y geoarrow"
+  },
+  {
+    "objectID": "01_basic.html#shapefile-vs-geopackage-vs-geoparquet",
+    "href": "01_basic.html#shapefile-vs-geopackage-vs-geoparquet",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Shapefile vs GeoPackage vs GeoParquet",
+    "text": "Shapefile vs GeoPackage vs GeoParquet\n\n10,000,000 puntos\n4 columnas numéricas (enteros)"
+  },
+  {
+    "objectID": "01_basic.html#shapefile-vs-geopackage-vs-geoparquet-1",
+    "href": "01_basic.html#shapefile-vs-geopackage-vs-geoparquet-1",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Shapefile vs GeoPackage vs GeoParquet",
+    "text": "Shapefile vs GeoPackage vs GeoParquet\n\n10,000,000 puntos\n10 columnas numéricas y 3 columnas character"
+  },
+  {
+    "objectID": "01_basic.html#leer-exportar-con-sf",
+    "href": "01_basic.html#leer-exportar-con-sf",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Leer / Exportar con sf",
+    "text": "Leer / Exportar con sf\n\nwrite_sf() / st_write()\n\n\n## guardar archivo único\nwrite_sf(spain_sf, \"spain.shp\")\nwrite_sf(spain_sf, \"spain.geojson\")\nwrite_sf(spain_sf, \"spain.gpkg\")\n\n## guardar como capa en base de datos\nwrite_sf(spain_sf, \"spain.gpkg\", layer = \"spain\")\n\n\n\nread_sf() / st_read():\n\n\n## leer archivo único\nspain_sf &lt;- read_sf(\"spain.shp\")\nspain_sf &lt;- read_sf(\"spain.geojson\")\nspain_sf &lt;- read_sf(\"spain.gpkg\")\n\n## consultar capas\nst_layers(\"spain.gpkg\")\n\n## guardar como capa en base de datos\nspain_sf &lt;- read_sf(\"spain.gpkg\", layer = \"spain\")"
+  },
+  {
+    "objectID": "01_basic.html#práctica-1",
+    "href": "01_basic.html#práctica-1",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "💪 Práctica 1",
+    "text": "💪 Práctica 1\n\nDescarga de datos espaciales\nExportar y leer datos espaciales\nExploración básica de datos espaciales\nVisualización de datos\nPaquetes a utilizar:\n\ngiscoR: descarga de límites administrativos de todo el mundo\nmapview: visualización de datos espaciales\nsf: paquete base para análisis de datos vectoriales\ntidyverse: paquetes para análisis y visualización de datos"
+  },
+  {
+    "objectID": "01_basic.html#definiciones",
+    "href": "01_basic.html#definiciones",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Definiciones",
+    "text": "Definiciones\n\nSistemas de Referencia de Coordenadas (SRC): sistema de coordenadas que está asociado al planeta Tierra a través de un modelo matemático denominado dátum geodésico. El CRS utiliza una serie de coordenadas para referirse a la posición de un objeto de forma inequívoca."
+  },
+  {
+    "objectID": "01_basic.html#definiciones-1",
+    "href": "01_basic.html#definiciones-1",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Definiciones",
+    "text": "Definiciones\n\nCoordenadas geográficas: conjunto de valores que definen la posición de un punto en la superficie terrestre (grados).\nCoordenadas proyectadas: la superficie terrestre se proyecta en un plano (normalmente metros)."
+  },
+  {
+    "objectID": "01_basic.html#definiciones-2",
+    "href": "01_basic.html#definiciones-2",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Definiciones",
+    "text": "Definiciones\n\nGeoide: forma hipotética de la superficie de la Tierra\nElipsoide: forma geométrica que representa la forma de la Tierra\nDátum: modelo matemático que se refiere al origen de las coordenadas"
+  },
+  {
+    "objectID": "01_basic.html#definiciones-3",
+    "href": "01_basic.html#definiciones-3",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Definiciones",
+    "text": "Definiciones\n\nProyección: transformación de un sistema angular tridimensional a un sistema plano bidimensional conocido como sistema cartesiano."
+  },
+  {
+    "objectID": "01_basic.html#entonces-qué-debo-hacer",
+    "href": "01_basic.html#entonces-qué-debo-hacer",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Entonces, qué debo hacer?",
+    "text": "Entonces, qué debo hacer?\n\nComprobar que tus datos están proyectados (tienen CRS)\nSi no están proyectados, preguntar al autor de los datos cuál es el CRS de éstos y asignar el CRS\nSi están proyectados, continuar trabajando con ese CRS si el adecuado para mi proyecto\nSi están proyectados, pero quiero trabajar con otro CRS, reproyectar el CRS (transformar a otro)"
+  },
+  {
+    "objectID": "01_basic.html#uso-incorrecto-de-src",
+    "href": "01_basic.html#uso-incorrecto-de-src",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Uso incorrecto de SRC",
+    "text": "Uso incorrecto de SRC\n\nCoordenadas Casa Blanca: 38.897957, -77.036560 (asignar CRS erróneo)"
+  },
+  {
+    "objectID": "01_basic.html#uso-incorrecto-de-src-1",
+    "href": "01_basic.html#uso-incorrecto-de-src-1",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Uso incorrecto de SRC",
+    "text": "Uso incorrecto de SRC\n\nCRS de Australia (EPSG 28350) (reproyectar a un CRS que no es de mi zona)"
+  },
+  {
+    "objectID": "01_basic.html#uso-incorrecto-de-src-2",
+    "href": "01_basic.html#uso-incorrecto-de-src-2",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Uso incorrecto de SRC",
+    "text": "Uso incorrecto de SRC\n\nUtilizar un CRS local (de España) para un mapa mundial"
+  },
+  {
+    "objectID": "01_basic.html#crs-generales",
+    "href": "01_basic.html#crs-generales",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "CRS generales",
+    "text": "CRS generales\n\nEPSG:4326 es el sistema WGS84 de coordenadas geográficas más utilizado en todo el mundo\nEPSG:3035 sistema ETRS89-LAEA para trabajar en proyectos europeos\nCoordenadas UTM: EPSG:25828, EPSG:25829, EPSG:25830, EPSG:25831"
+  },
+  {
+    "objectID": "01_basic.html#funciones-de-sf-con-crs",
+    "href": "01_basic.html#funciones-de-sf-con-crs",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Funciones de sf con CRS",
+    "text": "Funciones de sf con CRS\n\nst_crs(): objeto con todos los metadatos del CRS del objeto\nst_set_crs(): asignar CRS. Se utiliza cuando nos dan datos sin CRS\nst_transform(): transformar de un CRS a otro"
+  },
+  {
+    "objectID": "01_basic.html#práctica-2",
+    "href": "01_basic.html#práctica-2",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "💪 Práctica 2",
+    "text": "💪 Práctica 2\n\nExplorar CRS de un objeto\nAsignar CRS\nTransformar CRS\nPaquetes a utilizar:\n\nmapview: visualización de datos espaciales\nsf: paquete base para análisis de datos vectoriales"
+  },
+  {
+    "objectID": "01_basic.html#medidas",
+    "href": "01_basic.html#medidas",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Medidas",
+    "text": "Medidas\n\n\n\n\n\n\n\n\nMedida\nDefinicion\nGeometrias\n\n\n\n\nst_length\nCalcula la longitud de la geometría\nLinestring, multilinestring\n\n\nst_area\nCalcula la superficie de la geometría\nPolygon, multipolygon\n\n\nst_distance\nCalcula la distancia entre pares de geometrías\nCualquiera\n\n\nst_perimeter\nCalculate el perímetro de un polígono\nPolygon, multipolygon"
+  },
+  {
+    "objectID": "01_basic.html#práctica-3",
+    "href": "01_basic.html#práctica-3",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "💪 Práctica 3",
+    "text": "💪 Práctica 3\n\nMedidas\nPaquetes a utilizar:\n\nmapSpain: visualización de datos espaciales\nsf: paquete base para análisis de datos vectoriales\ntidyverse: paquetes para análisis de datos\nunits: modificar unidades de las medidas"
+  },
+  {
+    "objectID": "01_basic.html#funciones-predicado",
+    "href": "01_basic.html#funciones-predicado",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Funciones predicado",
+    "text": "Funciones predicado\nSon funciones que comprueban que una determinana característica espacial es cierta. El resultado de estas funciones es TRUE/FALSE\n\n\n\n\n\n\n\n\nPredicado\nDefinicion\nContrario_de\n\n\n\n\nst_contains\nNingún punto de B se encuentra en el exterior ni en el borde de A\nst_within\n\n\nst_covers\nNingún punto de B se encuentra en el exterior de A y al menos un punto está dentro\nst_covered_by\n\n\nst_crosses\nA y B tienen algún punto interior en común (no todos)\n—\n\n\nst_touches\nA y B tienen algún punto del borde en común (pero no interiores)\n—\n\n\nst_disjoint\nA y B no tienen ningún punto en común\nst_intersects\n\n\nst_overlaps\nA y B tienen puntos en común, con la misma dimensión, y sin contener uno al otro completamente\n—\n\n\n\n\n\n\n\n\nRelaciones espaciales - PostGIS\n\n\n\n\n\n\n\nRecuerda\n\n\nSiempre que se realicen operaciones entre dos objetos distintos. SIEMPRE deben tener el mismo SRC."
+  },
+  {
+    "objectID": "01_basic.html#funciones-predicado-1",
+    "href": "01_basic.html#funciones-predicado-1",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Funciones predicado",
+    "text": "Funciones predicado\n\nRíos que cruzan la frontera de la provincia de Córdoba?\n\n\n(rivers_idx &lt;- st_crosses(x = cordoba_sf, y = rivers_sf))\n\nSparse geometry binary predicate list of length 1, where the predicate\nwas `crosses'\n 1: 365, 366, 378, 423, 452, 454, 462, 463, 464, 466, ...\n\n\n\n\nmapview(cordoba_sf) +\n  mapview(\n    rivers_sf[rivers_idx[[1]], ]\n  )"
+  },
+  {
+    "objectID": "01_basic.html#funciones-predicado---casos-de-uso",
+    "href": "01_basic.html#funciones-predicado---casos-de-uso",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Funciones predicado - Casos de uso",
+    "text": "Funciones predicado - Casos de uso\n\nContar elementos que cumplen una condición espacial:\n\nCuántos lobos se han avistado en el municipio de Mieres en los últimos 20 años?\nA cuántos municipios va a afectar el nuevo Parque Nacional?\n\n\n\n\nFiltros espaciales (st_filter(x, y, .predicate)):\n\nFiltrar los municipios con los cuáles interseca el nuevo parque nacional.\nFiltrar las parcelas que son colindantes con mi parcela.\nFiltrar las áreas de servicio que se encuentran en la ciudad de Madrid.\n\n\n\n\n\nUniones espaciales (st_join(x, y, join)):\n\nUnir parcelas de muestreo con el cantón en el que se encuentran\nUnir datos de especies en en peligro de extinción con los polígonos de regiones del bosque donde se encuentran"
+  },
+  {
+    "objectID": "01_basic.html#filtros",
+    "href": "01_basic.html#filtros",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Filtros",
+    "text": "Filtros\n\n\nFiltros no espaciales: filtros basados en alguna columna de los datos\n\nrivers_sf |&gt; \n  filter(NOM_RIO == \"Rio Tajo\")\n\n\n\n\n\n\n\n\nFiltros espaciales: utilizan una relación espacial entre dos objetos\n\nst_filter(\n  x = rivers_sf,\n  y = cordoba_sf,\n  .predicate = st_intersects\n)"
+  },
+  {
+    "objectID": "01_basic.html#uniones-espaciales",
+    "href": "01_basic.html#uniones-espaciales",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Uniones espaciales",
+    "text": "Uniones espaciales\nUnen las columnas de un objeto a otro basado en un predicado espacial.\n\nst_join(\n  x = rivers_sf |&gt; select(NOM_RIO),\n  y = ccaa_sf,\n  join = st_intersects\n)\n\nSimple feature collection with 1517 features and 3 fields\nGeometry type: LINESTRING\nDimension:     XY\nBounding box:  xmin: -17.94708 ymin: 27.75565 xmax: 6.634525 ymax: 45.64751\nGeodetic CRS:  ETRS89\nFirst 10 features:\n          NOM_RIO codauto               ine.ccaa.name\n1      Rio Garona      09                    Cataluña\n2   Bidasoa Ibaia      15 Navarra, Comunidad Foral de\n2.1 Bidasoa Ibaia      16                  País Vasco\n3    Baztan Ibaia      15 Navarra, Comunidad Foral de\n4      Rio Urumea      15 Navarra, Comunidad Foral de\n4.1    Rio Urumea      16                  País Vasco\n5      Oria Ibaia      16                  País Vasco\n6      Oria Ibaia      16                  País Vasco\n7     Urola Ibaia      16                  País Vasco\n8      Deba Ibaia      16                  País Vasco\n                              geom\n1   LINESTRING (0.7353292 42.84...\n2   LINESTRING (-1.665454 43.13...\n2.1 LINESTRING (-1.665454 43.13...\n3   LINESTRING (-1.665454 43.13...\n4   LINESTRING (-1.847155 43.14...\n4.1 LINESTRING (-1.847155 43.14...\n5   LINESTRING (-2.022088 43.21...\n6   LINESTRING (-2.022088 43.21...\n7   LINESTRING (-2.336401 43.01...\n8   LINESTRING (-2.54771 43.009..."
+  },
+  {
+    "objectID": "01_basic.html#transformaciones-unarias",
+    "href": "01_basic.html#transformaciones-unarias",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Transformaciones unarias",
+    "text": "Transformaciones unarias\nTransformaciones que ocurren a cada geometría de un objeto\n\nrivers_cordoba_sf &lt;- st_filter(x = rivers_sf, y = cordoba_sf)\nbuffer_rivers_sf &lt;- st_buffer(rivers_cordoba_sf, dist = 1000)\nmapview(buffer_rivers_sf) +\n    mapview(rivers_cordoba_sf, color = \"red\")"
+  },
+  {
+    "objectID": "01_basic.html#transformaciones-binarias",
+    "href": "01_basic.html#transformaciones-binarias",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Transformaciones binarias",
+    "text": "Transformaciones binarias\nTransformaciones que ocurren sobre las geometrías de dos objetos\n\n\n\n\n\n\n\n\nTransformación\nDefinición\n\n\n\n\nst_intersection\nDevuelve la parte que se superpone de las geometrías\n\n\nst_union\nDevuelve el combinado de dos objetos (dissolve)\n\n\nst_combine\nCombina todas las geometrías de un objeto en una geometría 'multi'\n\n\nst_difference\nDevuelve las geometrías del primer objeto que no intersectan con las geometrías del segundo objeto\n\n\nst_sym_difference\nDevuelve la parte de las geometrías que no intersectan (es lo contrario de st_intersection)\n\n\nst_crop\nCorta un objeto utilizando un rectángulo (p. ej. el rectángulo mínimo envolvente de otro objeto)"
+  },
+  {
+    "objectID": "01_basic.html#práctica-4",
+    "href": "01_basic.html#práctica-4",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "💪 Práctica 4",
+    "text": "💪 Práctica 4\n\nFiltros espaciales\nUniones espaciales\nPaquetes a utilizar:\n\ngeodata: descarga de datos (GBIF, Worldclim, elevación…)\ngiscoR: descarga de límites administrativos de todo el mundo\nmapview: visualización de datos espaciales\nsf: paquete base para análisis de datos vectoriales\ntidyverse: paquetes para análisis de datos"
+  },
+  {
+    "objectID": "01_basic.html#introducción",
+    "href": "01_basic.html#introducción",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Introducción",
+    "text": "Introducción\n\nTipo de representación espacial que utiliza una grilla de celdas rectangulares para organizar y representar información geoespacial.\nSon básicamente imágenes georreferenciadas\nPueden contener datos continuos o discretos\nImágenes satelitales, ortofotos, variables ambientales…\n\n\n\n\n\n\n\n\n\nFigure 1"
+  },
+  {
+    "objectID": "01_basic.html#introducción-1",
+    "href": "01_basic.html#introducción-1",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Introducción",
+    "text": "Introducción\n\nEn esencia, son una matriz de datos"
+  },
+  {
+    "objectID": "01_basic.html#introducción-2",
+    "href": "01_basic.html#introducción-2",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Introducción",
+    "text": "Introducción\n\nEn esencia, son una matriz de datos"
+  },
+  {
+    "objectID": "01_basic.html#introducción-3",
+    "href": "01_basic.html#introducción-3",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Introducción",
+    "text": "Introducción\n\nEn esencia, son una matriz de datos\n\n\n\n      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]\n [1,]    3    9    4   -2    2    8    9   10    3     5\n [2,]    3   11    4   -2    0   13   -4   -4    7     8\n [3,]    7    7    9    2    4    6    4    6   10     9\n [4,]    1    6    2    0   10    3   -7    1    6     1\n [5,]    0   -1   -3    8    8    5    6   -4   -1     4\n [6,]   19    5   11    9   11    8    0    5    3     7\n [7,]    6    0    4    2    4    5   -2    7    5    19\n [8,]    3    0   -4   -1    8    1   17    2    5     5\n [9,]    6    5    5    5   -2    7    3    8    6    -3\n[10,]   -6    2    6   -2    1    2    3    5    9    -1"
+  },
+  {
+    "objectID": "01_basic.html#introducción-4",
+    "href": "01_basic.html#introducción-4",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Introducción",
+    "text": "Introducción\n\nResolución: se refiere al tamaño del píxel.\n\nCuánto más pequeños mayor resolución (HD, 4K)\nCuánto más grandes menor resolución (144p, 480p)\n\n\n\n\nResolución espacial: se mide en las unidades del SRC (grados, metros)"
+  },
+  {
+    "objectID": "01_basic.html#datos-ráster-con-terra",
+    "href": "01_basic.html#datos-ráster-con-terra",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Datos ráster con terra",
+    "text": "Datos ráster con terra\n\n\n\nSpatRaster: nombre del objeto de estructura ráster dentro del paquete terra\nCuándo solo es una capa es un ráster monobanda\n\n\n\n\n\n\n\n\n\n\n\n\nclass       : SpatRaster \ndimensions  : 42, 69, 1  (nrow, ncol, nlyr)\nresolution  : 7766.865, 7766.865  (x, y)\nextent      : 91481.75, 627395.4, 3969782, 4295990  (xmin, xmax, ymin, ymax)\ncoord. ref. : ETRS89 / UTM zone 30N (EPSG:25830) \nsource(s)   : memory\nname        : ESP_elv_msk \nmin value   :     1.33091 \nmax value   :  2478.78735"
+  },
+  {
+    "objectID": "01_basic.html#bandas-capas",
+    "href": "01_basic.html#bandas-capas",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Bandas / Capas",
+    "text": "Bandas / Capas\nDistintos ráster dentro de un SpatRaster. Condiciones:\n\nMisma resolución espacial\nMisma extensión\nMismo SRC\n\n\n\nclass       : SpatRaster \ndimensions  : 335, 707, 3  (nrow, ncol, nlyr)\nresolution  : 0.008333333, 0.008333333  (x, y)\nextent      : -7.525, -1.633333, 35.93333, 38.725  (xmin, xmax, ymin, ymax)\ncoord. ref. : lon/lat ETRS89 (EPSG:4258) \nsource(s)   : memory\nnames       : Elevacion, Orientacion, Pendiente \nmin values  :        -6,           N,    0.0000 \nmax values  :      3353,           S,   25.9879 \n\n\n\n\n\n\n\n\n\n\nFigure 2"
+  },
+  {
+    "objectID": "01_basic.html#análisis-de-datos-ráster",
+    "href": "01_basic.html#análisis-de-datos-ráster",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Análisis de datos ráster",
+    "text": "Análisis de datos ráster\nRásters del terreno:\n\nModelo Digital de Elevaciones (MDE/DEM): modelo que representa la altitud sobre el nivel del mar.\nCurvas de nivel: líneas que marcan la altitud en intervalos de altitud iguales\nPendiente: ángulo entre la superficie y la vertical\nOrientación: dirección hacia la que apunta la pendiente\nHillshade: simula el sombreado sobre el terreno\n\n\ndem_sr &lt;- geodata::elevation_30s(\"CHE\", path = tempdir())\n\ncont_vect &lt;- terra::as.contour(dem_sr, nlevels = 8)\n\npendiente_sr &lt;- terra::terrain(dem_sr, v = \"slope\")\npendiente_rad_sr &lt;- terra::terrain(dem_sr, v = \"slope\", unit = \"radians\")\n\norientacion_sr &lt;- terra::terrain(dem_sr, v = \"aspect\")\norientacion_rad_sr &lt;- terra::terrain(dem_sr, v = \"aspect\", unit = \"radians\")\n\nhillshade_sr &lt;- terra::shade(pendiente_rad_sr, orientacion_rad_sr)"
+  },
+  {
+    "objectID": "01_basic.html#análisis-de-datos-ráster-1",
+    "href": "01_basic.html#análisis-de-datos-ráster-1",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Análisis de datos ráster",
+    "text": "Análisis de datos ráster\nSistemas de Referencia de coordenadas:\n\nproject(x, y): transformar el SRC\ncrs(x): consultar el SRC\ncrs(x) &lt;- \"EPSG:25830\": asignar SRC"
+  },
+  {
+    "objectID": "01_basic.html#análisis-de-datos-ráster-2",
+    "href": "01_basic.html#análisis-de-datos-ráster-2",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Análisis de datos ráster",
+    "text": "Análisis de datos ráster\n\ncrop(x, y): cortar el raster x a la extensión de y\nmask(x, y): enmascarar el raster x a la extensión de y\ncrop(x, y, mask = TRUE): cortar y luego enmascarar\n\n\n## descargar datos y reproyectar\ndem_sr &lt;- geodata::elevation_30s(\"ES\", path = tempdir()) |&gt; \n  project(crs(cordoba_sf))\nnames(dem_sr) &lt;- \"Elevacion\"\n## cortar/enmascarar\ncrop_sr &lt;- crop(dem_sr, cordoba_sf)\nmask_sr &lt;- mask(dem_sr, cordoba_sf)\ncrop_mask_sr &lt;- crop(dem_sr, cordoba_sf, mask = TRUE)\n\n\n\n\n\n\n\n\n\nFigure 3"
+  },
+  {
+    "objectID": "01_basic.html#análisis-de-datos-ráster-3",
+    "href": "01_basic.html#análisis-de-datos-ráster-3",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Análisis de datos ráster",
+    "text": "Análisis de datos ráster\nClasificar valores continuos a discretos.\n\nclassify(x, rcl): clasifica los valores de x utilizando los valores de una matriz.\n\n\n\n\n\n     [,1] [,2] [,3]\n[1,] -Inf  500    1\n[2,]  500 1000    2\n[3,] 1000 1500    3\n[4,] 1500 2000    4\n[5,] 2000 2500    5\n[6,] 2500 3000    6\n[7,] 3000 3500    7"
+  },
+  {
+    "objectID": "01_basic.html#análisis-de-datos-ráster-4",
+    "href": "01_basic.html#análisis-de-datos-ráster-4",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Análisis de datos ráster",
+    "text": "Análisis de datos ráster\nExtraer valores en determinados puntos.\n\nextract(x, y): extraer valores de x en los puntos y\n\n\nterra::extract(dem_sr, points_vect)\n\n\n\n\n\n   ID Elevacion\n1   1       918\n2   2      1012\n3   3       441\n4   4      1212\n5   5       850\n6   6       878\n7   7       274\n8   8       841\n9   9       240\n10 10       736"
+  },
+  {
+    "objectID": "01_basic.html#análisis-de-datos-ráster-5",
+    "href": "01_basic.html#análisis-de-datos-ráster-5",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Análisis de datos ráster",
+    "text": "Análisis de datos ráster\nModificar resolución espacial\n\naggregate(x, fact): reducir la resolución espacial\ndisagg(x, fact): aumentar la resolución espacial\nresample(x, y): modifica la resolución espacial y la extensión de x para que sean las mismas que las de y\n\n\n\n\n\n\n\nNota\n\n\nEstas funciones tienen el argumento method que es de importancia:\n\nmethod = \"near\": para interpolar valores utiliza k-nearest neightbour (para variables categóricas)\nmethod = \"billinear\": interpolación bilinear (para variables continuas)"
+  },
+  {
+    "objectID": "01_basic.html#formatos-ráster",
+    "href": "01_basic.html#formatos-ráster",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Formatos ráster",
+    "text": "Formatos ráster"
+  },
+  {
+    "objectID": "01_basic.html#práctica-5",
+    "href": "01_basic.html#práctica-5",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "💪 Práctica 5",
+    "text": "💪 Práctica 5\n\nImportar/Exportar datos ráster\nExploración básica de datos ráster\nDescarga y cálculo de modelos del terreno\nCortar/Enmascarar\nReproyectar SRC\nReclasificar valores de un ráster\nExtraer valores de un ráster\nModificar resolución espacial\nPaquetes a utilizar:\n\ngeodata: descarga de datos (GBIF, Worldclim, elevación…)\ngeoperu: descarga de áreas protegidas de Perú\nmapview: visualización interactiva de datos\nterra: paquete base para datos ráster\nsf: paquete base para datos vectoriales\ntidyverse: paquetes para análisis de datos"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Presentaciones Summer School",
+    "section": "",
+    "text": "Presentation 1"
+  },
+  {
+    "objectID": "02_advanced.html",
+    "href": "02_advanced.html",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "",
+    "text": "Ingeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
+  },
+  {
+    "objectID": "02_advanced.html#adrián-cidre-gonzález",
+    "href": "02_advanced.html#adrián-cidre-gonzález",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "",
+    "text": "Ingeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
+  },
+  {
+    "objectID": "00_assets/partials/intro-acidre.html",
+    "href": "00_assets/partials/intro-acidre.html",
+    "title": "SSBD_presentaciones",
+    "section": "",
+    "text": "Ingeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
+  },
+  {
+    "objectID": "00_assets/partials/intro-acidre.html#adrián-cidre-gonzález",
+    "href": "00_assets/partials/intro-acidre.html#adrián-cidre-gonzález",
+    "title": "SSBD_presentaciones",
+    "section": "",
+    "text": "Ingeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
+  }
+]
