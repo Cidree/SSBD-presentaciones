@@ -24,8 +24,3 @@ lightbox: true
 #   packages: ["dplyr", "ggplot2", "gapminder", "forcats"]
 # revealjs-plugins:
 #   - drop
-
-## Slides --------------------------
-format: 
-  html:
-    theme: lux

@@ -1,8 +1,41 @@
 ---
 title: "Presentaciones Summer School"
-format: html
+format: 
+    html:
+        theme: flatly
 ---
 
-## Introducción al análisis geoespacial con R - Parte 1
+## Reto relámpago
 
-- [Presentation 1](01_basic.html)
+-   **Título**: Positron - Una IDE para ciencia de datos con R y Python
+
+-   **Fecha y hora**: 2025-06-23 14:45-15:00
+
+-   **Presentación**:
+
+-   **Resumen**: Positron es un entorno de desarrollo integrado (IDE) que ha sido lanzado al público en junio de 2024, por lo que es un software todavía joven.
+
+En el entorno de la programación, una IDE es básicamente un software donde podemos escribir código. A mi me gusta pensar que las IDE son libretas y los lenguajes de programación son los idiomas que hablamos. Distintas libretas serán más o menos bonitas, tendrán mayores o menores funcionalidades o estarán especializadas para escribas en un idioma en particular. Por ejemplo, RStudio es la IDE de referencia para las personas que programan en R, mientras que los usuarios de Python tienen generalmente muchas más alternativas (PyCharm, VS Code, Jupyter, Spyder...). Una de las IDE más completas es VS Code, ya que es un entorno multilenguaje y es utilizado por muchos usuarios de Python, R, desarrolladores web (html, JavaScript....). Sin embargo, VS Code tiene diversas limitaciones para usuarios de R especialmente. Positron nació como una IDE de Posit PBC basada en VS Code para análisis y ciencia de datos con R y Python (**Posit**-**R**-(pyth)**on**). En este reto exploraremos las ventajas de Positron contra RStudio, VS Code y otras IDE, y porqué yo ya no utilizo otra IDE.
+
+## Workshop 1
+
+-   **Título**: Introducción al análisis geoespacial con R
+
+-   **Fecha y hora**: 2025-06-23 15:00-16:30
+
+-   **Presentación**: [ver presentación](01_basic.html)
+
+-   **Resumen**: En este workshop, veremos conceptos básicos del análisis geoespacial en R. Estará orientado sobre todo a aquellas personas que no hayan trabajado con datos espaciales en R previamente, y será de utilidad para aquellas personas que continúen por el itinerario de clases en las que se utiliza R.
+
+Comenzaremos viendo una introducción a los datos espaciales y cómo los leemos y exportamos en los formatos más comunes. A continuación, veremos cómo trabajar con sistemas de referencia de coordenadas correctamente. En el siguiente tema empezaremos con análisis de datos vectoriales, y aprenderemos a utilizar las funciones más comunes y útiles. Finalmente, terminaremos con análisis de datos ráster realizando una exploración de los datos y los análisis más comunes (cortar, enmascarar, clasificar).
+
+
+## Workshop 2
+
+-   **Título**: Análisis geoespacial con R - Parte 2
+
+-   **Fecha y hora**: 2025-06-23 17:00-18:30
+
+-   **Presentación**: [ver presentación](02_advanced.html)
+
+-   **Resumen**:

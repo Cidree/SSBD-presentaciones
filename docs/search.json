@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Presentaciones Summer School",
     "section": "",
-    "text": "Presentation 1"
+    "text": "Título: Positron - Una IDE para ciencia de datos con R y Python\nFecha y hora: 2025-06-23 14:45-15:00\nPresentación:\nResumen: Positron es un entorno de desarrollo integrado (IDE) que ha sido lanzado al público en junio de 2024, por lo que es un software todavía joven.\n\nEn el entorno de la programación, una IDE es básicamente un software donde podemos escribir código. A mi me gusta pensar que las IDE son libretas y los lenguajes de programación son los idiomas que hablamos. Distintas libretas serán más o menos bonitas, tendrán mayores o menores funcionalidades o estarán especializadas para escribas en un idioma en particular. Por ejemplo, RStudio es la IDE de referencia para las personas que programan en R, mientras que los usuarios de Python tienen generalmente muchas más alternativas (PyCharm, VS Code, Jupyter, Spyder…). Una de las IDE más completas es VS Code, ya que es un entorno multilenguaje y es utilizado por muchos usuarios de Python, R, desarrolladores web (html, JavaScript….). Sin embargo, VS Code tiene diversas limitaciones para usuarios de R especialmente. Positron nació como una IDE de Posit PBC basada en VS Code para análisis y ciencia de datos con R y Python (Posit-R-(pyth)on). En este reto exploraremos las ventajas de Positron contra RStudio, VS Code y otras IDE, y porqué yo ya no utilizo otra IDE."
   },
   {
     "objectID": "index.html#introducción-al-análisis-geoespacial-con-r---parte-1",
@@ -397,5 +397,26 @@
     "title": "Introducción al análisis geoespacial con R",
     "section": "💪 Práctica 5",
     "text": "💪 Práctica 5\n\nImportar/Exportar datos ráster\nExploración básica de datos ráster\nDescarga y cálculo de modelos del terreno\nCortar/Enmascarar\nReproyectar SRC\nReclasificar valores de un ráster\nExtraer valores de un ráster\nModificar resolución espacial\nPaquetes a utilizar:\n\ngeodata: descarga de datos (GBIF, Worldclim, elevación…)\ngeoperu: descarga de áreas protegidas de Perú\nmapview: visualización interactiva de datos\nterra: paquete base para datos ráster\nsf: paquete base para datos vectoriales\ntidyverse: paquetes para análisis de datos"
+  },
+  {
+    "objectID": "index.html#reto-relámpago",
+    "href": "index.html#reto-relámpago",
+    "title": "Presentaciones Summer School",
+    "section": "",
+    "text": "Título: Positron - Una IDE para ciencia de datos con R y Python\nFecha y hora: 2025-06-23 14:45-15:00\nPresentación:\nResumen: Positron es un entorno de desarrollo integrado (IDE) que ha sido lanzado al público en junio de 2024, por lo que es un software todavía joven.\n\nEn el entorno de la programación, una IDE es básicamente un software donde podemos escribir código. A mi me gusta pensar que las IDE son libretas y los lenguajes de programación son los idiomas que hablamos. Distintas libretas serán más o menos bonitas, tendrán mayores o menores funcionalidades o estarán especializadas para escribas en un idioma en particular. Por ejemplo, RStudio es la IDE de referencia para las personas que programan en R, mientras que los usuarios de Python tienen generalmente muchas más alternativas (PyCharm, VS Code, Jupyter, Spyder…). Una de las IDE más completas es VS Code, ya que es un entorno multilenguaje y es utilizado por muchos usuarios de Python, R, desarrolladores web (html, JavaScript….). Sin embargo, VS Code tiene diversas limitaciones para usuarios de R especialmente. Positron nació como una IDE de Posit PBC basada en VS Code para análisis y ciencia de datos con R y Python (Posit-R-(pyth)on). En este reto exploraremos las ventajas de Positron contra RStudio, VS Code y otras IDE, y porqué yo ya no utilizo otra IDE."
+  },
+  {
+    "objectID": "index.html#workshop-1",
+    "href": "index.html#workshop-1",
+    "title": "Presentaciones Summer School",
+    "section": "Workshop 1",
+    "text": "Workshop 1\n\nTítulo: Introducción al análisis geoespacial con R\nFecha y hora: 2025-06-23 15:00-16:30\nPresentación: ver presentación\nResumen: En este workshop, veremos conceptos básicos del análisis geoespacial en R. Estará orientado sobre todo a aquellas personas que no hayan trabajado con datos espaciales en R previamente, y será de utilidad para aquellas personas que continúen por el itinerario de clases en las que se utiliza R.\n\nComenzaremos viendo una introducción a los datos espaciales y cómo los leemos y exportamos en los formatos más comunes. A continuación, veremos cómo trabajar con sistemas de referencia de coordenadas correctamente. En el siguiente tema empezaremos con análisis de datos vectoriales, y aprenderemos a utilizar las funciones más comunes y útiles. Finalmente, terminaremos con análisis de datos ráster realizando una exploración de los datos y los análisis más comunes (cortar, enmascarar, clasificar)."
+  },
+  {
+    "objectID": "index.html#workshop-2",
+    "href": "index.html#workshop-2",
+    "title": "Presentaciones Summer School",
+    "section": "Workshop 2",
+    "text": "Workshop 2\n\nTítulo: Análisis geoespacial con R - Parte 2\nFecha y hora: 2025-06-23 17:00-18:30\nPresentación: ver presentación\nResumen:"
   }
 ]
