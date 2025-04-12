@@ -1,6 +1,7 @@
 project:
   title: "SSBD_presentaciones"
   type: website
+  output-dir: "docs"
 
 # Tables of contents -----------------
 toc: false
