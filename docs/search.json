@@ -1,26 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Presentaciones Summer School",
-    "section": "",
-    "text": "Título: Positron - Una IDE para ciencia de datos con R y Python\nFecha y hora: 2025-06-23 14:45-15:00\nPresentación:\nResumen: Positron es un entorno de desarrollo integrado (IDE) que ha sido lanzado al público en junio de 2024, por lo que es un software todavía joven.\n\nEn el entorno de la programación, una IDE es básicamente un software donde podemos escribir código. A mi me gusta pensar que las IDE son libretas y los lenguajes de programación son los idiomas que hablamos. Distintas libretas serán más o menos bonitas, tendrán mayores o menores funcionalidades o estarán especializadas para escribas en un idioma en particular. Por ejemplo, RStudio es la IDE de referencia para las personas que programan en R, mientras que los usuarios de Python tienen generalmente muchas más alternativas (PyCharm, VS Code, Jupyter, Spyder…). Una de las IDE más completas es VS Code, ya que es un entorno multilenguaje y es utilizado por muchos usuarios de Python, R, desarrolladores web (html, JavaScript….). Sin embargo, VS Code tiene diversas limitaciones para usuarios de R especialmente. Positron nació como una IDE de Posit PBC basada en VS Code para análisis y ciencia de datos con R y Python (Posit-R-(pyth)on). En este reto exploraremos las ventajas de Positron contra RStudio, VS Code y otras IDE, y porqué yo ya no utilizo otra IDE."
-  },
-  {
-    "objectID": "index.html#introducción-al-análisis-geoespacial-con-r---parte-1",
-    "href": "index.html#introducción-al-análisis-geoespacial-con-r---parte-1",
-    "title": "Presentaciones Summer School",
-    "section": "",
-    "text": "Presentation 1"
-  },
-  {
-    "objectID": "02_advanced.html",
-    "href": "02_advanced.html",
-    "title": "Introducción al análisis geoespacial con R",
-    "section": "",
-    "text": "Ingeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
-  },
-  {
     "objectID": "02_advanced.html#adrián-cidre-gonzález",
     "href": "02_advanced.html#adrián-cidre-gonzález",
     "title": "Introducción al análisis geoespacial con R",
@@ -28,32 +7,151 @@
     "text": "Ingeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
   },
   {
-    "objectID": "00_assets/partials/intro-acidre.html",
-    "href": "00_assets/partials/intro-acidre.html",
-    "title": "SSBD_presentaciones",
-    "section": "",
-    "text": "Ingeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
-  },
-  {
-    "objectID": "00_assets/partials/intro-acidre.html#adrián-cidre-gonzález",
-    "href": "00_assets/partials/intro-acidre.html#adrián-cidre-gonzález",
-    "title": "SSBD_presentaciones",
-    "section": "",
-    "text": "Ingeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
-  },
-  {
-    "objectID": "01_basic.html",
-    "href": "01_basic.html",
+    "objectID": "02_advanced.html#introducción",
+    "href": "02_advanced.html#introducción",
     "title": "Introducción al análisis geoespacial con R",
-    "section": "",
-    "text": "Ingeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
+    "section": "Introducción",
+    "text": "Introducción\nCambio climático: cambios a largo plazo de las temperaturas y los patrones climáticos.\n\nMecánica celeste: Ciclos de Milankovitch\nCiclo de calentamiento comenzado hace 18,000 años\nMayor concentración de GEI\n\n\n\n\n\n\n\n\nZachos et al. (2001)"
+  },
+  {
+    "objectID": "02_advanced.html#especies-forestales",
+    "href": "02_advanced.html#especies-forestales",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Especies forestales",
+    "text": "Especies forestales\nExtinciones pasadas: especies forestales han sufrido extinciones en episodios de cambio climático\nDesajuste climático: las especies tienen óptimos de temperatura y precipitación\n\n\n\n\n\n\n\nFuente: ChatGPT (GPT-4 model)"
+  },
+  {
+    "objectID": "02_advanced.html#eu-trees4f",
+    "href": "02_advanced.html#eu-trees4f",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "EU-Trees4F",
+    "text": "EU-Trees4F\n\nModelos de distribución de especies (biomod2)\nBase de datos pan-europea (EU-Forest) (582,066 ocurrencias)\nDistribución actual (2005) y futuras (2035, 2065, 2095)\nEscenarios: RCP 4.5 y RCP 8.5\n10km de resolución espacial\n\n\n\n\n\n\n\n\nStrona, Mauri, and San-Miguel-Ayanz (2016); Mauri, Strona, and San-Miguel-Ayanz (2017)"
+  },
+  {
+    "objectID": "02_advanced.html#tipos-de-modelos",
+    "href": "02_advanced.html#tipos-de-modelos",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Tipos de modelos",
+    "text": "Tipos de modelos\n\nbin: mapa de distribución binario. 0 = ausente; 1 = presente\nprob: mapa de probabilidad de ocurrencia\nstd: desviación estádandar del modelo"
+  },
+  {
+    "objectID": "02_advanced.html#implementación-en-r",
+    "href": "02_advanced.html#implementación-en-r",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Implementación en R",
+    "text": "Implementación en R\n\n\n\nTipos:\n\nbin: mapa de distribución binario. 0 = ausente; 1 = presente\nprob: mapa de probabilidad de ocurrencia\n\nDistribución:\n\npot: distribución potencial\nnat: nicho realizado\n\n\n\n\n\n\n\nppinaster_rcp45_sr &lt;- fd_forest_eutrees4f(\n  species  = \"Pinus pinaster\",\n  model    = \"clim\",\n  period   = \"all\",\n  scenario = \"rcp45\",\n  type     = \"bin\",\n  distrib  = \"pot\"\n)"
+  },
+  {
+    "objectID": "02_advanced.html#especies-forestales-1",
+    "href": "02_advanced.html#especies-forestales-1",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Especies forestales",
+    "text": "Especies forestales\nEventos extremos más frecuentes (sequías, incendios, plagas…)\nEspecies vulnerables vs Especies resistentes\n\n\n\n\n\n\n\n\n\nIncendio en Quiroga, Galicia. Fuente: propia\n\n\n\n\n\n\n\n\n\n\nAtaques de Ips typographus en Sněžka (Chequia). Fuente: propia"
+  },
+  {
+    "objectID": "02_advanced.html#especies-forestales-2",
+    "href": "02_advanced.html#especies-forestales-2",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Especies forestales",
+    "text": "Especies forestales\n\nMigración geográfica: algunas especies se desplazan (lentamente) hacia zonas más al norte o elevadas buscando sus óptimos climáticos.\nFenología: cambios en el momento de floración, fructificación.. Afectando ciclos ecológicos\nGestión Forestal Adaptativa: busca favorecer la resiliencia de los bosques\n\n\n\n\n\n\n\n\n\n\nAbies pinsapo. Fuente: propia\n\n\n\n\n\n\n\n\n\n\nDitribución A. pinsapo. Fuente: REDIAM"
+  },
+  {
+    "objectID": "02_advanced.html#referencias",
+    "href": "02_advanced.html#referencias",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Referencias",
+    "text": "Referencias\n\n\n\n\nFeddema, Johannes J. 2005. “A Revised Thornthwaite-Type Global Climate Classification.” Physical Geography 26 (6): 442–66. https://doi.org/10.2747/0272-3646.26.6.442.\n\n\nGeorge H. Hargreaves, and Zohrab A. Samani. 1985. “Reference Crop Evapotranspiration from Temperature.” Applied Engineering in Agriculture 1 (2): 96–99. https://doi.org/10.13031/2013.26773.\n\n\nMauri, Achille, Giovanni Strona, and Jesús San-Miguel-Ayanz. 2017. “EU-Forest, a High-Resolution Tree Occurrence Dataset for Europe.” Scientific Data 4 (1). https://doi.org/10.1038/sdata.2016.123.\n\n\nStrona, Giovanni, Achille Mauri, and Jesús San-Miguel-Ayanz. 2016. “A High-Resolution Pan-European Tree Occurrence Dataset.” https://doi.org/10.6084/M9.FIGSHARE.C.3288407.V1.\n\n\nThornthwaite, C. W. 1948. “An Approach Toward a Rational Classification of Climate.” Geographical Review 38 (1): 55. https://doi.org/10.2307/210739.\n\n\nWillmott, Cort J., and Johannes J. Feddema. 1992. “A More Rational Climatic Moisture Index*.” The Professional Geographer 44 (1): 84–88. https://doi.org/10.1111/j.0033-0124.1992.00084.x.\n\n\nZachos, James, Mark Pagani, Lisa Sloan, Ellen Thomas, and Katharina Billups. 2001. “Trends, Rhythms, and Aberrations in Global Climate 65 Ma to Present.” Science 292 (5517): 686–93. https://doi.org/10.1126/science.1059412."
+  },
+  {
+    "objectID": "02_advanced.html#práctica-1",
+    "href": "02_advanced.html#práctica-1",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "💪 Práctica 1",
+    "text": "💪 Práctica 1\n\nPaquetes a utilizar:\n\nforestdata: descarga de datos de EU-Trees4F\nterra: manipulación de datos ráster\nsf: paquete base para análisis de datos vectoriales\ntidyverse: paquetes para análisis y visualización de datos"
+  },
+  {
+    "objectID": "02_advanced.html#introducción-1",
+    "href": "02_advanced.html#introducción-1",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Introducción",
+    "text": "Introducción\nSequía: se produce cuando la disponibilidad de agua no es suficiente para abastecer a los seres vivos.\n\n\n\n\n\n\n\nFuente: Forest Research, UK"
+  },
+  {
+    "objectID": "02_advanced.html#riesgos-de-la-sequía",
+    "href": "02_advanced.html#riesgos-de-la-sequía",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Riesgos de la sequía",
+    "text": "Riesgos de la sequía\n\n\nAumento de la mortalidad de las plantas\nVulnerabilidad a plagas (bark beetles)\nAumento de la biomasa muerta\nMayor riesgo de incendio forestal\n\n\n\n\n\n\n\n\n\nFuente: Forest Research, UK"
+  },
+  {
+    "objectID": "02_advanced.html#balance-de-agua-en-sistemas-forestales",
+    "href": "02_advanced.html#balance-de-agua-en-sistemas-forestales",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Balance de agua en sistemas forestales",
+    "text": "Balance de agua en sistemas forestales\n\nEntradas: precipitación\nSalidas: evaporación, transpiración, interceptación, escorrentía"
+  },
+  {
+    "objectID": "02_advanced.html#moisture-index-de-thornthwaite",
+    "href": "02_advanced.html#moisture-index-de-thornthwaite",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Moisture Index de Thornthwaite",
+    "text": "Moisture Index de Thornthwaite\n\nÍndice climático basado en el balance hídrico\nComparación déficit/excesos de agua y ETP\n\n\\[\nI{m} \\ = \\ I_{h} \\ - \\ 0.6 \\ \\cdot \\ I_{a}\n\\]"
+  },
+  {
+    "objectID": "02_advanced.html#moisture-index-de-thornthwaite-1",
+    "href": "02_advanced.html#moisture-index-de-thornthwaite-1",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Moisture Index de Thornthwaite",
+    "text": "Moisture Index de Thornthwaite\n\n\n\n\\(I_{m}\\) = índice global de humedad de Thornthwaite\n\n\\[\nI{m} \\ = \\ I_{h} \\ - \\ 0.6 \\ \\cdot \\ I_{a}\n\\]\n\n\\(I_h\\) = índice de humedad estacional de Thornthwaite\n\n\\[\nI_h \\ = \\ \\frac{D}{PET} \\ \\cdot \\ 100\n\\]\n\n\\(I_a\\) = índice de aridez estacional de Thornthwaite\n\n\\[\nI_h \\ = \\ \\frac{S}{PET} \\ \\cdot \\ 100\n\\]\n\nCasos de uso:\n\nClima medio de una zona (1990-2020)\nClima de un año particular (2024)\nComparación clima medio con año actual\n\n\n\n\n\n\n\n\nFuente: Thornthwaite (1948)"
+  },
+  {
+    "objectID": "02_advanced.html#evapotranspiración-potencial",
+    "href": "02_advanced.html#evapotranspiración-potencial",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Evapotranspiración Potencial",
+    "text": "Evapotranspiración Potencial\nTotal de agua que se evapora y transpiran las plantas.\nMétodo de George H. Hargreaves and Zohrab A. Samani (1985):\n\\[\nPET \\ = \\ 0.0023 \\ \\cdot \\ RA \\ \\cdot \\ (Tmean \\ + \\ 17.8) \\ \\cdot \\ TD^{0.5}\n\\]\n\n## radiación solar\nsolar_radiation_sr &lt;- envirem::ETsolradRasters(\n    rasterTemplate = tmean_sr[[1]],\n    year           = 40\n)\n\n## Evapotranspiración potencial\npet_sr &lt;- envirem::monthlyPET(\n    Tmean = tmean_sr,\n    RA    = solar_radiation_sr,\n    TD    = temp_range_sr\n)"
+  },
+  {
+    "objectID": "02_advanced.html#déficit-y-surplus",
+    "href": "02_advanced.html#déficit-y-surplus",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Déficit y Surplus",
+    "text": "Déficit y Surplus\n\nDéficit: se produce cuando precipitación &lt; PET\nSurplus: se produce cuando precipitación &gt; PET"
+  },
+  {
+    "objectID": "02_advanced.html#moisture-index-de-willmott1992",
+    "href": "02_advanced.html#moisture-index-de-willmott1992",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Moisture Index de Willmott and Feddema (1992)",
+    "text": "Moisture Index de Willmott and Feddema (1992)\n\nIndice de mejor interpretación (-1, 1)\nIncluido en el paquete envirem\n\n\ncmi_sr &lt;- envirem::climaticMoistureIndex(\n    annualPrecip = prep_sr,\n    PET          = pet_sr\n)\n\n\nTipos de Humedad según Feddema (2005)\n\n\nTipo\nÍndice de Humedad\n\n\n\n\nSaturado\n0.66 a 1\n\n\nMuy húmedo\n0.33 a 0.66\n\n\nHúmedo\n0 a 0.33\n\n\nSeco\n-0.33 a 0\n\n\nSemiárido\n-0.66 a -0.33\n\n\nÁrido\n-1 a -0.66"
+  },
+  {
+    "objectID": "02_advanced.html#worldclim-2.1",
+    "href": "02_advanced.html#worldclim-2.1",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "Worldclim 2.1",
+    "text": "Worldclim 2.1\n\n\nBase de datos global de datos climáticos\nAmpliamente utilizados para mapas y modelos (&gt;15,000 citas desde 2017)\n{geodata}: descarga de modelos 1970-2000\nTemperatura (mínima, media, máxima), precipitación…"
+  },
+  {
+    "objectID": "02_advanced.html#práctica-2a",
+    "href": "02_advanced.html#práctica-2a",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "💪 Práctica 2a",
+    "text": "💪 Práctica 2a\n\nPaquetes a utilizar:\n\nenvirem: cálculo de índices bioclimáticos\ngeodata: descarga de datos de Worldclim\ngiscoR: descarga de límites de CCAA de España\nsf, terra, tidyverse: paquetes base"
+  },
+  {
+    "objectID": "02_advanced.html#práctica-2b",
+    "href": "02_advanced.html#práctica-2b",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "💪 Práctica 2b",
+    "text": "💪 Práctica 2b\n\nPaquetes a utilizar:\n\nenvirem: cálculo de índices bioclimáticos\ngeodata: descarga de datos de Worldclim\ngiscoR: descarga de límites de CCAA de España\nsf, terra, tidyverse: paquetes base"
   },
   {
     "objectID": "01_basic.html#adrián-cidre-gonzález",
     "href": "01_basic.html#adrián-cidre-gonzález",
     "title": "Introducción al análisis geoespacial con R",
-    "section": "Adrián Cidre González",
-    "text": "Adrián Cidre González\n\n\n\nIngeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
+    "section": "",
+    "text": "Ingeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
   },
   {
     "objectID": "01_basic.html#gis-escritorio-vs-gis-programación",
@@ -74,7 +172,7 @@
     "href": "01_basic.html#datos-vectoriales",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Datos vectoriales",
-    "text": "Datos vectoriales\n\nDatos vectoriales: representación de objetos a través de puntos, líneas o polígonos definidos por coordenadas"
+    "text": "Datos vectoriales\n\nDatos vectoriales: representación de objetos a través de puntos, líneas o polígonos definidos por coordenadas\n\n\n\nWarning: attribute variables are assumed to be spatially constant throughout\nall geometries\n\n\nWarning: st_centroid assumes attributes are constant over geometries"
   },
   {
     "objectID": "01_basic.html#paquetes-de-r-para-análisis-espacial",
@@ -88,7 +186,7 @@
     "href": "01_basic.html#paquete-sf",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Paquete sf",
-    "text": "Paquete sf\n\nPaquete principal para datos vectoriales con interfaz a GDAL, PROJ y GEOS. Optimización a través de Rcpp\nTODAS las funciones empiezan por st_\n27º paquete de R más descargado (&gt; 71 millones)\nBasado en Simple Features, estándar del OGC (igual que geopandas)\nDatos guardados como data.frame o tibble con columna de geometría\nDatos tidy. Manipulación de tabla de atributos con tidyverse"
+    "text": "Paquete sf\n\n\nPaquete principal para datos vectoriales con interfaz a GDAL, PROJ y GEOS. Optimización a través de Rcpp\nTODAS las funciones empiezan por st_\n27º paquete de R más descargado (&gt; 71 millones)\nBasado en Simple Features, estándar del OGC (igual que geopandas)\nDatos guardados como data.frame o tibble con columna de geometría\nDatos tidy. Manipulación de tabla de atributos con tidyverse"
   },
   {
     "objectID": "01_basic.html#formatos-vectoriales",
@@ -151,21 +249,21 @@
     "href": "01_basic.html#definiciones",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Definiciones",
-    "text": "Definiciones\n\nSistemas de Referencia de Coordenadas (SRC): sistema de coordenadas que está asociado al planeta Tierra a través de un modelo matemático denominado dátum geodésico. El CRS utiliza una serie de coordenadas para referirse a la posición de un objeto de forma inequívoca."
+    "text": "Definiciones\n\nGeoide: forma hipotética de la superficie de la Tierra\nElipsoide: forma geométrica que representa la forma de la Tierra\nDátum: modelo matemático que se refiere al origen de las coordenadas"
   },
   {
     "objectID": "01_basic.html#definiciones-1",
     "href": "01_basic.html#definiciones-1",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Definiciones",
-    "text": "Definiciones\n\nCoordenadas geográficas: conjunto de valores que definen la posición de un punto en la superficie terrestre (grados).\nCoordenadas proyectadas: la superficie terrestre se proyecta en un plano (normalmente metros)."
+    "text": "Definiciones\n\nSistemas de Referencia de Coordenadas (SRC): sistema de coordenadas que está asociado al planeta Tierra a través de un modelo matemático denominado dátum geodésico. El CRS utiliza una serie de coordenadas para referirse a la posición de un objeto de forma inequívoca."
   },
   {
     "objectID": "01_basic.html#definiciones-2",
     "href": "01_basic.html#definiciones-2",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Definiciones",
-    "text": "Definiciones\n\nGeoide: forma hipotética de la superficie de la Tierra\nElipsoide: forma geométrica que representa la forma de la Tierra\nDátum: modelo matemático que se refiere al origen de las coordenadas"
+    "text": "Definiciones\n\nCoordenadas geográficas: conjunto de valores que definen la posición de un punto en la superficie terrestre (grados).\nCoordenadas proyectadas: la superficie terrestre se proyecta en un plano (normalmente metros)."
   },
   {
     "objectID": "01_basic.html#definiciones-3",
@@ -179,7 +277,7 @@
     "href": "01_basic.html#entonces-qué-debo-hacer",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Entonces, qué debo hacer?",
-    "text": "Entonces, qué debo hacer?\n\nComprobar que tus datos están proyectados (tienen CRS)\nSi no están proyectados, preguntar al autor de los datos cuál es el CRS de éstos y asignar el CRS\nSi están proyectados, continuar trabajando con ese CRS si el adecuado para mi proyecto\nSi están proyectados, pero quiero trabajar con otro CRS, reproyectar el CRS (transformar a otro)"
+    "text": "Entonces, qué debo hacer?\n\n\nComprobar que tus datos están proyectados (tienen CRS)\nSi no están proyectados, preguntar al autor de los datos cuál es el CRS de éstos y asignar el CRS\nSi están proyectados, continuar trabajando con ese CRS si el adecuado para mi proyecto\nSi están proyectados, pero quiero trabajar con otro CRS, reproyectar el CRS (transformar a otro)"
   },
   {
     "objectID": "01_basic.html#uso-incorrecto-de-src",
@@ -214,7 +312,7 @@
     "href": "01_basic.html#funciones-de-sf-con-crs",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Funciones de sf con CRS",
-    "text": "Funciones de sf con CRS\n\nst_crs(): objeto con todos los metadatos del CRS del objeto\nst_set_crs(): asignar CRS. Se utiliza cuando nos dan datos sin CRS\nst_transform(): transformar de un CRS a otro"
+    "text": "Funciones de sf con CRS\n\nst_crs(): objeto con todos los metadatos del CRS del objeto\nst_set_crs(): asignar CRS. Se utiliza cuando nos dan datos sin CRS\nst_transform(): transformar de un CRS a otro\n\n\nst_crs(spain_sf)\n\nCoordinate Reference System:\n  User input: EPSG:25830 \n  wkt:\nPROJCRS[\"ETRS89 / UTM zone 30N\",\n    BASEGEOGCRS[\"ETRS89\",\n        ENSEMBLE[\"European Terrestrial Reference System 1989 ensemble\",\n            MEMBER[\"European Terrestrial Reference Frame 1989\"],\n            MEMBER[\"European Terrestrial Reference Frame 1990\"],\n            MEMBER[\"European Terrestrial Reference Frame 1991\"],\n            MEMBER[\"European Terrestrial Reference Frame 1992\"],\n            MEMBER[\"European Terrestrial Reference Frame 1993\"],\n            MEMBER[\"European Terrestrial Reference Frame 1994\"],\n            MEMBER[\"European Terrestrial Reference Frame 1996\"],\n            MEMBER[\"European Terrestrial Reference Frame 1997\"],\n            MEMBER[\"European Terrestrial Reference Frame 2000\"],\n            MEMBER[\"European Terrestrial Reference Frame 2005\"],\n            MEMBER[\"European Terrestrial Reference Frame 2014\"],\n            MEMBER[\"European Terrestrial Reference Frame 2020\"],\n            ELLIPSOID[\"GRS 1980\",6378137,298.257222101,\n                LENGTHUNIT[\"metre\",1]],\n            ENSEMBLEACCURACY[0.1]],\n        PRIMEM[\"Greenwich\",0,\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        ID[\"EPSG\",4258]],\n    CONVERSION[\"UTM zone 30N\",\n        METHOD[\"Transverse Mercator\",\n            ID[\"EPSG\",9807]],\n        PARAMETER[\"Latitude of natural origin\",0,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8801]],\n        PARAMETER[\"Longitude of natural origin\",-3,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8802]],\n        PARAMETER[\"Scale factor at natural origin\",0.9996,\n            SCALEUNIT[\"unity\",1],\n            ID[\"EPSG\",8805]],\n        PARAMETER[\"False easting\",500000,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8806]],\n        PARAMETER[\"False northing\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8807]]],\n    CS[Cartesian,2],\n        AXIS[\"(E)\",east,\n            ORDER[1],\n            LENGTHUNIT[\"metre\",1]],\n        AXIS[\"(N)\",north,\n            ORDER[2],\n            LENGTHUNIT[\"metre\",1]],\n    USAGE[\n        SCOPE[\"Engineering survey, topographic mapping.\"],\n        AREA[\"Europe between 6°W and 0°W: Faroe Islands offshore; Ireland - offshore; Jan Mayen - offshore; Norway including Svalbard - offshore; Spain - onshore and offshore.\"],\n        BBOX[35.26,-6,80.49,0.01]],\n    ID[\"EPSG\",25830]]"
   },
   {
     "objectID": "01_basic.html#práctica-2",
@@ -242,14 +340,14 @@
     "href": "01_basic.html#funciones-predicado",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Funciones predicado",
-    "text": "Funciones predicado\nSon funciones que comprueban que una determinana característica espacial es cierta. El resultado de estas funciones es TRUE/FALSE\n\n\n\n\n\n\n\n\nPredicado\nDefinicion\nContrario_de\n\n\n\n\nst_contains\nNingún punto de B se encuentra en el exterior ni en el borde de A\nst_within\n\n\nst_covers\nNingún punto de B se encuentra en el exterior de A y al menos un punto está dentro\nst_covered_by\n\n\nst_crosses\nA y B tienen algún punto interior en común (no todos)\n—\n\n\nst_touches\nA y B tienen algún punto del borde en común (pero no interiores)\n—\n\n\nst_disjoint\nA y B no tienen ningún punto en común\nst_intersects\n\n\nst_overlaps\nA y B tienen puntos en común, con la misma dimensión, y sin contener uno al otro completamente\n—\n\n\n\n\n\n\n\n\nRelaciones espaciales - PostGIS\n\n\n\n\n\n\n\nRecuerda\n\n\nSiempre que se realicen operaciones entre dos objetos distintos. SIEMPRE deben tener el mismo SRC."
+    "text": "Funciones predicado\nSon funciones que comprueban que una determinana característica espacial es cierta. El resultado de estas funciones es TRUE/FALSE\n\n\n\n\n\n\n\n\nPredicado\nDefinicion\nContrario_de\n\n\n\n\nst_contains\nNingún punto de B se encuentra en el exterior ni en el borde de A\nst_within\n\n\nst_covers\nNingún punto de B se encuentra en el exterior de A y al menos un punto está dentro\nst_covered_by\n\n\nst_crosses\nA y B tienen algún punto interior en común (no todos)\n—\n\n\nst_touches\nA y B tienen algún punto del borde en común (pero no interiores)\n—\n\n\nst_disjoint\nA y B no tienen ningún punto en común\nst_intersects\n\n\nst_overlaps\nA y B tienen puntos en común, con la misma dimensión, y sin contener uno al otro completamente\n—\n\n\n\n\n\n\n\n\nRelaciones espaciales - PostGIS\n\n\n\n\n\n\n\nRecuerda\n\n\n\nSiempre que se realicen operaciones entre dos objetos distintos. SIEMPRE deben tener el mismo SRC."
   },
   {
     "objectID": "01_basic.html#funciones-predicado-1",
     "href": "01_basic.html#funciones-predicado-1",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Funciones predicado",
-    "text": "Funciones predicado\n\nRíos que cruzan la frontera de la provincia de Córdoba?\n\n\n(rivers_idx &lt;- st_crosses(x = cordoba_sf, y = rivers_sf))\n\nSparse geometry binary predicate list of length 1, where the predicate\nwas `crosses'\n 1: 365, 366, 378, 423, 452, 454, 462, 463, 464, 466, ...\n\n\n\n\nmapview(cordoba_sf) +\n  mapview(\n    rivers_sf[rivers_idx[[1]], ]\n  )"
+    "text": "Funciones predicado\n\nRíos que cruzan la frontera de la provincia de Córdoba?\n\n\n(rivers_idx &lt;- st_crosses(x = cordoba_sf, y = rivers_sf))\n\nalthough coordinates are longitude/latitude, st_crosses assumes that they are\nplanar\n\n\nSparse geometry binary predicate list of length 1, where the predicate\nwas `crosses'\n 1: 365, 366, 378, 423, 452, 454, 462, 463, 464, 466, ...\n\n\n\n\nmapview(cordoba_sf) +\n  mapview(\n    rivers_sf[rivers_idx[[1]], ]\n  )"
   },
   {
     "objectID": "01_basic.html#funciones-predicado---casos-de-uso",
@@ -298,7 +396,7 @@
     "href": "01_basic.html#introducción",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Introducción",
-    "text": "Introducción\n\nTipo de representación espacial que utiliza una grilla de celdas rectangulares para organizar y representar información geoespacial.\nSon básicamente imágenes georreferenciadas\nPueden contener datos continuos o discretos\nImágenes satelitales, ortofotos, variables ambientales…\n\n\n\n\n\n\n\n\n\nFigure 1"
+    "text": "Introducción\n\nTipo de representación espacial que utiliza una grilla de celdas rectangulares para organizar y representar información geoespacial.\nSon básicamente imágenes georreferenciadas\nPueden contener datos continuos o discretos\nImágenes satelitales, ortofotos, variables ambientales…\n\n\n\nWarning: [project,SpatRaster] argument y (the crs) should be a character value\n\n\n\n\n\n\n\n\nFigure 1"
   },
   {
     "objectID": "01_basic.html#introducción-1",
@@ -319,7 +417,7 @@
     "href": "01_basic.html#introducción-3",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Introducción",
-    "text": "Introducción\n\nEn esencia, son una matriz de datos\n\n\n\n      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]\n [1,]   14    2    8    5    5   -1    0    7    1    12\n [2,]    3   10    1    0    5   -1    6   -2    5     1\n [3,]    2    5    6   12    1    3    7    7    6     3\n [4,]   10   10   -1    5    4    2    5    7    2    11\n [5,]    2    9    0    8    7    4    6    7    8     5\n [6,]    5   -2    4    9    5    4   -1  -11    1    10\n [7,]   15    8    4    9    3    6    9    6    7     7\n [8,]    3    8    7    1    1    7    8    3    2     1\n [9,]    3    1   11    7    8    5    3    5    7     2\n[10,]    4    9    7   15    7   15    2   13    6     8"
+    "text": "Introducción\n\nEn esencia, son una matriz de datos\n\n\n\n      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]\n [1,]   11    0    6    5    5    7    7    1    5     4\n [2,]    3    6    7   -4    9    0    6   12    7     3\n [3,]   -2    3    3    9   -1   -7   12    4    6     4\n [4,]    2   -1    2    6   -1    0   -4    6    1     7\n [5,]   15    5   -3   10    3   12    3    1    4    10\n [6,]    5   12    4    1    7    7    8   -1    7     3\n [7,]   -1    6    7    9    6   -4    9    7    5    10\n [8,]    1    6    7    5   15    2   -3   -3   11     7\n [9,]    0    4   11    6    3    0    7   11    9     1\n[10,]    7   13    5   -2    0   16    9   -2   14    -3"
   },
   {
     "objectID": "01_basic.html#introducción-4",
@@ -333,7 +431,7 @@
     "href": "01_basic.html#datos-ráster-con-terra",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Datos ráster con terra",
-    "text": "Datos ráster con terra\n\n\n\nSpatRaster: nombre del objeto de estructura ráster dentro del paquete terra\nCuándo solo es una capa es un ráster monobanda\n\n\n\n\n\n\n\n\n\n\n\n\nclass       : SpatRaster \ndimensions  : 42, 69, 1  (nrow, ncol, nlyr)\nresolution  : 7766.865, 7766.865  (x, y)\nextent      : 91481.75, 627395.4, 3969782, 4295990  (xmin, xmax, ymin, ymax)\ncoord. ref. : ETRS89 / UTM zone 30N (EPSG:25830) \nsource(s)   : memory\nname        : ESP_elv_msk \nmin value   :     1.33091 \nmax value   :  2478.78735"
+    "text": "Datos ráster con terra\n\n\n\nSpatRaster: nombre del objeto de estructura ráster dentro del paquete terra\nCuándo solo es una capa es un ráster monobanda\n\n\n\n\n\n\n\n\n\n\n\n\n\nclass       : SpatRaster \ndimensions  : 42, 69, 1  (nrow, ncol, nlyr)\nresolution  : 7766.865, 7766.865  (x, y)\nextent      : 91481.75, 627395.4, 3969782, 4295990  (xmin, xmax, ymin, ymax)\ncoord. ref. : ETRS89 / UTM zone 30N (EPSG:25830) \nsource(s)   : memory\nname        : ESP_elv_msk \nmin value   :     1.33091 \nmax value   :  2478.78735"
   },
   {
     "objectID": "01_basic.html#bandas-capas",
@@ -375,21 +473,21 @@
     "href": "01_basic.html#análisis-de-datos-ráster-4",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Análisis de datos ráster",
-    "text": "Análisis de datos ráster\nExtraer valores en determinados puntos.\n\nextract(x, y): extraer valores de x en los puntos y\n\n\nterra::extract(dem_sr, points_vect)\n\n\n\n\n\n   ID Elevacion\n1   1       918\n2   2      1012\n3   3       441\n4   4      1212\n5   5       850\n6   6       878\n7   7       274\n8   8       841\n9   9       240\n10 10       736"
+    "text": "Análisis de datos ráster\nExtraer valores en determinados puntos.\n\nextract(x, y): extraer valores de x en los puntos y\n\n\nterra::extract(dem_sr, points_vect)\n\n\n\n\n\n   ID Elevacion\n1   1       918\n2   2      1012\n3   3       441\n4   4      1212\n5   5       850\n6   6       878\n7   7       274\n8   8       841\n9   9       240\n10 10       736\n\n\n\n\n\n&lt;SpatRaster&gt; resampled to 500864 cells.\n\n\nWarning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not\ngive correct results for longitude/latitude data"
   },
   {
     "objectID": "01_basic.html#análisis-de-datos-ráster-5",
     "href": "01_basic.html#análisis-de-datos-ráster-5",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Análisis de datos ráster",
-    "text": "Análisis de datos ráster\nModificar resolución espacial\n\naggregate(x, fact): reducir la resolución espacial\ndisagg(x, fact): aumentar la resolución espacial\nresample(x, y): modifica la resolución espacial y la extensión de x para que sean las mismas que las de y\n\n\n\n\n\n\n\nNota\n\n\nEstas funciones tienen el argumento method que es de importancia:\n\nmethod = \"near\": para interpolar valores utiliza k-nearest neightbour (para variables categóricas)\nmethod = \"billinear\": interpolación bilinear (para variables continuas)"
+    "text": "Análisis de datos ráster\nModificar resolución espacial\n\naggregate(x, fact): reducir la resolución espacial\ndisagg(x, fact): aumentar la resolución espacial\nresample(x, y): modifica la resolución espacial y la extensión de x para que sean las mismas que las de y\n\n\n\n\n\n\n\nNota\n\n\n\nEstas funciones tienen el argumento method que es de importancia:\n\nmethod = \"near\": para interpolar valores utiliza k-nearest neightbour (para variables categóricas)\nmethod = \"billinear\": interpolación bilinear (para variables continuas)"
   },
   {
     "objectID": "01_basic.html#formatos-ráster",
     "href": "01_basic.html#formatos-ráster",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Formatos ráster",
-    "text": "Formatos ráster"
+    "text": "Formatos ráster\n\n\nGeoTIFF (.tif, .tiff): de los más estandarizados\nCloud Optimized GeoTIFF (.tif): optimizado para la nube\nEnhanced Compression Wavelet (.ecw): alto ratio de lectura y compresión\nASCII (.asc): utiliza números entre 0 y 255 para almacenar datos\nFile Geodatabase (.gdb): base de datos de Esri"
   },
   {
     "objectID": "01_basic.html#práctica-5",
@@ -397,6 +495,13 @@
     "title": "Introducción al análisis geoespacial con R",
     "section": "💪 Práctica 5",
     "text": "💪 Práctica 5\n\nImportar/Exportar datos ráster\nExploración básica de datos ráster\nDescarga y cálculo de modelos del terreno\nCortar/Enmascarar\nReproyectar SRC\nReclasificar valores de un ráster\nExtraer valores de un ráster\nModificar resolución espacial\nPaquetes a utilizar:\n\ngeodata: descarga de datos (GBIF, Worldclim, elevación…)\ngeoperu: descarga de áreas protegidas de Perú\nmapview: visualización interactiva de datos\nterra: paquete base para datos ráster\nsf: paquete base para datos vectoriales\ntidyverse: paquetes para análisis de datos"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Presentaciones Summer School",
+    "section": "",
+    "text": "Título: Positron - Una IDE para ciencia de datos con R y Python\nFecha y hora: 2025-06-23 14:45-15:00\nPresentación:\nResumen: Positron es un entorno de desarrollo integrado (IDE) que ha sido lanzado al público en junio de 2024, por lo que es un software todavía joven.\n\nEn el entorno de la programación, una IDE es básicamente un software donde podemos escribir código. A mi me gusta pensar que las IDE son libretas y los lenguajes de programación son los idiomas que hablamos. Distintas libretas serán más o menos bonitas, tendrán mayores o menores funcionalidades o estarán especializadas para escribas en un idioma en particular. Por ejemplo, RStudio es la IDE de referencia para las personas que programan en R, mientras que los usuarios de Python tienen generalmente muchas más alternativas (PyCharm, VS Code, Jupyter, Spyder…). Una de las IDE más completas es VS Code, ya que es un entorno multilenguaje y es utilizado por muchos usuarios de Python, R, desarrolladores web (html, JavaScript….). Sin embargo, VS Code tiene diversas limitaciones para usuarios de R especialmente. Positron nació como una IDE de Posit PBC basada en VS Code para análisis y ciencia de datos con R y Python (Posit-R-(pyth)on). En este reto exploraremos las ventajas de Positron contra RStudio, VS Code y otras IDE, y porqué yo ya no utilizo otra IDE."
   },
   {
     "objectID": "index.html#reto-relámpago",
@@ -418,5 +523,33 @@
     "title": "Presentaciones Summer School",
     "section": "Workshop 2",
     "text": "Workshop 2\n\nTítulo: Análisis geoespacial con R - Parte 2\nFecha y hora: 2025-06-23 17:00-18:30\nPresentación: ver presentación\nResumen:"
+  },
+  {
+    "objectID": "02_advanced.html",
+    "href": "02_advanced.html",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "",
+    "text": "Ingeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
+  },
+  {
+    "objectID": "00_assets/partials/intro-acidre.html",
+    "href": "00_assets/partials/intro-acidre.html",
+    "title": "SSBD_presentaciones",
+    "section": "",
+    "text": "Ingeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
+  },
+  {
+    "objectID": "00_assets/partials/intro-acidre.html#adrián-cidre-gonzález",
+    "href": "00_assets/partials/intro-acidre.html#adrián-cidre-gonzález",
+    "title": "SSBD_presentaciones",
+    "section": "",
+    "text": "Ingeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
+  },
+  {
+    "objectID": "01_basic.html",
+    "href": "01_basic.html",
+    "title": "Introducción al análisis geoespacial con R",
+    "section": "",
+    "text": "Ingeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
   }
 ]

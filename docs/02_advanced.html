@@ -21,7 +21,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -72,17 +126,47 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-search-results"></div>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="02_advanced.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -146,25 +230,477 @@ ul.task-list li input[type="checkbox"] {
 <h1>Objetivos</h1>
 <ul>
 <li><p>3 ejercicios prácticos (~ 30min cada uno)</p></li>
-<li><p>Manejar datos vectoriales con <code>sf</code></p></li>
-<li><p>Manejar datos raster con <code>terra</code></p></li>
+<li><p>Mapas de distribución potencial de especies forestales europeas</p></li>
+<li><p>Cálculo de Índice de Humedad de Thornthwaite</p></li>
+<li><p>Procesado de datos del IFN</p></li>
 </ul>
 </section>
-<section id="parte-1---datos-vectoriales" class="level1 main-part unnumbered">
-<h1 class="main-part unnumbered">Parte 1 - Datos vectoriales</h1>
+<section id="ejercicio-1" class="level1 main-part unnumbered">
+<h1 class="main-part unnumbered">Ejercicio 1</h1>
 <ul>
-<li><p>Datos espaciales vs datos no espaciales</p></li>
-<li><p>Datos vectoriales</p></li>
-<li><p>Paquete <code>sf</code></p></li>
-<li><p>Formatos de datos vectoriales</p></li>
-<li><p>Práctica 1</p></li>
+<li><p>Introducción</p></li>
+<li><p>Modelos EU-Trees4F</p></li>
+<li><p>Descarga de datos a través de <code>{forestdata}</code></p></li>
+<li><p>Generación de mapas de distribución potencial de especies forestales europeas bajo escenarios de cambio climático</p></li>
 </ul>
-<p><i class="fa-solid fa-clock fa-xl" aria-label="clock"></i> 15min</p>
+<p><i class="fa-solid fa-clock fa-xl" aria-label="clock"></i> 20min</p>
+<section id="introducción" class="level2 special-size">
+<h2 class="special-size anchored" data-anchor-id="introducción">Introducción</h2>
+<p>Cambio climático: cambios a largo plazo de las temperaturas y los patrones climáticos.</p>
+<ul>
+<li><p>Mecánica celeste: Ciclos de Milankovitch</p></li>
+<li><p>Ciclo de calentamiento comenzado hace 18,000 años</p></li>
+<li><p>Mayor concentración de GEI</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/climate-evolution.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="@zachos2001"><img src="00_assets/figures/02-geospatial-R/climate-evolution.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="577" alt="Zachos et al. (2001)"></a></p>
+</figure>
+</div>
+<figcaption><span class="citation" data-cites="zachos2001">Zachos et al. (<a href="#ref-zachos2001" role="doc-biblioref">2001</a>)</span></figcaption>
+</figure>
+</div>
+</section>
+<section id="especies-forestales" class="level2 special-size">
+<h2 class="special-size anchored" data-anchor-id="especies-forestales">Especies forestales</h2>
+<p><strong>Extinciones pasadas</strong>: especies forestales han sufrido extinciones en episodios de cambio climático</p>
+<p><strong>Desajuste climático</strong>: las especies tienen óptimos de temperatura y precipitación</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/forest-extinction.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Fuente: ChatGPT (GPT-4 model)"><img src="00_assets/figures/02-geospatial-R/forest-extinction.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img" width="311" alt="Fuente: ChatGPT (GPT-4 model)"></a></p>
+</figure>
+</div>
+<figcaption>Fuente: ChatGPT (GPT-4 model)</figcaption>
+</figure>
+</div>
+</section>
+<section id="especies-forestales-1" class="level2">
+<h2 class="anchored" data-anchor-id="especies-forestales-1">Especies forestales</h2>
+<p>Eventos extremos más frecuentes (sequías, incendios, plagas…)</p>
+<p>Especies vulnerables vs Especies resistentes</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/wildfire-galicia.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Incendio en Quiroga, Galicia. Fuente: propia"><img src="00_assets/figures/02-geospatial-R/wildfire-galicia.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="667" alt="Incendio en Quiroga, Galicia. Fuente: propia"></a></p>
+</figure>
+</div>
+<figcaption>Incendio en Quiroga, Galicia. Fuente: propia</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/pest-bark-beetle.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Ataques de Ips typographus en Sněžka (Chequia). Fuente: propia"><img src="00_assets/figures/02-geospatial-R/pest-bark-beetle.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="667" alt="Ataques de Ips typographus en Sněžka (Chequia). Fuente: propia"></a></p>
+</figure>
+</div>
+<figcaption>Ataques de <em>Ips typographus</em> en Sněžka (Chequia). Fuente: propia</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="especies-forestales-2" class="level2">
+<h2 class="anchored" data-anchor-id="especies-forestales-2">Especies forestales</h2>
+<ul>
+<li><p><strong>Migración geográfica</strong>: algunas especies se desplazan (lentamente) hacia zonas más al norte o elevadas buscando sus óptimos climáticos.</p></li>
+<li><p><strong>Fenología</strong>: cambios en el momento de floración, fructificación.. Afectando ciclos ecológicos</p></li>
+<li><p><strong>Gestión Forestal Adaptativa</strong>: busca favorecer la resiliencia de los bosques</p></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/pinsapo-image.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Abies pinsapo. Fuente: propia"><img src="00_assets/figures/02-geospatial-R/pinsapo-image.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="225" alt="Abies pinsapo. Fuente: propia"></a></p>
+</figure>
+</div>
+<figcaption><em>Abies pinsapo</em>. Fuente: propia</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/pinsapo-distribution.PNG" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Ditribución A. pinsapo. Fuente: REDIAM"><img src="00_assets/figures/02-geospatial-R/pinsapo-distribution.PNG" class="img-fluid quarto-figure quarto-figure-center figure-img" width="484" alt="Ditribución A. pinsapo. Fuente: REDIAM"></a></p>
+</figure>
+</div>
+<figcaption>Ditribución <em>A. pinsapo</em>. Fuente: REDIAM</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="eu-trees4f" class="level2 special-size">
+<h2 class="special-size anchored" data-anchor-id="eu-trees4f">EU-Trees4F</h2>
+<ul>
+<li><p>Modelos de distribución de especies (<code>biomod2</code>)</p></li>
+<li><p>Base de datos pan-europea (EU-Forest) (582,066 ocurrencias)</p></li>
+<li><p>Distribución actual (2005) y futuras (2035, 2065, 2095)</p></li>
+<li><p>Escenarios: RCP 4.5 y RCP 8.5</p></li>
+<li><p>10km de resolución espacial</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/euforest-data.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="@strona2016; @mauri2017"><img src="00_assets/figures/02-geospatial-R/euforest-data.png" class="img-fluid quarto-figure quarto-figure-center figure-img" data-fig-cap-location="margin" width="351" alt="Strona, Mauri, and San-Miguel-Ayanz (2016); Mauri, Strona, and San-Miguel-Ayanz (2017)"></a></p>
+</figure>
+</div>
+<figcaption><span class="citation" data-cites="strona2016">Strona, Mauri, and San-Miguel-Ayanz (<a href="#ref-strona2016" role="doc-biblioref">2016</a>)</span>; <span class="citation" data-cites="mauri2017">Mauri, Strona, and San-Miguel-Ayanz (<a href="#ref-mauri2017" role="doc-biblioref">2017</a>)</span></figcaption>
+</figure>
+</div>
+</section>
+<section id="implementación-en-r" class="level2 special-size-2">
+<h2 class="special-size-2 anchored" data-anchor-id="implementación-en-r">Implementación en R</h2>
+<div class="columns">
+<div class="column" style="width:80%;">
+<ul>
+<li><p>Tipos:</p>
+<ul>
+<li><p><strong>bin</strong>: mapa de distribución binario. 0 = ausente; 1 = presente</p></li>
+<li><p><strong>prob</strong>: mapa de probabilidad de ocurrencia</p></li>
+</ul></li>
+<li><p>Distribución:</p>
+<ul>
+<li><p><strong>pot</strong>: distribución potencial</p></li>
+<li><p><strong>nat</strong>: nicho realizado</p></li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:20%;">
+<p><a href="00_assets/figures/02-geospatial-R/package-forestdata.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="00_assets/figures/02-geospatial-R/package-forestdata.png" class="img-fluid" width="200"></a></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>ppinaster_rcp45_sr <span class="ot">&lt;-</span> <span class="fu">fd_forest_eutrees4f</span>(</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="at">species  =</span> <span class="st">"Pinus pinaster"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="at">model    =</span> <span class="st">"clim"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="at">period   =</span> <span class="st">"all"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  <span class="at">scenario =</span> <span class="st">"rcp45"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6"></a>  <span class="at">type     =</span> <span class="st">"bin"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>  <span class="at">distrib  =</span> <span class="st">"pot"</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="práctica-1" class="level2 exercise">
+<h2 class="exercise anchored" data-anchor-id="práctica-1">💪 Práctica 1</h2>
+<ul>
+<li><p>Paquetes a utilizar:</p>
+<ul>
+<li><p><code>forestdata</code>: descarga de datos de EU-Trees4F</p></li>
+<li><p><code>terra</code>: manipulación de datos ráster</p></li>
+<li><p><code>sf</code>: paquete base para análisis de datos vectoriales</p></li>
+<li><p><code>tidyverse</code>: paquetes para análisis y visualización de datos</p></li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/ws1-result.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="00_assets/figures/02-geospatial-R/ws1-result.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="550"></a></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="ejercicio-2" class="level1 main-part unnumbered">
+<h1 class="main-part unnumbered">Ejercicio 2</h1>
+<ul>
+<li><p>Introducción</p></li>
+<li><p>Indice de Humedad de Thornthwaite</p></li>
+<li><p>Indice de Humedad de Willmott y Feddema</p></li>
+<li><p>Cálculo de los índices en R</p></li>
+</ul>
+<p><i class="fa-solid fa-clock fa-xl" aria-label="clock"></i> 30min</p>
+<section id="introducción-1" class="level2">
+<h2 class="anchored" data-anchor-id="introducción-1">Introducción</h2>
+<p><strong>Sequía</strong>: se produce cuando la disponibilidad de agua no es suficiente para abastecer a los seres vivos.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/drought-forestresearch.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-11" title="Fuente: Forest Research, UK"><img src="00_assets/figures/02-geospatial-R/drought-forestresearch.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Fuente: Forest Research, UK"></a></p>
+</figure>
+</div>
+<figcaption>Fuente: Forest Research, UK</figcaption>
+</figure>
+</div>
+</section>
+<section id="riesgos-de-la-sequía" class="level2">
+<h2 class="anchored" data-anchor-id="riesgos-de-la-sequía">Riesgos de la sequía</h2>
+<div class="incremental">
+<ul class="incremental">
+<li><p>Aumento de la mortalidad de las plantas</p></li>
+<li><p>Vulnerabilidad a plagas (<em>bark beetles</em>)</p></li>
+<li><p>Aumento de la biomasa muerta</p></li>
+<li><p>Mayor riesgo de incendio forestal</p></li>
+</ul>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/drought-forestresearch.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-12" title="Fuente: Forest Research, UK"><img src="00_assets/figures/02-geospatial-R/drought-forestresearch.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Fuente: Forest Research, UK"></a></p>
+</figure>
+</div>
+<figcaption>Fuente: Forest Research, UK</figcaption>
+</figure>
+</div>
+</section>
+<section id="balance-de-agua-en-sistemas-forestales" class="level2">
+<h2 class="anchored" data-anchor-id="balance-de-agua-en-sistemas-forestales">Balance de agua en sistemas forestales</h2>
+<ul>
+<li><p>Entradas: precipitación</p></li>
+<li><p>Salidas: evaporación, transpiración, interceptación, escorrentía</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/tmi-balance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img src="00_assets/figures/02-geospatial-R/tmi-balance.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a></p>
+</figure>
+</div>
+</section>
+<section id="moisture-index-de-thornthwaite" class="level2">
+<h2 class="anchored" data-anchor-id="moisture-index-de-thornthwaite">Moisture Index de Thornthwaite</h2>
+<ul>
+<li><p>Índice climático basado en el balance hídrico</p></li>
+<li><p>Comparación déficit/excesos de agua y ETP</p></li>
+</ul>
+<p><span class="math display">\[
+I{m} \ = \ I_{h} \ - \ 0.6 \ \cdot \ I_{a}
+\]</span></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/tmi-article.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img src="00_assets/figures/02-geospatial-R/tmi-article.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a></p>
+</figure>
+</div>
+</section>
+<section id="moisture-index-de-thornthwaite-1" class="level2 special-size">
+<h2 class="special-size anchored" data-anchor-id="moisture-index-de-thornthwaite-1">Moisture Index de Thornthwaite</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<ul>
+<li><span class="math inline">\(I_{m}\)</span> = índice global de humedad de Thornthwaite</li>
+</ul>
+<p><span class="math display">\[
+I{m} \ = \ I_{h} \ - \ 0.6 \ \cdot \ I_{a}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(I_h\)</span> = índice de humedad estacional de Thornthwaite</li>
+</ul>
+<p><span class="math display">\[
+I_h \ = \ \frac{D}{PET} \ \cdot \ 100
+\]</span></p>
+<ul>
+<li><span class="math inline">\(I_a\)</span> = índice de aridez estacional de Thornthwaite</li>
+</ul>
+<p><span class="math display">\[
+I_h \ = \ \frac{S}{PET} \ \cdot \ 100
+\]</span></p>
+</div><div class="column" style="width:40%;">
+<p>Casos de uso:</p>
+<ul>
+<li><p>Clima medio de una zona (1990-2020)</p></li>
+<li><p>Clima de un año particular (2024)</p></li>
+<li><p>Comparación clima medio con año actual</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/tmi-table.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15" title="Fuente: @thornthwaite1948"><img src="00_assets/figures/02-geospatial-R/tmi-table.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Fuente: Thornthwaite (1948)"></a></p>
+</figure>
+</div>
+<figcaption>Fuente: <span class="citation" data-cites="thornthwaite1948">Thornthwaite (<a href="#ref-thornthwaite1948" role="doc-biblioref">1948</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="evapotranspiración-potencial" class="level2">
+<h2 class="anchored" data-anchor-id="evapotranspiración-potencial">Evapotranspiración Potencial</h2>
+<p>Total de agua que se evapora y transpiran las plantas.</p>
+<p>Método de <span class="citation" data-cites="georgeh.hargreaves1985">George H. Hargreaves and Zohrab A. Samani (<a href="#ref-georgeh.hargreaves1985" role="doc-biblioref">1985</a>)</span>:</p>
+<p><span class="math display">\[
+PET \ = \ 0.0023 \ \cdot \ RA \ \cdot \ (Tmean \ + \ 17.8) \ \cdot \ TD^{0.5}
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## radiación solar</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>solar_radiation_sr <span class="ot">&lt;-</span> envirem<span class="sc">::</span><span class="fu">ETsolradRasters</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">rasterTemplate =</span> tmean_sr[[<span class="dv">1</span>]],</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">year           =</span> <span class="dv">40</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Evapotranspiración potencial</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>pet_sr <span class="ot">&lt;-</span> envirem<span class="sc">::</span><span class="fu">monthlyPET</span>(</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">Tmean =</span> tmean_sr,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">RA    =</span> solar_radiation_sr,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">TD    =</span> temp_range_sr</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="déficit-y-surplus" class="level2">
+<h2 class="anchored" data-anchor-id="déficit-y-surplus">Déficit y Surplus</h2>
+<ul>
+<li><p>Déficit: se produce cuando precipitación &lt; PET</p></li>
+<li><p>Surplus: se produce cuando precipitación &gt; PET</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/tmi-isdeficit.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img src="00_assets/figures/02-geospatial-R/tmi-isdeficit.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></a></p>
+</figure>
+</div>
+</section>
+<section id="moisture-index-de-willmott1992" class="level2 special-size">
+<h2 class="special-size anchored" data-anchor-id="moisture-index-de-willmott1992">Moisture Index de <span class="citation" data-cites="willmott1992">Willmott and Feddema (<a href="#ref-willmott1992" role="doc-biblioref">1992</a>)</span></h2>
+<ul>
+<li><p>Indice de mejor interpretación (-1, 1)</p></li>
+<li><p>Incluido en el paquete <code>envirem</code></p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cmi_sr <span class="ot">&lt;-</span> envirem<span class="sc">::</span><span class="fu">climaticMoistureIndex</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">annualPrecip =</span> prep_sr,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">PET          =</span> pet_sr</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<table class="caption-top table">
+<caption>Tipos de Humedad según <span class="citation" data-cites="feddema2005">Feddema (<a href="#ref-feddema2005" role="doc-biblioref">2005</a>)</span></caption>
+<thead>
+<tr class="header">
+<th>Tipo</th>
+<th>Índice de Humedad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Saturado</td>
+<td>0.66 a 1</td>
+</tr>
+<tr class="even">
+<td>Muy húmedo</td>
+<td>0.33 a 0.66</td>
+</tr>
+<tr class="odd">
+<td>Húmedo</td>
+<td>0 a 0.33</td>
+</tr>
+<tr class="even">
+<td>Seco</td>
+<td>-0.33 a 0</td>
+</tr>
+<tr class="odd">
+<td>Semiárido</td>
+<td>-0.66 a -0.33</td>
+</tr>
+<tr class="even">
+<td>Árido</td>
+<td>-1 a -0.66</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="worldclim-2.1" class="level2">
+<h2 class="anchored" data-anchor-id="worldclim-2.1">Worldclim 2.1</h2>
+<div class="incremental">
+<ul class="incremental">
+<li><p>Base de datos global de datos climáticos</p></li>
+<li><p>Ampliamente utilizados para mapas y modelos (&gt;15,000 citas desde 2017)</p></li>
+<li><p><code>{geodata}</code>: descarga de modelos 1970-2000</p></li>
+<li><p>Temperatura (mínima, media, máxima), precipitación…</p></li>
+</ul>
+</div>
+</section>
+<section id="práctica-2a" class="level2 exercise">
+<h2 class="exercise anchored" data-anchor-id="práctica-2a">💪 Práctica 2a</h2>
+<ul>
+<li><p>Paquetes a utilizar:</p>
+<ul>
+<li><p><code>envirem</code>: cálculo de índices bioclimáticos</p></li>
+<li><p><code>geodata</code>: descarga de datos de Worldclim</p></li>
+<li><p><code>giscoR</code>: descarga de límites de CCAA de España</p></li>
+<li><p><code>sf</code>, <code>terra</code>, <code>tidyverse</code>: paquetes base</p></li>
+</ul></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/tmi-result-map.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img src="00_assets/figures/02-geospatial-R/tmi-result-map.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></a></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/tmi-result-graph.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img src="00_assets/figures/02-geospatial-R/tmi-result-graph.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="490"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="práctica-2b" class="level2 exercise">
+<h2 class="exercise anchored" data-anchor-id="práctica-2b">💪 Práctica 2b</h2>
+<ul>
+<li><p>Paquetes a utilizar:</p>
+<ul>
+<li><p><code>envirem</code>: cálculo de índices bioclimáticos</p></li>
+<li><p><code>geodata</code>: descarga de datos de Worldclim</p></li>
+<li><p><code>giscoR</code>: descarga de límites de CCAA de España</p></li>
+<li><p><code>sf</code>, <code>terra</code>, <code>tidyverse</code>: paquetes base</p></li>
+</ul></li>
+</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/cmi-result-map.png" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img src="00_assets/figures/02-geospatial-R/cmi-result-map.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480"></a></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="00_assets/figures/02-geospatial-R/cmi-result-graph.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img src="00_assets/figures/02-geospatial-R/cmi-result-graph.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="referencias" class="level2">
+
+
 
 
 </section>
+</section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">Referencias</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-feddema2005" class="csl-entry" role="listitem">
+Feddema, Johannes J. 2005. <span>“A Revised Thornthwaite-Type Global Climate Classification.”</span> <em>Physical Geography</em> 26 (6): 442–66. <a href="https://doi.org/10.2747/0272-3646.26.6.442">https://doi.org/10.2747/0272-3646.26.6.442</a>.
+</div>
+<div id="ref-georgeh.hargreaves1985" class="csl-entry" role="listitem">
+George H. Hargreaves, and Zohrab A. Samani. 1985. <span>“Reference Crop Evapotranspiration from Temperature.”</span> <em>Applied Engineering in Agriculture</em> 1 (2): 96–99. <a href="https://doi.org/10.13031/2013.26773">https://doi.org/10.13031/2013.26773</a>.
+</div>
+<div id="ref-mauri2017" class="csl-entry" role="listitem">
+Mauri, Achille, Giovanni Strona, and Jesús San-Miguel-Ayanz. 2017. <span>“EU-Forest, a High-Resolution Tree Occurrence Dataset for Europe.”</span> <em>Scientific Data</em> 4 (1). <a href="https://doi.org/10.1038/sdata.2016.123">https://doi.org/10.1038/sdata.2016.123</a>.
+</div>
+<div id="ref-strona2016" class="csl-entry" role="listitem">
+Strona, Giovanni, Achille Mauri, and Jesús San-Miguel-Ayanz. 2016. <span>“A High-Resolution Pan-European Tree Occurrence Dataset.”</span> <a href="https://doi.org/10.6084/M9.FIGSHARE.C.3288407.V1">https://doi.org/10.6084/M9.FIGSHARE.C.3288407.V1</a>.
+</div>
+<div id="ref-thornthwaite1948" class="csl-entry" role="listitem">
+Thornthwaite, C. W. 1948. <span>“An Approach Toward a Rational Classification of Climate.”</span> <em>Geographical Review</em> 38 (1): 55. <a href="https://doi.org/10.2307/210739">https://doi.org/10.2307/210739</a>.
+</div>
+<div id="ref-willmott1992" class="csl-entry" role="listitem">
+Willmott, Cort J., and Johannes J. Feddema. 1992. <span>“A More Rational Climatic Moisture Index*.”</span> <em>The Professional Geographer</em> 44 (1): 84–88. <a href="https://doi.org/10.1111/j.0033-0124.1992.00084.x">https://doi.org/10.1111/j.0033-0124.1992.00084.x</a>.
+</div>
+<div id="ref-zachos2001" class="csl-entry" role="listitem">
+Zachos, James, Mark Pagani, Lisa Sloan, Ellen Thomas, and Katharina Billups. 2001. <span>“Trends, Rhythms, and Aberrations in Global Climate 65 Ma to Present.”</span> <em>Science</em> 292 (5517): 686–93. <a href="https://doi.org/10.1126/science.1059412">https://doi.org/10.1126/science.1059412</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

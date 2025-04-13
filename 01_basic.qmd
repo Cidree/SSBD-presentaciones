@@ -16,10 +16,10 @@ format:
 
 # Slides -----------------------------
 title-slide-attributes: 
-data-background-image: 00_assets/figures/logo-geoforest.png, 00_assets/figures/logo_uco.png
-data-background-repeat: no-repeat
-data-background-position: 15% 90%, 85% 90%
-data-background-size: 20%, 20%
+  data-background-image: 00_assets/figures/logo-geoforest.png, 00_assets/figures/logo-bosque-digital.png
+  data-background-repeat: no-repeat
+  data-background-position: 15% 90%, 85% 90%
+  data-background-size: 20%, 20%
 slide-number: true
 center-title-slide: true
 
@@ -27,6 +27,10 @@ center-title-slide: true
 transition: fade
 transition-speed: slow
 background-transition: fade
+
+## Filters -------------------------
+lightbox: true
+fig-responsive: true
 ---
 
 ```{r}
@@ -35,6 +39,8 @@ background-transition: fade
 library(pacman)
 
 p_load(gt, giscoR, mapSpain, mapview, patchwork, sf, terra, tidyverse, tidyterra, withr)
+
+par(bg = "transparent")
 ```
 
 {{< include 00_assets/partials/intro-acidre.qmd >}}
@@ -151,6 +157,8 @@ mapview(andalucia_sf, layer.name = "Provincias", zcol = "prov.shortname.es") +
 
 ## Paquete sf
 
+::: {.incremental}
+
 -   Paquete principal para datos vectoriales con interfaz a GDAL, PROJ y GEOS. Optimización a través de `Rcpp`
 
 -   TODAS las funciones empiezan por `st_`
@@ -162,6 +170,8 @@ mapview(andalucia_sf, layer.name = "Provincias", zcol = "prov.shortname.es") +
 -   Datos guardados como `data.frame` o `tibble` con columna de geometría
 
 -   Datos `tidy`. Manipulación de tabla de atributos con `tidyverse`
+
+:::
 
 ![](00_assets/figures/01-geospatial-R/simple-feature.png){fig-alt="Simple Feature" fig-align="center"}
 
@@ -302,6 +312,16 @@ spain_sf <- read_sf("spain.gpkg", layer = "spain")
 
 ## Definiciones
 
+-   **Geoide**: forma hipotética de la superficie de la Tierra
+
+-   **Elipsoide**: forma geométrica que representa la forma de la Tierra
+
+-   **Dátum**: modelo matemático que se refiere al origen de las coordenadas
+
+![](00_assets/figures/01-geospatial-R/crs-geoide.png){fig-align="center"}
+
+## Definiciones
+
 -   **Sistemas de Referencia de Coordenadas (SRC)**: sistema de coordenadas que está asociado al planeta Tierra a través de un modelo matemático denominado *dátum* geodésico. El CRS utiliza una serie de coordenadas para referirse a la posición de un objeto de forma inequívoca.
 
 ![](00_assets/figures/01-geospatial-R/crs-proyecciones2.png){fig-align="center"}
@@ -322,15 +342,7 @@ spain_sf <- read_sf("spain.gpkg", layer = "spain")
 :::
 :::::
 
-## Definiciones
 
--   **Geoide**: forma hipotética de la superficie de la Tierra
-
--   **Elipsoide**: forma geométrica que representa la forma de la Tierra
-
--   **Dátum**: modelo matemático que se refiere al origen de las coordenadas
-
-![](00_assets/figures/01-geospatial-R/crs-geoide.png){fig-align="center"}
 
 ## Definiciones
 
@@ -340,6 +352,8 @@ spain_sf <- read_sf("spain.gpkg", layer = "spain")
 
 ## Entonces, qué debo hacer?
 
+::: {.incremental}
+
 -   Comprobar que tus datos están proyectados (tienen CRS)
 
 -   Si no están proyectados, preguntar al autor de los datos cuál es el CRS de éstos y **asignar el CRS**
@@ -347,6 +361,8 @@ spain_sf <- read_sf("spain.gpkg", layer = "spain")
 -   Si están proyectados, continuar trabajando con ese CRS si el adecuado para mi proyecto
 
 -   Si están proyectados, pero quiero trabajar con otro CRS, **reproyectar el CRS** (transformar a otro)
+
+:::
 
 ## Uso incorrecto de SRC
 
@@ -404,6 +420,11 @@ ggplot(spain_sf) +
 
 -   `st_transform()`: transformar de un CRS a otro
 
+```{r}
+st_crs(spain_sf)
+```
+
+
 ## 💪 Práctica 2 {.exercise}
 
 -   Explorar CRS de un objeto
@@ -418,7 +439,7 @@ ggplot(spain_sf) +
 
     -   `sf`: paquete base para análisis de datos vectoriales
 
-# Parte 3 - Operaciones con geometrías {.main-part .unnumbered}
+# Parte 3 - Operaciones en geometrías {.main-part .unnumbered}
 
 -   Medidas
 
@@ -842,7 +863,10 @@ print(dem_agg_sr)
 ::: {.column width="50%"}
 ```{r}
 #| echo: false
-plot(dem_agg_sr)
+
+withr::with_par(list(mfrow = c(1, 1), bg = "transparent"), {
+  plot(dem_agg_sr, axes = FALSE)
+})
 ```
 :::
 :::::
@@ -870,7 +894,11 @@ terrain_sr
 #| label: fig-terrain
 #| fig-height: 3
 #| echo: false
-plot(terrain_sr, nr = 1, axes = F, col = hcl.colors(1000, "Spectral", rev = T))
+withr::with_par(list(mfrow = c(1, 1), bg = "transparent"), {
+  plot(terrain_sr, nr = 1, axes = F, col = hcl.colors(1000, "Spectral", rev = T))
+})
+
+
 ```
 
 ## Análisis de datos ráster
@@ -938,7 +966,7 @@ crop_mask_sr <- crop(dem_sr, cordoba_sf, mask = TRUE)
 #| label: fig-terrain-cordoba
 #| fig-height: 4
 ## plot
-with_par(list(mfrow = c(1, 4)), {
+with_par(list(mfrow = c(1, 4), bg = "transparent"), {
   
   plot(dem_sr, main = "Original", col = hcl.colors(1000, "Terrain2"), legend = FALSE)
   plot(vect(cordoba_sf), add = TRUE)
@@ -983,7 +1011,7 @@ print(mat)
 ::: {.column width="70%"}
 ```{r}
 #| echo: false
-with_par(list(mfrow = c(1, 2)), {
+with_par(list(mfrow = c(1, 2), bg = "transparent"), {
   plot(dem_sr, main = "Original", col = hcl.colors(1000, "Terrain2"))
   plot(dem_class, main = "Clasificado", col = hcl.colors(7, "Terrain2"))
 })
@@ -1060,6 +1088,20 @@ Estas funciones tienen el argumento `method` que es de importancia:
 :::
 
 ## Formatos ráster
+
+::: {.incremental}
+
+* GeoTIFF (.tif, .tiff): de los más estandarizados
+
+* Cloud Optimized GeoTIFF (.tif): optimizado para la nube
+
+* Enhanced Compression Wavelet (.ecw): alto ratio de lectura y compresión
+
+* ASCII (.asc): utiliza números entre 0 y 255 para almacenar datos
+
+* File Geodatabase (.gdb): base de datos de Esri
+
+:::
 
 ## 💪 Práctica 5 {.exercise}
 

@@ -15,12 +15,4 @@ execute:
 
 ## Figures -------------------------
 fig-responsive: true
-logo: 00_assets/figures/logo-geoforest.png
-
-## Filters -------------------------
-lightbox: true
-# filters: 
-# webr:
-#   packages: ["dplyr", "ggplot2", "gapminder", "forcats"]
-# revealjs-plugins:
-#   - drop
+logo: 00_assets/figures/logo-bosque-digital.png

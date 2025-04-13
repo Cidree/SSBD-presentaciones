@@ -72,6 +72,15 @@ h1, h2, h3 {
   }
 }
 
+.special-size-2 {
+  font-size: 28px;
+  & .cell-output-display:not(.no-overflow-x), 
+  .knitsql-table:not(.no-overflow-x) {
+    font-size: 15px;
+  }
+}
+
+
 .special-size-smaller {
   font-size: 20px;
   & .cell-output-display:not(.no-overflow-x), 
@@ -127,3 +136,11 @@ h1, h2, h3 {
 }
 
 
+figcaption {
+  text-align: center;
+  font-size: .7rem;
+}
+
+span.citation {
+  font-style: italic;
+}
