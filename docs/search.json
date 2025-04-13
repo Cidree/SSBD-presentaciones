@@ -3,8 +3,8 @@
     "objectID": "02_advanced.html#adrián-cidre-gonzález",
     "href": "02_advanced.html#adrián-cidre-gonzález",
     "title": "Introducción al análisis geoespacial con R",
-    "section": "",
-    "text": "Ingeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
+    "section": "Adrián Cidre González",
+    "text": "Adrián Cidre González\n\n\n\nIngeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
   },
   {
     "objectID": "02_advanced.html#introducción",
@@ -39,7 +39,7 @@
     "href": "02_advanced.html#implementación-en-r",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Implementación en R",
-    "text": "Implementación en R\n\n\n\nTipos:\n\nbin: mapa de distribución binario. 0 = ausente; 1 = presente\nprob: mapa de probabilidad de ocurrencia\n\nDistribución:\n\npot: distribución potencial\nnat: nicho realizado\n\n\n\n\n\n\n\nppinaster_rcp45_sr &lt;- fd_forest_eutrees4f(\n  species  = \"Pinus pinaster\",\n  model    = \"clim\",\n  period   = \"all\",\n  scenario = \"rcp45\",\n  type     = \"bin\",\n  distrib  = \"pot\"\n)"
+    "text": "Implementación en R\n\n\n\nTipos:\n\nbin: mapa de distribución binario. 0 = ausente; 1 = presente\nprob: mapa de probabilidad de ocurrencia\n\nDistribución:\n\npot: distribución potencial\nnat: nicho realizado\n\n\n\n\n\n\nppinaster_rcp45_sr &lt;- fd_forest_eutrees4f(\n  species  = \"Pinus pinaster\",\n  model    = \"clim\",\n  period   = \"all\",\n  scenario = \"rcp45\",\n  type     = \"bin\",\n  distrib  = \"pot\"\n)"
   },
   {
     "objectID": "02_advanced.html#especies-forestales-1",
@@ -150,8 +150,8 @@
     "objectID": "01_basic.html#adrián-cidre-gonzález",
     "href": "01_basic.html#adrián-cidre-gonzález",
     "title": "Introducción al análisis geoespacial con R",
-    "section": "",
-    "text": "Ingeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
+    "section": "Adrián Cidre González",
+    "text": "Adrián Cidre González\n\n\n\nIngeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
   },
   {
     "objectID": "01_basic.html#gis-escritorio-vs-gis-programación",
@@ -340,7 +340,7 @@
     "href": "01_basic.html#funciones-predicado",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Funciones predicado",
-    "text": "Funciones predicado\nSon funciones que comprueban que una determinana característica espacial es cierta. El resultado de estas funciones es TRUE/FALSE\n\n\n\n\n\n\n\n\nPredicado\nDefinicion\nContrario_de\n\n\n\n\nst_contains\nNingún punto de B se encuentra en el exterior ni en el borde de A\nst_within\n\n\nst_covers\nNingún punto de B se encuentra en el exterior de A y al menos un punto está dentro\nst_covered_by\n\n\nst_crosses\nA y B tienen algún punto interior en común (no todos)\n—\n\n\nst_touches\nA y B tienen algún punto del borde en común (pero no interiores)\n—\n\n\nst_disjoint\nA y B no tienen ningún punto en común\nst_intersects\n\n\nst_overlaps\nA y B tienen puntos en común, con la misma dimensión, y sin contener uno al otro completamente\n—\n\n\n\n\n\n\n\n\nRelaciones espaciales - PostGIS\n\n\n\n\n\n\n\nRecuerda\n\n\n\nSiempre que se realicen operaciones entre dos objetos distintos. SIEMPRE deben tener el mismo SRC."
+    "text": "Funciones predicado\nSon funciones que comprueban que una determinana característica espacial es cierta. El resultado de estas funciones es TRUE/FALSE\n\n\n\n\n\n\n\n\nPredicado\nDefinicion\nContrario_de\n\n\n\n\nst_contains\nNingún punto de B se encuentra en el exterior ni en el borde de A\nst_within\n\n\nst_covers\nNingún punto de B se encuentra en el exterior de A y al menos un punto está dentro\nst_covered_by\n\n\nst_crosses\nA y B tienen algún punto interior en común (no todos)\n—\n\n\nst_touches\nA y B tienen algún punto del borde en común (pero no interiores)\n—\n\n\nst_disjoint\nA y B no tienen ningún punto en común\nst_intersects\n\n\nst_overlaps\nA y B tienen puntos en común, con la misma dimensión, y sin contener uno al otro completamente\n—\n\n\n\n\n\n\n\n\nRelaciones espaciales - PostGIS\n\n\n\n\n\n\n\nRecuerda\n\n\nSiempre que se realicen operaciones entre dos objetos distintos. SIEMPRE deben tener el mismo SRC."
   },
   {
     "objectID": "01_basic.html#funciones-predicado-1",
@@ -431,7 +431,7 @@
     "href": "01_basic.html#datos-ráster-con-terra",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Datos ráster con terra",
-    "text": "Datos ráster con terra\n\n\n\nSpatRaster: nombre del objeto de estructura ráster dentro del paquete terra\nCuándo solo es una capa es un ráster monobanda\n\n\n\n\n\n\n\n\n\n\n\n\n\nclass       : SpatRaster \ndimensions  : 42, 69, 1  (nrow, ncol, nlyr)\nresolution  : 7766.865, 7766.865  (x, y)\nextent      : 91481.75, 627395.4, 3969782, 4295990  (xmin, xmax, ymin, ymax)\ncoord. ref. : ETRS89 / UTM zone 30N (EPSG:25830) \nsource(s)   : memory\nname        : ESP_elv_msk \nmin value   :     1.33091 \nmax value   :  2478.78735"
+    "text": "Datos ráster con terra\n\n\n\nSpatRaster: nombre del objeto de estructura ráster dentro del paquete terra\nCuándo solo es una capa es un ráster monobanda\n\n\n\n\n\n\n\n\n\n\n\n\nclass       : SpatRaster \ndimensions  : 42, 69, 1  (nrow, ncol, nlyr)\nresolution  : 7766.865, 7766.865  (x, y)\nextent      : 91481.75, 627395.4, 3969782, 4295990  (xmin, xmax, ymin, ymax)\ncoord. ref. : ETRS89 / UTM zone 30N (EPSG:25830) \nsource(s)   : memory\nname        : ESP_elv_msk \nmin value   :     1.33091 \nmax value   :  2478.78735"
   },
   {
     "objectID": "01_basic.html#bandas-capas",
@@ -480,7 +480,7 @@
     "href": "01_basic.html#análisis-de-datos-ráster-5",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Análisis de datos ráster",
-    "text": "Análisis de datos ráster\nModificar resolución espacial\n\naggregate(x, fact): reducir la resolución espacial\ndisagg(x, fact): aumentar la resolución espacial\nresample(x, y): modifica la resolución espacial y la extensión de x para que sean las mismas que las de y\n\n\n\n\n\n\n\nNota\n\n\n\nEstas funciones tienen el argumento method que es de importancia:\n\nmethod = \"near\": para interpolar valores utiliza k-nearest neightbour (para variables categóricas)\nmethod = \"billinear\": interpolación bilinear (para variables continuas)"
+    "text": "Análisis de datos ráster\nModificar resolución espacial\n\naggregate(x, fact): reducir la resolución espacial\ndisagg(x, fact): aumentar la resolución espacial\nresample(x, y): modifica la resolución espacial y la extensión de x para que sean las mismas que las de y\n\n\n\n\n\n\n\nNota\n\n\nEstas funciones tienen el argumento method que es de importancia:\n\nmethod = \"near\": para interpolar valores utiliza k-nearest neightbour (para variables categóricas)\nmethod = \"billinear\": interpolación bilinear (para variables continuas)"
   },
   {
     "objectID": "01_basic.html#formatos-ráster",
