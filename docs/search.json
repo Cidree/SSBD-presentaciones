@@ -172,7 +172,7 @@
     "href": "01_basic.html#datos-vectoriales",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Datos vectoriales",
-    "text": "Datos vectoriales\n\nDatos vectoriales: representación de objetos a través de puntos, líneas o polígonos definidos por coordenadas\n\n\n\nWarning: attribute variables are assumed to be spatially constant throughout\nall geometries\n\n\nWarning: st_centroid assumes attributes are constant over geometries"
+    "text": "Datos vectoriales\n\nDatos vectoriales: representación de objetos a través de puntos, líneas o polígonos definidos por coordenadas"
   },
   {
     "objectID": "01_basic.html#paquetes-de-r-para-análisis-espacial",
@@ -347,7 +347,7 @@
     "href": "01_basic.html#funciones-predicado-1",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Funciones predicado",
-    "text": "Funciones predicado\n\nRíos que cruzan la frontera de la provincia de Córdoba?\n\n\n(rivers_idx &lt;- st_crosses(x = cordoba_sf, y = rivers_sf))\n\nalthough coordinates are longitude/latitude, st_crosses assumes that they are\nplanar\n\n\nSparse geometry binary predicate list of length 1, where the predicate\nwas `crosses'\n 1: 365, 366, 378, 423, 452, 454, 462, 463, 464, 466, ...\n\n\n\n\nmapview(cordoba_sf) +\n  mapview(\n    rivers_sf[rivers_idx[[1]], ]\n  )"
+    "text": "Funciones predicado\n\nRíos que cruzan la frontera de la provincia de Córdoba?\n\n\n(rivers_idx &lt;- st_crosses(x = cordoba_sf, y = rivers_sf))\n\nSparse geometry binary predicate list of length 1, where the predicate\nwas `crosses'\n 1: 365, 366, 378, 423, 452, 454, 462, 463, 464, 466, ...\n\n\n\n\nmapview(cordoba_sf) +\n  mapview(\n    rivers_sf[rivers_idx[[1]], ]\n  )"
   },
   {
     "objectID": "01_basic.html#funciones-predicado---casos-de-uso",
@@ -396,7 +396,7 @@
     "href": "01_basic.html#introducción",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Introducción",
-    "text": "Introducción\n\nTipo de representación espacial que utiliza una grilla de celdas rectangulares para organizar y representar información geoespacial.\nSon básicamente imágenes georreferenciadas\nPueden contener datos continuos o discretos\nImágenes satelitales, ortofotos, variables ambientales…\n\n\n\nWarning: [project,SpatRaster] argument y (the crs) should be a character value\n\n\n\n\n\n\n\n\nFigure 1"
+    "text": "Introducción\n\nTipo de representación espacial que utiliza una grilla de celdas rectangulares para organizar y representar información geoespacial.\nSon básicamente imágenes georreferenciadas\nPueden contener datos continuos o discretos\nImágenes satelitales, ortofotos, variables ambientales…\n\n\n\n\n\n\n\n\n\nFigure 1"
   },
   {
     "objectID": "01_basic.html#introducción-1",
@@ -417,7 +417,7 @@
     "href": "01_basic.html#introducción-3",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Introducción",
-    "text": "Introducción\n\nEn esencia, son una matriz de datos\n\n\n\n      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]\n [1,]   11    0    6    5    5    7    7    1    5     4\n [2,]    3    6    7   -4    9    0    6   12    7     3\n [3,]   -2    3    3    9   -1   -7   12    4    6     4\n [4,]    2   -1    2    6   -1    0   -4    6    1     7\n [5,]   15    5   -3   10    3   12    3    1    4    10\n [6,]    5   12    4    1    7    7    8   -1    7     3\n [7,]   -1    6    7    9    6   -4    9    7    5    10\n [8,]    1    6    7    5   15    2   -3   -3   11     7\n [9,]    0    4   11    6    3    0    7   11    9     1\n[10,]    7   13    5   -2    0   16    9   -2   14    -3"
+    "text": "Introducción\n\nEn esencia, son una matriz de datos\n\n\n\n      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]\n [1,]    1   10   10    8   13    1    2    9    3    10\n [2,]    4    4    6    7    9    2    0    6    6     6\n [3,]    1    7   -1    9   10    3    3   10    6     1\n [4,]    9    1    3    5    4    9   -3    7    0     7\n [5,]    8   -5    9   -2   10    5    5    1    5     4\n [6,]    7    3   17   14   -2    4    5    3    5     0\n [7,]    0    3    0    7    6   11    5    9   10    11\n [8,]   13    8    7    3    1    1    7   14   10     0\n [9,]    3    6   -1    7    2   12   11   10    1     5\n[10,]   10    2    3    1    5    6    6    5    2    -4"
   },
   {
     "objectID": "01_basic.html#introducción-4",
@@ -473,7 +473,7 @@
     "href": "01_basic.html#análisis-de-datos-ráster-4",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Análisis de datos ráster",
-    "text": "Análisis de datos ráster\nExtraer valores en determinados puntos.\n\nextract(x, y): extraer valores de x en los puntos y\n\n\nterra::extract(dem_sr, points_vect)\n\n\n\n\n\n   ID Elevacion\n1   1       918\n2   2      1012\n3   3       441\n4   4      1212\n5   5       850\n6   6       878\n7   7       274\n8   8       841\n9   9       240\n10 10       736\n\n\n\n\n\n&lt;SpatRaster&gt; resampled to 500864 cells.\n\n\nWarning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not\ngive correct results for longitude/latitude data"
+    "text": "Análisis de datos ráster\nExtraer valores en determinados puntos.\n\nextract(x, y): extraer valores de x en los puntos y\n\n\nterra::extract(dem_sr, points_vect)\n\n\n\n\n\n   ID Elevacion\n1   1       918\n2   2      1012\n3   3       441\n4   4      1212\n5   5       850\n6   6       878\n7   7       274\n8   8       841\n9   9       240\n10 10       736"
   },
   {
     "objectID": "01_basic.html#análisis-de-datos-ráster-5",

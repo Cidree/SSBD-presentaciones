@@ -23,6 +23,10 @@ title-slide-attributes:
 slide-number: true
 center-title-slide: true
 
+## Exec ---------------------------
+execute: 
+  warning: false
+
 # Transition ------------------------
 transition: fade
 transition-speed: slow
