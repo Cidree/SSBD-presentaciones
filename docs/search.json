@@ -551,5 +551,145 @@
     "title": "Introducción al análisis geoespacial con R",
     "section": "",
     "text": "Ingeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
+  },
+  {
+    "objectID": "04_positron.html#ide",
+    "href": "04_positron.html#ide",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "IDE",
+    "text": "IDE\nUna IDE es…\n\nRStudio\nVS Code\nPyCharm\nSpyder\nMATLAB"
+  },
+  {
+    "objectID": "04_positron.html#positron",
+    "href": "04_positron.html#positron",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Positron",
+    "text": "Positron\n\n\nUna IDE de nueva generación para ciencia de datos\nEs una IDE políglota (R, Python)\nCualquier otro lenguaje puede añadirse (extensiones)\nA lo largo de nuestra carrera utilizaremos R y Python\nEs una herramienta para escribir código y explorar datos\nEs un fork de una herramienta llamada Code OSS"
+  },
+  {
+    "objectID": "04_positron.html#positron-1",
+    "href": "04_positron.html#positron-1",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Positron",
+    "text": "Positron\n\nSet up similar a RStudio\nConstruido sobre VS Code - es muy extensible (extensiones)"
+  },
+  {
+    "objectID": "04_positron.html#interpreter-selector",
+    "href": "04_positron.html#interpreter-selector",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Interpreter selector",
+    "text": "Interpreter selector\n\nSeleccionar entorno que queremos\nPositron recuerda el entorno de cada proyecto\nMostrará los que tenemos instalados"
+  },
+  {
+    "objectID": "04_positron.html#interactive-built-in-console",
+    "href": "04_positron.html#interactive-built-in-console",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Interactive built-in console",
+    "text": "Interactive built-in console\n\nCtrl + Enter para ejecutar código\nAutocompletado de funciones\nAyuda de funciones\nPodemos hacer lo que queramos con los paneles"
+  },
+  {
+    "objectID": "04_positron.html#data-explorer",
+    "href": "04_positron.html#data-explorer",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Data explorer",
+    "text": "Data explorer\n\n\n\n\nR\n\n## data.frame, tibble, data.table\nView(iris)\n\n\n\n\npython\n\n## polars, pandas\nview(iris)"
+  },
+  {
+    "objectID": "04_positron.html#data-viewer-para-r-y-python",
+    "href": "04_positron.html#data-viewer-para-r-y-python",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Data viewer para R y Python",
+    "text": "Data viewer para R y Python"
+  },
+  {
+    "objectID": "04_positron.html#panel-de-variables",
+    "href": "04_positron.html#panel-de-variables",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Panel de variables",
+    "text": "Panel de variables\n\nExplorar variables creadas"
+  },
+  {
+    "objectID": "04_positron.html#panel-de-ayuda",
+    "href": "04_positron.html#panel-de-ayuda",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Panel de ayuda",
+    "text": "Panel de ayuda\nAyuda sin salir de la IDE\n\n\n\n\nR\n\n?as_tibble\n\n\n\n\npython\n\npl.col?\n?pl.col"
+  },
+  {
+    "objectID": "04_positron.html#panel-de-gráficos",
+    "href": "04_positron.html#panel-de-gráficos",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Panel de gráficos",
+    "text": "Panel de gráficos"
+  },
+  {
+    "objectID": "04_positron.html#espacio-de-trabajo",
+    "href": "04_positron.html#espacio-de-trabajo",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Espacio de trabajo",
+    "text": "Espacio de trabajo\n\n\nWorkspace es simplemente una carpeta\nSimilar a un proyecto en RStudio\nPro Tip: trabajar SIEMPRE en un espacio de trabajo"
+  },
+  {
+    "objectID": "04_positron.html#data-explorer-rstudio",
+    "href": "04_positron.html#data-explorer-rstudio",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Data explorer RStudio",
+    "text": "Data explorer RStudio"
+  },
+  {
+    "objectID": "04_positron.html#pizarra-blanca",
+    "href": "04_positron.html#pizarra-blanca",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Pizarra blanca",
+    "text": "Pizarra blanca\n\nPositron utiliza por defecto el estilo “pizarra blanca”\n\nR --no-save --no-restore-data"
+  },
+  {
+    "objectID": "04_positron.html#paleta-de-comandos",
+    "href": "04_positron.html#paleta-de-comandos",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Paleta de comandos",
+    "text": "Paleta de comandos\nCtrl/Cmd + Shift + P"
+  },
+  {
+    "objectID": "04_positron.html#paleta-de-comandos-1",
+    "href": "04_positron.html#paleta-de-comandos-1",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Paleta de comandos",
+    "text": "Paleta de comandos"
+  },
+  {
+    "objectID": "04_positron.html#paleta-de-comandos-2",
+    "href": "04_positron.html#paleta-de-comandos-2",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Paleta de comandos",
+    "text": "Paleta de comandos"
+  },
+  {
+    "objectID": "04_positron.html#extensiones",
+    "href": "04_positron.html#extensiones",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Extensiones",
+    "text": "Extensiones\nOpen VSX"
+  },
+  {
+    "objectID": "04_positron.html#instalación---requisitos-windows",
+    "href": "04_positron.html#instalación---requisitos-windows",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Instalación - Requisitos Windows",
+    "text": "Instalación - Requisitos Windows\n\nInstalación Visual C++ Redistributable\nRtools: correspondiente a la versión de R utilizada\n\n\n\n\n\n\n\n\nG\n\n\n\nhttps://positron.posit.co\n\nhttps://positron.posit.co"
+  },
+  {
+    "objectID": "04_positron.html#instalación---requisitos-python",
+    "href": "04_positron.html#instalación---requisitos-python",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Instalación - Requisitos Python",
+    "text": "Instalación - Requisitos Python\n\nVersión 3.9 - 3.13 de Python\nPython kernel:\n\n\n\nCommand Prompt\n\npython3 -m pip install ipykernel"
+  },
+  {
+    "objectID": "04_positron.html#instalación---requisitos-r",
+    "href": "04_positron.html#instalación---requisitos-r",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Instalación - Requisitos R",
+    "text": "Instalación - Requisitos R\n\nInstalar los siguientes paquetes:\n\n\n\nR\n\ninstall.packages(c(\"usethis\", \"cli\", \"crayon\", \"rlang\", \"roxygen2\", \"pkgload\"))"
   }
 ]

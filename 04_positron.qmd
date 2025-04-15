@@ -1,0 +1,237 @@
+---
+## Metadatos -----------------------------
+title: "Positron - Una IDE para ciencia de datos con R y Python"
+author: "Adrián Cidre González"
+institute: "Universidad de Córdoba"
+
+## Presentation --------------------------
+format: 
+  revealjs:
+    preview-links: auto
+    theme: [serif, 00_assets/styles/serif-style.scss]
+    highlight-style: tango # Others: haddock, tango, kate
+    transition: fade
+    fig-align: center
+
+# Slides -----------------------------
+title-slide-attributes: 
+    data-background-image: 00_assets/figures/logo-geoforest.png, 00_assets/figures/logo-bosque-digital.png
+    data-background-repeat: no-repeat
+    data-background-position: 15% 90%, 85% 90%
+    data-background-size: 20%, 20%
+slide-number: true
+center-title-slide: true
+
+# Transition ------------------------
+transition: fade
+transition-speed: slow
+background-transition: fade
+
+## Filters -------------------------
+lightbox: true
+fig-responsive: true
+# filters: 
+# webr:
+#   packages: ["dplyr", "ggplot2", "gapminder", "forcats"]
+# revealjs-plugins:
+#   - drop
+bibliography: references.bib
+---
+
+## IDE
+
+Una IDE es...
+
+-   RStudio
+
+-   VS Code
+
+-   PyCharm
+
+-   Spyder
+
+-   MATLAB
+
+## Positron
+
+::: incremental
+-   Una IDE de nueva generación para ciencia de datos
+
+-   Es una IDE políglota (R, Python)
+
+-   Cualquier otro lenguaje puede añadirse (extensiones)
+
+-   A lo largo de nuestra carrera utilizaremos R y Python
+
+-   Es una herramienta para escribir código y explorar datos
+
+-   Es un fork de una herramienta llamada Code OSS
+:::
+
+## Positron
+
+-   Set up similar a RStudio
+
+-   Construido sobre VS Code - es muy extensible (extensiones)
+
+![](00_assets/figures/04-positron/positron-intro-empty.png){fig-align="center"}
+
+## Interpreter selector
+
+-   Seleccionar entorno que queremos
+
+-   Positron recuerda el entorno de cada proyecto
+
+-   Mostrará los que tenemos instalados
+
+![](00_assets/figures/04-positron/ide-interpreter.png){fig-align="center"}
+
+## Interactive built-in console
+
+-   Ctrl + Enter para ejecutar código
+
+-   Autocompletado de funciones
+
+-   Ayuda de funciones
+
+-   Podemos hacer lo que queramos con los paneles
+
+{{< video 00_assets/videos/positron-languages.mp4 height="400">}}
+
+## Data explorer RStudio
+
+![](00_assets/figures/04-positron/ide-rstudio-viewer.png){fig-align="center"}
+
+## Data explorer
+
+::::: columns
+::: {.column width="50%"}
+``` {.r filename="R"}
+## data.frame, tibble, data.table
+View(iris)
+```
+:::
+
+::: {.column width="50%"}
+``` {.python filename="python"}
+## polars, pandas
+view(iris)
+```
+:::
+:::::
+
+![](00_assets/figures/04-positron/ide-view.png){fig-align="center"}
+
+## Panel de variables
+
+-   Explorar variables creadas
+
+![](00_assets/figures/04-positron/ide-panel-variables.png){fig-align="center"}
+
+## Panel de ayuda
+
+Ayuda sin salir de la IDE
+
+::::: columns
+::: {.column width="50%"}
+``` {.r filename="R"}
+?as_tibble
+```
+:::
+
+::: {.column width="50%"}
+``` {.python filename="python"}
+pl.col?
+?pl.col
+```
+:::
+:::::
+
+![](00_assets/figures/04-positron/ide-panel-help.png){fig-align="center"}
+
+## Panel de gráficos
+
+![](00_assets/figures/04-positron/ide-panel-plots.png){fig-align="center"}
+
+## Espacio de trabajo
+
+::: incremental
+-   Workspace es simplemente una carpeta
+
+-   Similar a un proyecto en RStudio
+
+-   Pro Tip: trabajar SIEMPRE en un espacio de trabajo
+:::
+
+![](00_assets/figures/04-positron/ide-workspace.png){fig-align="center" width="1172"}
+
+## Pizarra blanca
+
+-   Positron utiliza por defecto el estilo "pizarra blanca"
+
+``` r
+R --no-save --no-restore-data
+```
+
+![](00_assets/figures/04-positron/ide-slate-environment.png){fig-align="center"}
+
+## Paleta de comandos
+
+<kbd>Ctrl/Cmd + Shift + P</kbd>
+
+![](00_assets/figures/04-positron/ide-slate-palette.png){fig-align="center"}
+
+## Paleta de comandos
+
+![](00_assets/figures/04-positron/ide-slate-palette-settings.png){fig-align="center"}
+
+## Paleta de comandos
+
+![](00_assets/figures/04-positron/ide-slate-palette-settings-rstu.png){fig-align="center"}
+
+## Extensiones
+
+Open VSX
+
+![](00_assets/figures/04-positron/ide-extensions.png){fig-align="center"}
+
+## Instalación - Requisitos Windows
+
+-   Instalación [Visual C++ Redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170#latest-microsoft-visual-c-redistributable-version)
+
+-   Rtools: correspondiente a la versión de R utilizada
+
+```{dot}
+//| echo: false
+graph G {
+  layout=neato
+  "https://positron.posit.co";
+}
+```
+
+## Instalación - Requisitos Python
+
+-   Versión 3.9 - 3.13 de Python
+
+-   Python kernel:
+
+``` {.bash filename="Command Prompt"}
+python3 -m pip install ipykernel
+python -m pip install ipykernel
+```
+
+## Instalación - Requisitos R
+
+-   Instalar R
+
+-   Instalar los siguientes paquetes:
+
+``` {.r filename="R"}
+install.packages(c("usethis", "cli", "crayon", "rlang", "roxygen2", "pkgload"))
+```
+
+-   Rtools: correspondiente a la versión de R utilizada
+
+## Instalar Positron
+
+![](00_assets/figures/04-positron/ide-intro.png){fig-align="center"}
