@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-952002dbac8bf197958463cf5817e5ee.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-1.2.0/latex-fontsize.css" rel="stylesheet">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.42">
+
+  <meta name="author" content="Adrián Cidre González">
+  <title>SSBD_presentaciones – Clasificación de usos del suelo en R</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-766ba1b4a1113e00dbafeb51d5f7c25e.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="00_assets/figures/logo-geoforest.png, 00_assets/figures/logo-bosque-digital.png" data-background-position="15% 90%, 85% 90%" data-background-repeat="no-repeat" data-background-size="20%, 20%" class="quarto-title-block center">
+  <h1 class="title">Clasificación de usos del suelo en R</h1>
+  <p class="subtitle">Geographic Object-Based Image Analysis (GEOBIA)</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Adrián Cidre González 
+</div>
+        <p class="quarto-title-affiliation">
+            Universidad de Córdoba
+          </p>
+    </div>
+</div>
+
+</section>
+<section id="adrián-cidre-gonzález" class="slide level2 unnumbered">
+<h2>Adrián Cidre González</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<ul>
+<li><p>Ingeniero Forestal (USC)</p></li>
+<li><p>Máster Geoforest (UCO)</p></li>
+<li><p>Análisis de datos, ciencia de datos, teledetección</p></li>
+<li><p>Estudiante PhD biociencias y ciencias agroalimentarias</p></li>
+</ul>
+<p><i class="fa-solid fa-link fa-xl" aria-label="link"></i> <a href="https://adrian-cidre.com/">adrian-cidre.com</a></p>
+<p><i class="fa-brands fa-youtube fa-xl" aria-label="youtube"></i> <a href="https://www.youtube.com/@CidreRForest">@CidreRForest</a></p>
+<p><i class="fa-brands fa-linkedin fa-xl" aria-label="linkedin"></i> <a href="https://www.linkedin.com/in/adrian-cidre-gonz%C3%A1lez-8a50371b0/">linkedin.com/in/adrian-cidre/</a></p>
+<p><i class="fa-brands fa-github fa-xl" aria-label="github"></i> <a href="https://github.com/Cidree/">Cidree</a></p>
+</div><div class="column" style="width:45%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="00_assets/figures/me-modified.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="00_assets/figures/me-modified.png" class="img-fluid quarto-figure quarto-figure-center" style="border-radius:1em;margin-top:auto" alt="Norway picture"></a></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="objetivos" class="title-slide slide level1 center">
+<h1>Objetivos</h1>
+<ul>
+<li><p>Introducción a GEOBIA</p></li>
+<li><p>Segmentación</p></li>
+<li><p>Clasificación supervisada</p></li>
+<li><p>Evaluación del modelo</p></li>
+<li><p>Implementación delo modelo</p></li>
+</ul>
+</section>
+
+<section>
+<section id="introducción-a-geobia" class="title-slide slide level1 main-part unnumbered center">
+<h1>Introducción a GEOBIA</h1>
+<ul>
+<li><p>Definición</p></li>
+<li><p>Tendencias</p></li>
+<li><p>Flujo de trabajo</p></li>
+<li><p>GEOBIA vs Pixel-Based</p></li>
+</ul>
+</section>
+<section id="introducción" class="slide level2">
+<h2>Introducción</h2>
+<p>GEOBIA es…</p>
+<ul>
+<li><p>…una metodología para analizar imágenes de alta resolución</p></li>
+<li><p>…un método de clasificación de imágenes</p></li>
+<li><p>…superior a pixel-based analysis</p></li>
+<li><p>…similar a como los humanos interpretamos las imágenes</p></li>
+</ul>
+<blockquote>
+<p>Una subdisciplina de <em>Geographic Information Science</em> comprometida a desarrollar métodos automáticos de partición de imágenes de teledetección en objetos con un significado, y evaluar sus características en las escalas espacial, espectral y temporal, para generar nueva información geográfica en un formato GIS.</p>
+</blockquote>
+</section>
+<section id="tendencias-geobia" class="slide level2">
+<h2>Tendencias GEOBIA</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="03-geobia_files/figure-revealjs/publications_year-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img data-src="03-geobia_files/figure-revealjs/publications_year-1.png" class="img-fluid" width="960"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="workflow" class="slide level2">
+<h2>Workflow</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="00_assets/figures/03-geobia/geobia-workflow.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img data-src="00_assets/figures/03-geobia/geobia-workflow.png" class="img-fluid quarto-figure quarto-figure-center"></a></p>
+</figure>
+</div>
+</section>
+<section id="geobia-vs-pixel-based" class="slide level2">
+<h2>GEOBIA vs Pixel-Based</h2>
+<ul>
+<li><p>GEOBIA: clasifica objetos</p></li>
+<li><p>Pixel-based: clasifica píxeles</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="00_assets/figures/03-geobia/meme-geobia-vs-pixel-nobg.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img data-src="00_assets/figures/03-geobia/meme-geobia-vs-pixel-nobg.png" class="img-fluid quarto-figure quarto-figure-center" width="669"></a></p>
+</figure>
+</div>
+</section>
+<section id="section" class="slide level2 background-no-title">
+<h2></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="00_assets/figures/03-geobia/step-03-train-areas.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img data-src="00_assets/figures/03-geobia/step-03-train-areas.png" class="img-fluid quarto-figure quarto-figure-center" width="424"></a></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="00_assets/figures/03-geobia/train-areas-pixel.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img data-src="00_assets/figures/03-geobia/train-areas-pixel.png" class="img-fluid quarto-figure quarto-figure-center" width="424"></a></p>
+</figure>
+</div>
+</div></div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="00_assets/figures/03-geobia/zoom-geobia-segment.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img data-src="00_assets/figures/03-geobia/zoom-geobia-segment.png" class="img-fluid quarto-figure quarto-figure-center" width="422"></a></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="00_assets/figures/03-geobia/zoom-pixel.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img data-src="00_assets/figures/03-geobia/zoom-pixel.png" class="img-fluid quarto-figure quarto-figure-center" width="488"></a></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="interpretación-de-una-imagen" class="slide level2">
+<h2>Interpretación de una imagen</h2>
+<p>Elementos útiles para la interpretación de una imagen aérea:</p>
+<div class="columns">
+<div class="column" style="width:20%;">
+<ul>
+<li><p>Forma</p></li>
+<li><p>Tamaño</p></li>
+<li><p>Tonos</p></li>
+<li><p>Textura</p></li>
+<li><p>Patrón</p></li>
+<li><p>Sombras</p></li>
+<li><p>Asociación</p></li>
+<li><p>Lugar</p></li>
+</ul>
+</div><div class="column" style="width:80%;">
+<div class="quarto-figure quarto-figure-right">
+<figure>
+<p><a href="00_assets/figures/03-geobia/santa-cruz.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img data-src="00_assets/figures/03-geobia/santa-cruz.png" class="img-fluid quarto-figure quarto-figure-right"></a></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="ventajas-geobia" class="slide level2">
+<h2>Ventajas GEOBIA</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="00_assets/figures/03-geobia/meme-pepe-sunglasses.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img data-src="00_assets/figures/03-geobia/meme-pepe-sunglasses.png" class="img-fluid quarto-figure quarto-figure-center" width="533"></a></p>
+</figure>
+</div>
+<div>
+<ul>
+<li class="fragment"><p>Similar a cómo los humanos interpretamos los objetos</p></li>
+<li class="fragment"><p>Reducción de la carga computacional del clasificador</p></li>
+<li class="fragment"><p>Extracción de características útiles (forma, textura…)</p></li>
+<li class="fragment"><p>Modelos de segmentación (meanshift, watershed, SAM)</p></li>
+</ul>
+</div>
+</section>
+<section id="desventajas-geobia" class="slide level2">
+<h2>Desventajas GEOBIA</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="00_assets/figures/03-geobia/meme-pepe-sad.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img data-src="00_assets/figures/03-geobia/meme-pepe-sad.png" class="img-fluid quarto-figure quarto-figure-center" width="313"></a></p>
+</figure>
+</div>
+<div>
+<ul>
+<li class="fragment"><p>Problemas computacionales con grandes imágenes</p></li>
+<li class="fragment"><p>Segmentación sin solución única</p></li>
+<li class="fragment"><p>Evaluación de la segmentación</p></li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="segmentación" class="title-slide slide level1 main-part unnumbered center">
+<h1>Segmentación</h1>
+<ul>
+<li><p>Objetivos segmentación</p></li>
+<li><p>Algoritmos segmentación</p></li>
+</ul>
+</section>
+<section id="objetivos-segmentación" class="slide level2">
+<h2>Objetivos segmentación</h2>
+<ul>
+<li><p>Generar áreas de un tamaño razonable</p></li>
+<li><p>Evitar segmentación excesiva o insuficiente</p></li>
+<li><p>Generar áreas representativas de cada clase</p></li>
+</ul>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Importante</strong></p>
+</div>
+<div class="callout-content">
+<p>Definir las clases que queremos predecir con el modelo</p>
+</div>
+</div>
+</div>
+</section>
+<section id="ejemplo" class="slide level2 special-size">
+<h2>Ejemplo</h2>
+<div class="columns" style="display: flex !important; height: 90%;">
+<div class="column" style="display: flex; justify-content: center; align-items: center;">
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>class       : SpatRaster 
+dimensions  : 2500, 2500, 3  (nrow, ncol, nlyr)
+resolution  : 0.2, 0.2  (x, y)
+extent      : 363895, 364395, 3133812, 3134312  (xmin, xmax, ymin, ymax)
+coord. ref. : WGS 84 / UTM zone 28N (EPSG:32628) 
+source      : tenerife-rgb-sample.tiff 
+colors RGB  : 1, 2, 3 
+names       : red, green, blue 
+min values  :   7,    12,    5 
+max values  : 255,   255,  255 </code></pre>
+</div>
+</div>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="00_assets/figures/03-geobia/rgb-image.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12"><img data-src="00_assets/figures/03-geobia/rgb-image.png" class="img-fluid quarto-figure quarto-figure-center"></a></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="sobresegmentación" class="slide level2">
+<h2>Sobresegmentación</h2>
+<div class="columns" style="display: flex !important; height: 90%;">
+<div class="column" style="display: flex; justify-content: center; align-items: center;">
+<p><a href="00_assets/figures/03-geobia/code-over-segment.png" class="lightbox" data-gallery="quarto-lightbox-gallery-13"><img data-src="00_assets/figures/03-geobia/code-over-segment.png" class="img-fluid"></a></p>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="00_assets/figures/03-geobia/rgb-over-segment.png" class="lightbox" data-gallery="quarto-lightbox-gallery-14"><img data-src="00_assets/figures/03-geobia/rgb-over-segment.png" class="img-fluid quarto-figure quarto-figure-center"></a></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="subsegmentación" class="slide level2">
+<h2>Subsegmentación</h2>
+<div class="columns" style="display: flex !important; height: 90%;">
+<div class="column" style="display: flex; justify-content: center; align-items: center;">
+<p><a href="00_assets/figures/03-geobia/code-under-segment.png" class="lightbox" data-gallery="quarto-lightbox-gallery-15"><img data-src="00_assets/figures/03-geobia/code-under-segment.png" class="img-fluid"></a></p>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="00_assets/figures/03-geobia/rgb-under-segment.png" class="lightbox" data-gallery="quarto-lightbox-gallery-16"><img data-src="00_assets/figures/03-geobia/rgb-under-segment.png" class="img-fluid quarto-figure quarto-figure-center"></a></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="segmentación-correcta" class="slide level2">
+<h2>Segmentación correcta</h2>
+<div class="columns" style="display: flex !important; height: 90%;">
+<div class="column" style="display: flex; justify-content: center; align-items: center;">
+<p><a href="00_assets/figures/03-geobia/code-good-segment.png" class="lightbox" data-gallery="quarto-lightbox-gallery-17"><img data-src="00_assets/figures/03-geobia/code-good-segment.png" class="img-fluid"></a></p>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="00_assets/figures/03-geobia/rgb-good-segment.png" class="lightbox" data-gallery="quarto-lightbox-gallery-18"><img data-src="00_assets/figures/03-geobia/rgb-good-segment.png" class="img-fluid quarto-figure quarto-figure-center"></a></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="algoritmos-segmentación" class="slide level2">
+<h2>Algoritmos segmentación</h2>
+<ul>
+<li><p>Threshold (umbrales): se utilizan umbrales para clasificar los píxeles</p></li>
+<li><p><strong>Region-based (similitud): crecimiento de regiones, separación-unión</strong></p></li>
+<li><p>Boundary-based (discontinuidad): partición de una imagen basado en cambios en los valores digitales (borde-no borde).</p></li>
+<li><p>Algoritmos de <em>Deep Learning</em>: SAM, Mask R-CNN.</p></li>
+</ul>
+</section>
+<section id="threshold" class="slide level2">
+<h2>Threshold</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><a href="00_assets/figures/03-geobia/cabras-barco.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-19"><img data-src="00_assets/figures/03-geobia/cabras-barco.jpg" class="img-fluid"></a></p>
+</div><div class="column" style="width:50%;">
+<p><a href="00_assets/figures/03-geobia/cabras-segment.png" class="lightbox" data-gallery="quarto-lightbox-gallery-20"><img data-src="00_assets/figures/03-geobia/cabras-segment.png" class="img-fluid"></a></p>
+</div></div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-hist-cabra" class="quarto-float quarto-figure quarto-figure-center" width="960">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-hist-cabra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="03-geobia_files/figure-revealjs/fig-hist-cabra-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-21" title="Figure&nbsp;1: "><img data-src="03-geobia_files/figure-revealjs/fig-hist-cabra-1.png" id="fig-hist-cabra" class="img-fluid" width="960"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-hist-cabra-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="region-based" class="slide level2">
+<h2>Region-based</h2>
+<ul>
+<li>Los más utilizados en GEOBIA</li>
+</ul>
+</section>
+<section id="segment-anything-model-sam" class="slide level2">
+<h2>Segment Anything Model (SAM)</h2>
+<div>
+<ul>
+<li class="fragment"><p>Modelo pre-entrenado de Meta AI</p></li>
+<li class="fragment"><p>Disponible en Python</p></li>
+</ul>
+</div>
+</section>
+<section id="segment-anything-model-sam-1" class="slide level2">
+<h2>Segment Anything Model (SAM)</h2>
+<ul>
+<li><p>Modelo pre-entrenado de Meta AI</p></li>
+<li><p>Disponible en Python</p></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><a href="00_assets/figures/03-geobia/cabras-masks.png" class="lightbox" data-gallery="quarto-lightbox-gallery-22"><img data-src="00_assets/figures/03-geobia/cabras-masks.png" class="img-fluid quarto-figure quarto-figure-center" width="667"></a></p>
+</figure>
+</div>
+
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="00_assets/figures/logo-bosque-digital.png" class="slide-logo"></p>
+<div class="footer footer-default">
+
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': true,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'slow',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+    (function() {
+      let previousOnload = window.onload;
+      window.onload = () => {
+        if (previousOnload) {
+          previousOnload();
+        }
+        lightboxQuarto.on('slide_before_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          const href = trigger.getAttribute('href');
+          if (href !== null) {
+            const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+            if (imgEl !== null) {
+              const srcAttr = imgEl.getAttribute("src");
+              if (srcAttr && srcAttr.startsWith("data:")) {
+                slideConfig.href = srcAttr;
+              }
+            }
+          } 
+        });
+      
+        lightboxQuarto.on('slide_after_load', (data) => {
+          const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(slideNode);
+          }
+        });
+      
+      };
+      
+    })();
+              </script>
+    
+
+</body></html>

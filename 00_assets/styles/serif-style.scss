@@ -144,3 +144,11 @@ figcaption {
 span.citation {
   font-style: italic;
 }
+
+
+.v-center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}

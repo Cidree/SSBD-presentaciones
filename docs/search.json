@@ -683,13 +683,174 @@
     "href": "04_positron.html#instalación---requisitos-python",
     "title": "Positron - Una IDE para ciencia de datos con R y Python",
     "section": "Instalación - Requisitos Python",
-    "text": "Instalación - Requisitos Python\n\nVersión 3.9 - 3.13 de Python\nPython kernel:\n\n\n\nCommand Prompt\n\npython3 -m pip install ipykernel"
+    "text": "Instalación - Requisitos Python\n\nVersión 3.9 - 3.13 de Python\nPython kernel:\n\n\n\nCommand Prompt\n\npython3 -m pip install ipykernel\npython -m pip install ipykernel"
   },
   {
     "objectID": "04_positron.html#instalación---requisitos-r",
     "href": "04_positron.html#instalación---requisitos-r",
     "title": "Positron - Una IDE para ciencia de datos con R y Python",
     "section": "Instalación - Requisitos R",
-    "text": "Instalación - Requisitos R\n\nInstalar los siguientes paquetes:\n\n\n\nR\n\ninstall.packages(c(\"usethis\", \"cli\", \"crayon\", \"rlang\", \"roxygen2\", \"pkgload\"))"
+    "text": "Instalación - Requisitos R\n\nInstalar R\nInstalar los siguientes paquetes:\n\n\n\nR\n\ninstall.packages(c(\"usethis\", \"cli\", \"crayon\", \"rlang\", \"roxygen2\", \"pkgload\"))\n\n\nRtools: correspondiente a la versión de R utilizada"
+  },
+  {
+    "objectID": "03-geobia.html#adrián-cidre-gonzález",
+    "href": "03-geobia.html#adrián-cidre-gonzález",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Adrián Cidre González",
+    "text": "Adrián Cidre González\n\n\n\nIngeniero Forestal (USC)\nMáster Geoforest (UCO)\nAnálisis de datos, ciencia de datos, teledetección\nEstudiante PhD biociencias y ciencias agroalimentarias\n\n adrian-cidre.com\n @CidreRForest\n linkedin.com/in/adrian-cidre/\n Cidree"
+  },
+  {
+    "objectID": "03-geobia.html#introducción",
+    "href": "03-geobia.html#introducción",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Introducción",
+    "text": "Introducción\nGEOBIA es…\n\n…una metodología para analizar imágenes de alta resolución\n…un método de clasificación de imágenes\n…superior a pixel-based analysis\n…similar a como los humanos interpretamos las imágenes\n\n\nUna subdisciplina de Geographic Information Science comprometida a desarrollar métodos automáticos de partición de imágenes de teledetección en objetos con un significado, y evaluar sus características en las escalas espacial, espectral y temporal, para generar nueva información geográfica en un formato GIS."
+  },
+  {
+    "objectID": "03-geobia.html#geobia-vs-pixel-based",
+    "href": "03-geobia.html#geobia-vs-pixel-based",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "GEOBIA vs Pixel-Based",
+    "text": "GEOBIA vs Pixel-Based\n\nGEOBIA: clasifica objetos\nPixel-based: clasifica píxeles"
+  },
+  {
+    "objectID": "03-geobia.html#tendencias-geobia",
+    "href": "03-geobia.html#tendencias-geobia",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Tendencias GEOBIA",
+    "text": "Tendencias GEOBIA"
+  },
+  {
+    "objectID": "03-geobia.html#workflow",
+    "href": "03-geobia.html#workflow",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Workflow",
+    "text": "Workflow"
+  },
+  {
+    "objectID": "03-geobia.html#geobia-vs-pixel-based-1",
+    "href": "03-geobia.html#geobia-vs-pixel-based-1",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "GEOBIA vs Pixel-Based",
+    "text": "GEOBIA vs Pixel-Based\n\nGEOBIA: clasifica objetos\nPixel-based: clasifica píxeles"
+  },
+  {
+    "objectID": "03-geobia.html#interpretación-de-una-imagen",
+    "href": "03-geobia.html#interpretación-de-una-imagen",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Interpretación de una imagen",
+    "text": "Interpretación de una imagen\nElementos útiles para la interpretación de una imagen aérea:\n\n\n\nForma\nTamaño\nTonos\nTextura\nPatrón\nSombras\nAsociación\nLugar"
+  },
+  {
+    "objectID": "03-geobia.html#ventajas-geobia",
+    "href": "03-geobia.html#ventajas-geobia",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Ventajas GEOBIA",
+    "text": "Ventajas GEOBIA\n\n\n\n\n\n\n\nSimilar a cómo los humanos interpretamos los objetos\nReducción de la carga computacional del clasificador\nExtracción de características útiles (forma, textura…)\nModelos de segmentación (meanshift, watershed, SAM)"
+  },
+  {
+    "objectID": "03-geobia.html#desventajas-geobia",
+    "href": "03-geobia.html#desventajas-geobia",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Desventajas GEOBIA",
+    "text": "Desventajas GEOBIA\n\n\n\n\n\n\n\nProblemas computacionales con grandes imágenes\nSegmentación sin solución única\nEvaluación de la segmentación"
+  },
+  {
+    "objectID": "03-geobia.html#objetivos-segmentación",
+    "href": "03-geobia.html#objetivos-segmentación",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Objetivos segmentación",
+    "text": "Objetivos segmentación\n\nGenerar áreas de un tamaño razonable\nEvitar segmentación excesiva o insuficiente\nGenerar áreas representativas de cada clase\n\n\n\n\n\n\n\nImportante\n\n\nDefinir las clases que queremos predecir con el modelo"
+  },
+  {
+    "objectID": "03-geobia.html#ejemplo",
+    "href": "03-geobia.html#ejemplo",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n\n\n\n\nclass       : SpatRaster \ndimensions  : 2500, 2500, 3  (nrow, ncol, nlyr)\nresolution  : 0.2, 0.2  (x, y)\nextent      : 363895, 364395, 3133812, 3134312  (xmin, xmax, ymin, ymax)\ncoord. ref. : WGS 84 / UTM zone 28N (EPSG:32628) \nsource      : tenerife-rgb-sample.tiff \ncolors RGB  : 1, 2, 3 \nnames       : red, green, blue \nmin values  :   7,    12,    5 \nmax values  : 255,   255,  255"
+  },
+  {
+    "objectID": "04_positron.html#instalar-positron",
+    "href": "04_positron.html#instalar-positron",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Instalar Positron",
+    "text": "Instalar Positron"
+  },
+  {
+    "objectID": "03-geobia.html#asdf",
+    "href": "03-geobia.html#asdf",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "asdf",
+    "text": "asdf"
+  },
+  {
+    "objectID": "03-geobia.html#algoritmos-segmentación",
+    "href": "03-geobia.html#algoritmos-segmentación",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Algoritmos segmentación",
+    "text": "Algoritmos segmentación\n\nThreshold (umbrales): se utilizan umbrales para clasificar los píxeles\nRegion-based (similitud): crecimiento de regiones, separación-unión\nBoundary-based (discontinuidad): partición de una imagen basado en cambios en los valores digitales (borde-no borde).\nAlgoritmos de Deep Learning: SAM, Mask R-CNN."
+  },
+  {
+    "objectID": "03-geobia.html#sobresegmentación",
+    "href": "03-geobia.html#sobresegmentación",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Sobresegmentación",
+    "text": "Sobresegmentación"
+  },
+  {
+    "objectID": "03-geobia.html#subsegmentación",
+    "href": "03-geobia.html#subsegmentación",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Subsegmentación",
+    "text": "Subsegmentación"
+  },
+  {
+    "objectID": "03-geobia.html#segmentación-correcta",
+    "href": "03-geobia.html#segmentación-correcta",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Segmentación correcta",
+    "text": "Segmentación correcta"
+  },
+  {
+    "objectID": "03-geobia.html#quarto",
+    "href": "03-geobia.html#quarto",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Quarto",
+    "text": "Quarto\n\n\nThis\nis\ncolumn\n1\n\nThis is\ncolumn 2"
+  },
+  {
+    "objectID": "03-geobia.html#threshold",
+    "href": "03-geobia.html#threshold",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Threshold",
+    "text": "Threshold\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFigure 1"
+  },
+  {
+    "objectID": "03-geobia.html#threshold-1",
+    "href": "03-geobia.html#threshold-1",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Threshold",
+    "text": "Threshold"
+  },
+  {
+    "objectID": "03-geobia.html#region-based",
+    "href": "03-geobia.html#region-based",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Region-based",
+    "text": "Region-based\n\nLos más utilizados en GEOBIA"
+  },
+  {
+    "objectID": "03-geobia.html#segment-anything-model-sam",
+    "href": "03-geobia.html#segment-anything-model-sam",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Segment Anything Model (SAM)",
+    "text": "Segment Anything Model (SAM)\n\n\nModelo pre-entrenado de Meta AI\nDisponible en Python"
+  },
+  {
+    "objectID": "03-geobia.html#segment-anything-model-sam-1",
+    "href": "03-geobia.html#segment-anything-model-sam-1",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Segment Anything Model (SAM)",
+    "text": "Segment Anything Model (SAM)\n\nModelo pre-entrenado de Meta AI\nDisponible en Python"
   }
 ]

@@ -1,0 +1,374 @@
+---
+title: "Clasificación de usos del suelo en R"
+subtitle: "Geographic Object-Based Image Analysis (GEOBIA)"
+author: "Adrián Cidre González"
+institute: "Universidad de Córdoba"
+format: 
+  revealjs:
+    preview-links: auto
+    theme: [serif, 00_assets/styles/serif-style.scss]
+    highlight-style: oblivion # Others: haddock, tango, kate
+    transition: fade
+    fig-align: center
+title-slide-attributes: 
+    data-background-image: 00_assets/figures/logo-geoforest.png, 00_assets/figures/logo-bosque-digital.png
+    data-background-repeat: no-repeat
+    data-background-position: 15% 90%, 85% 90%
+    data-background-size: 20%, 20%
+execute: 
+  echo: false
+slide-number: true
+center-title-slide: true
+transition: fade
+transition-speed: slow
+background-transition: fade
+lightbox: true
+fig-responsive: true
+# filters: 
+# webr:
+#   packages: ["dplyr", "ggplot2", "gapminder", "forcats"]
+# revealjs-plugins:
+bibliography: references.bib
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| label: internal_packages
+#| include: false
+library(pacman)
+
+p_load(ggthemes, link2GI, OTBsegm, sf, terra, tidyverse, withr)
+
+## variables
+bg_color <- "#f0f1eb"
+
+## load data
+over_segment_sf <- read_sf("00_assets/data/segment_5_15_100.gpkg")
+
+## load sample image
+image_sr <- rast("00_assets/data/tenerife-rgb-sample.tiff")
+
+## ggplot theme
+theme_set(
+  theme_minimal() +
+    theme(
+      plot.title = element_text(
+        hjust = .5,
+        size  = rel(1.5)
+      ),
+      axis.title = element_text(size = rel(.7)),
+      plot.caption = element_text(
+        hjust  = .5,
+        family = "Roboto",
+        size   = rel(.6)
+      ),
+      plot.background = element_rect(fill = bg_color, color = NA)
+    )
+  )
+```
+
+{{< include 00_assets/partials/intro-acidre.qmd >}}
+
+# Objetivos
+
+-   Introducción a GEOBIA
+
+-   Segmentación
+
+-   Clasificación supervisada
+
+-   Evaluación del modelo
+
+-   Implementación delo modelo
+
+# Introducción a GEOBIA {.main-part .unnumbered}
+
+-   Definición
+
+-   Tendencias
+
+-   Flujo de trabajo
+
+-   GEOBIA vs Pixel-Based
+
+## Introducción
+
+GEOBIA es...
+
+-   ...una metodología para analizar imágenes de alta resolución
+
+-   ...un método de clasificación de imágenes
+
+-   ...superior a pixel-based analysis
+
+-   ...similar a como los humanos interpretamos las imágenes
+
+> Una subdisciplina de *Geographic Information Science* comprometida a desarrollar métodos automáticos de partición de imágenes de teledetección en objetos con un significado, y evaluar sus características en las escalas espacial, espectral y temporal, para generar nueva información geográfica en un formato GIS.
+
+## Tendencias GEOBIA
+
+```{r}
+#| label: publications_year
+#| fig-height: 8
+
+## create data from dimensions.ai
+geobia_citations <- tibble(
+  year = 2007:2024,
+  citations = c(
+    1, 11, 19, 51, 79, 113, 167, 207, 233,
+    351, 299, 379, 410, 458, 438, 456, 425, 454
+  )
+)
+
+## visualize
+ggplot(geobia_citations, aes(x = year, y = citations)) +
+  geom_line(color = "#2C3E50", size = 1.2) +
+  geom_point(color = "#E74C3C", size = 2) +
+  # theme_minimal(base_family = "Passion One") +
+  ggthemes::theme_base(base_family = "Passion One", base_size = 12) +
+  scale_x_continuous(breaks = seq(2007, 2024, 1)) +
+  labs(
+    title   = "Citas por año de 'GEOBIA'",
+    x       = NULL,
+    y       = "Número de citas",
+    caption = "Fuente: propia | Datos: Dimensions.ai"
+  ) +
+  theme(
+    plot.title = element_text(
+      hjust = .5,
+      size  = rel(1.5)
+    ),
+    axis.title = element_text(size = rel(.7)),
+    plot.caption = element_text(
+      hjust  = .5,
+      family = "Roboto",
+      size   = rel(.6)
+    ),
+    plot.background = element_rect(fill = "#f0f1eb", color = NA)
+  )
+
+```
+
+## Workflow
+
+![](00_assets/figures/03-geobia/geobia-workflow.png){fig-align="center"}
+
+## GEOBIA vs Pixel-Based
+
+-   GEOBIA: clasifica objetos
+
+-   Pixel-based: clasifica píxeles
+
+![](00_assets/figures/03-geobia/meme-geobia-vs-pixel-nobg.png){fig-align="center" width="669"}
+
+##  {.background-no-title}
+
+::::: columns
+::: {.column width="50%"}
+![](00_assets/figures/03-geobia/step-03-train-areas.png){fig-align="center" width="424"}
+:::
+
+::: {.column width="50%"}
+![](00_assets/figures/03-geobia/train-areas-pixel.png){fig-align="center" width="424"}
+:::
+:::::
+
+::::: columns
+::: {.column width="50%"}
+![](00_assets/figures/03-geobia/zoom-geobia-segment.png){fig-align="center" width="422"}
+:::
+
+::: {.column width="50%"}
+![](00_assets/figures/03-geobia/zoom-pixel.png){fig-align="center" width="488"}
+:::
+:::::
+
+## Interpretación de una imagen
+
+Elementos útiles para la interpretación de una imagen aérea:
+
+::::: columns
+::: {.column width="20%"}
+-   Forma
+
+-   Tamaño
+
+-   Tonos
+
+-   Textura
+
+-   Patrón
+
+-   Sombras
+
+-   Asociación
+
+-   Lugar
+:::
+
+::: {.column width="80%"}
+![](00_assets/figures/03-geobia/santa-cruz.png){fig-align="right"}
+:::
+:::::
+
+## Ventajas GEOBIA
+
+![](00_assets/figures/03-geobia/meme-pepe-sunglasses.png){fig-align="center" width="533"}
+
+::: incremental
+-   Similar a cómo los humanos interpretamos los objetos
+
+-   Reducción de la carga computacional del clasificador
+
+-   Extracción de características útiles (forma, textura...)
+
+-   Modelos de segmentación (meanshift, watershed, SAM)
+:::
+
+## Desventajas GEOBIA
+
+![](00_assets/figures/03-geobia/meme-pepe-sad.png){fig-align="center" width="313"}
+
+::: incremental
+-   Problemas computacionales con grandes imágenes
+
+-   Segmentación sin solución única
+
+-   Evaluación de la segmentación
+:::
+
+# Segmentación {.main-part .unnumbered}
+
+-   Objetivos segmentación
+
+-   Algoritmos segmentación
+
+## Objetivos segmentación
+
+-   Generar áreas de un tamaño razonable
+
+-   Evitar segmentación excesiva o insuficiente
+
+-   Generar áreas representativas de cada clase
+
+::: callout-important
+## Importante
+
+Definir las clases que queremos predecir con el modelo
+:::
+
+## Ejemplo {.special-size}
+
+::::: {.columns style="display: flex !important; height: 90%;"}
+::: {.column width="40%" style="display: flex; justify-content: center; align-items: center;"}
+```{r}
+image_sr
+```
+:::
+
+::: {.column width="60%"}
+![](00_assets/figures/03-geobia/rgb-image.png){fig-align="center"}
+:::
+:::::
+
+## Sobresegmentación
+
+::::: {.columns style="display: flex !important; height: 90%;"}
+::: {.column width="50%" style="display: flex; justify-content: center; align-items: center;"}
+![](00_assets/figures/03-geobia/code-over-segment.png)
+:::
+
+::: {.column width="60%"}
+![](00_assets/figures/03-geobia/rgb-over-segment.png){fig-align="center"}
+:::
+:::::
+
+## Subsegmentación
+
+::::: {.columns style="display: flex !important; height: 90%;"}
+::: {.column width="50%" style="display: flex; justify-content: center; align-items: center;"}
+![](00_assets/figures/03-geobia/code-under-segment.png)
+:::
+
+::: {.column width="60%"}
+![](00_assets/figures/03-geobia/rgb-under-segment.png){fig-align="center"}
+:::
+:::::
+
+## Segmentación correcta
+
+::::: {.columns style="display: flex !important; height: 90%;"}
+::: {.column width="50%" style="display: flex; justify-content: center; align-items: center;"}
+![](00_assets/figures/03-geobia/code-good-segment.png)
+:::
+
+::: {.column width="60%"}
+![](00_assets/figures/03-geobia/rgb-good-segment.png){fig-align="center"}
+:::
+:::::
+
+## Algoritmos segmentación
+
+-   Threshold (umbrales): se utilizan umbrales para clasificar los píxeles
+
+-   **Region-based (similitud): crecimiento de regiones, separación-unión**
+
+-   Boundary-based (discontinuidad): partición de una imagen basado en cambios en los valores digitales (borde-no borde).
+
+-   Algoritmos de *Deep Learning*: SAM, Mask R-CNN.
+
+## Threshold
+
+```{r}
+#| label: load_cabra
+cabras_sr <- rast("00_assets/figures/03-geobia/cabras-barco.jpg") |> flip()
+cabras_th_sr <- ifel(cabras_sr > 150, 1, 0)
+```
+
+::::: columns
+::: {.column width="50%"}
+![](00_assets/figures/03-geobia/cabras-barco.jpg)
+:::
+
+::: {.column width="50%"}
+![](00_assets/figures/03-geobia/cabras-segment.png)
+:::
+:::::
+
+```{r}
+#| label: fig-hist-cabra
+#| fig-height: 2.3
+as_tibble(cabras_sr[[1]]) |> 
+  ggplot(aes(`cabras-barco_1`)) +
+  geom_histogram(color = "snow", fill = "#0073C2FF") +
+  geom_vline(xintercept = 150, color = "red", lwd = 1) +
+  ggthemes::theme_base(base_size = 8) +
+  scale_y_continuous(expand = expansion(0)) +
+  labs(x = NULL, y = NULL) +
+  theme(
+    plot.background = element_rect(fill = bg_color, color = NA)
+  )
+```
+
+## Region-based
+
+-   Los más utilizados en GEOBIA
+
+## Segment Anything Model (SAM)
+
+::: incremental
+-   Modelo pre-entrenado de Meta AI
+
+-   Disponible en Python
+:::
+
+## Segment Anything Model (SAM)
+
+-   Modelo pre-entrenado de Meta AI
+
+-   Modelo de *Deep Learning* encoder-decoder
+
+-   Disponible en Python
+
+![](00_assets/figures/03-geobia/cabras-masks.png){fig-align="center" width="667"}
