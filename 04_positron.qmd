@@ -40,6 +40,8 @@ bibliography: references.bib
 
 ## IDE
 
+::::: columns
+::: {.column width="20%"}
 Una IDE es...
 
 -   RStudio
@@ -51,6 +53,14 @@ Una IDE es...
 -   Spyder
 
 -   MATLAB
+:::
+
+::: {.column width="80%"}
+![](00_assets/figures/04-positron/ide-rstudio.png){fig-align="center"}
+:::
+:::::
+
+> ... un entorno de desarrollo (software) que permite escribir código.
 
 ## Positron
 
@@ -76,15 +86,27 @@ Una IDE es...
 
 ![](00_assets/figures/04-positron/positron-intro-empty.png){fig-align="center"}
 
-## Interpreter selector
+## Múltiples sesiones
 
--   Seleccionar entorno que queremos
+-   Consola multisesión
 
--   Positron recuerda el entorno de cada proyecto
+-   Sesiones de Python y R
 
--   Mostrará los que tenemos instalados
+-   Múltiples versiones
 
+```{=html}
+<br>
+```
+
+::::: columns
+::: {.column width="50%"}
 ![](00_assets/figures/04-positron/ide-interpreter.png){fig-align="center"}
+:::
+
+::: {.column width="50%"}
+![](00_assets/figures/04-positron/ide-multiple-sessions.png){fig-align="center"}
+:::
+:::::
 
 ## Interactive built-in console
 
@@ -100,7 +122,15 @@ Una IDE es...
 
 ## Data explorer RStudio
 
+::::: {.columns style="display: flex !important;"}
+::: {.column style="display: flex; justify-content: center; align-items: center; width: 30%;"}
+![](00_assets/figures/01-geospatial-R/meme-fake-happy.png){fig-align="center" width="327"}
+:::
+
+::: {.column width="70%"}
 ![](00_assets/figures/04-positron/ide-rstudio-viewer.png){fig-align="center"}
+:::
+:::::
 
 ## Data explorer
 
@@ -155,13 +185,9 @@ pl.col?
 
 ## Espacio de trabajo
 
-::: incremental
--   Workspace es simplemente una carpeta
-
--   Similar a un proyecto en RStudio
+-   Workspace: es simplemente una carpeta
 
 -   Pro Tip: trabajar SIEMPRE en un espacio de trabajo
-:::
 
 ![](00_assets/figures/04-positron/ide-workspace.png){fig-align="center" width="1172"}
 
@@ -169,7 +195,7 @@ pl.col?
 
 -   Positron utiliza por defecto el estilo "pizarra blanca"
 
-``` r
+``` {.bash filename="bash"}
 R --no-save --no-restore-data
 ```
 
@@ -183,7 +209,7 @@ R --no-save --no-restore-data
 
 ## Paleta de comandos
 
-![](00_assets/figures/04-positron/ide-slate-palette-settings.png){fig-align="center"}
+![](00_assets/figures/04-positron/ide-slate-palette-settings.png){fig-align="center" width="1264"}
 
 ## Paleta de comandos
 
@@ -215,7 +241,7 @@ graph G {
 
 -   Python kernel:
 
-``` {.bash filename="Command Prompt"}
+``` {.bash filename="bash"}
 python3 -m pip install ipykernel
 python -m pip install ipykernel
 ```

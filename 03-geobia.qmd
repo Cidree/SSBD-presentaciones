@@ -28,7 +28,7 @@ fig-responsive: true
 # webr:
 #   packages: ["dplyr", "ggplot2", "gapminder", "forcats"]
 # revealjs-plugins:
-bibliography: references.bib
+bibliography: references-geobia.bib
 editor_options: 
   chunk_output_type: console
 ---
@@ -38,7 +38,7 @@ editor_options:
 #| include: false
 library(pacman)
 
-p_load(ggthemes, link2GI, OTBsegm, sf, terra, tidyverse, withr)
+p_load(correlation, ggtext, ggthemes, gt, reactable, link2GI, OTBsegm, patchwork, rpart, rpart.plot, sf, terra, tidymodels, tidyverse, yardstick, withr)
 
 ## variables
 bg_color <- "#f0f1eb"
@@ -48,6 +48,10 @@ over_segment_sf <- read_sf("00_assets/data/segment_5_15_100.gpkg")
 
 ## load sample image
 image_sr <- rast("00_assets/data/tenerife-rgb-sample.tiff")
+
+## load training points
+training_sf <- read_sf("00_assets/data/training-points-stats.gpkg")
+annotated_data_tbl <- st_drop_geometry(training_sf)
 
 ## ggplot theme
 theme_set(
@@ -76,11 +80,11 @@ theme_set(
 
 -   Segmentación
 
--   Clasificación supervisada
+-   Toma de datos
 
--   Evaluación del modelo
+-   Clasificación
 
--   Implementación delo modelo
+-   Implementación del modelo
 
 # Introducción a GEOBIA {.main-part .unnumbered}
 
@@ -91,6 +95,8 @@ theme_set(
 -   Flujo de trabajo
 
 -   GEOBIA vs Pixel-Based
+
+{{< fa clock size=xl >}} 5min
 
 ## Introducción
 
@@ -110,7 +116,7 @@ GEOBIA es...
 
 ```{r}
 #| label: publications_year
-#| fig-height: 8
+#| fig-height: 6
 
 ## create data from dimensions.ai
 geobia_citations <- tibble(
@@ -244,6 +250,12 @@ Elementos útiles para la interpretación de una imagen aérea:
 
 -   Algoritmos segmentación
 
+-   Software
+
+-   Práctica 1
+
+{{< fa clock size=xl >}} 30min
+
 ## Objetivos segmentación
 
 -   Generar áreas de un tamaño razonable
@@ -251,6 +263,8 @@ Elementos útiles para la interpretación de una imagen aérea:
 -   Evitar segmentación excesiva o insuficiente
 
 -   Generar áreas representativas de cada clase
+
+![](00_assets/figures/03-geobia/rgb-good-segment.png){fig-align="center" width="405"}
 
 ::: callout-important
 ## Importante
@@ -351,17 +365,46 @@ as_tibble(cabras_sr[[1]]) |>
   )
 ```
 
-## Region-based
+## Region-based {.special-size}
 
--   Los más utilizados en GEOBIA
+::::: columns
+::: {.column width="50%"}
+Watershed:
 
-## Segment Anything Model (SAM)
-
-::: incremental
--   Modelo pre-entrenado de Meta AI
-
--   Disponible en Python
+-   Interpreta la imagen como una topografía y simula cuánto se llenaría de agua
+-   Las líneas divisorias son los bordes de la segmentación
 :::
+
+::: {.column width="50%"}
+![Fuente: https://datahacker.rs/007-opencv-projects-image-segmentation-with-watershed-algorithm/](00_assets/figures/03-geobia/algo-watershed.jpg){fig-align="center" width="435"}
+:::
+:::::
+
+## Region based {.special-size}
+
+::::: columns
+::: {.column width="50%"}
+Mean-shift:
+
+-   Agrupa píxeles en función de la similitud
+
+-   Parámetros: *spatialr, ranger, minsize*
+
+Pasos:
+
+-   Para cada píxel, se define una ventana de búsqueda en el espacio espectral y espacial.
+
+-   Se calcula la media de todos los píxeles dentro de esa ventana (en color y posición).
+
+-   Se actualiza la posición del centro hacia esa media → repite hasta converger.
+
+-   Todos los píxeles que convergen al mismo modo son etiquetados como una región.
+:::
+
+::: {.column width="50%"}
+![Fuente: https://ailephant.com/how-to-program-mean-shift/](00_assets/figures/03-geobia/algo-meanshift.png){fig-align="center" width="432"}
+:::
+:::::
 
 ## Segment Anything Model (SAM)
 
@@ -371,4 +414,719 @@ as_tibble(cabras_sr[[1]]) |>
 
 -   Disponible en Python
 
-![](00_assets/figures/03-geobia/cabras-masks.png){fig-align="center" width="667"}
+## Segment Anything Model (SAM)
+
+-   Modelo pre-entrenado de Meta AI
+
+-   Modelo de *Deep Learning* encoder-decoder
+
+-   Disponible en Python
+
+![](00_assets/figures/03-geobia/cabras-masks.png){fig-align="center" width="534"}
+
+## Software
+
+::::: columns
+::: {.column width="70%"}
+Orfeo Toolbox
+
+-   Algoritmos para teledetección
+
+-   Software libre
+
+-   QGIS, R, Python, CMD, C++
+
+-   Segmentación:
+
+    -   Mean-shift
+
+    -   Watershed
+
+    -   Large Scale Meanshift
+:::
+
+::: {.column width="30%"}
+![](00_assets/figures/03-geobia/logo-orfeo.jpg){fig-align="center"}
+
+![](00_assets/figures/03-geobia/logo-otbsegm.png){fig-align="center" width="200"}
+:::
+:::::
+
+## 💪 Práctica 1 {.exercise}
+
+-   Descarga Orfeo Toolbox
+
+-   Segmentación en R. Paquetes a utilizar:
+
+    -   `arrow/geoarrow`: formato GeoParquet
+
+    -   `link2GI`: acceso a aplicaciones de Orfeo Toolbox
+
+    -   `mapview`: visualización interactiva
+
+    -   `OTBsegm`: *wrapper* de las aplicaciones de segmentación de OTB
+
+    -   `sf`: manejo de datos vectoriales
+
+    -   `terra`: manejo de datos ráster
+
+    -   `tidyverse`: paquetes para análisis y visualización de datos
+
+# Toma de datos {.main-part .unnumbered}
+
+-   Objetivo
+
+-   Toma de datos
+
+-   Estadísticas focales
+
+-   Práctica 2
+
+{{< fa clock size=xl >}} 20min
+
+## Objetivo
+
+![](00_assets/figures/03-geobia/geobia-workflow.png){fig-align="center"}
+
+## Objetivo
+
+![](00_assets/figures/03-geobia/qgis-puntos.png){fig-align="center"}
+
+## Estadísticas focales
+
+::::: {.columns style="display: flex !important; height: 90%;"}
+::: {.column width="50%" style="display: flex; justify-content: center; align-items: center;"}
+![](00_assets/figures/03-geobia/code-exactextract.png)
+:::
+
+::: {.column width="50%"}
+![](00_assets/figures/03-geobia/fstats-mapview.png){fig-align="center" width="488"}
+:::
+:::::
+
+## 💪 Práctica 2 {.exercise}
+
+-   Toma de datos en QGIS
+
+-   Extracción estadísticas. Paquetes a utilizar
+
+    -   `arrow/geoarrow`: formato GeoParquet
+
+    -   `exactextractr`: estadísticas focales
+
+    -   `mapview`: visualización interactiva
+
+    -   `sf`: manejo de datos vectoriales
+
+    -   `terra`: manejo de datos ráster
+
+    -   `tidyverse`: paquetes para análisis y visualización de datos
+
+# Clasificación {.main-part .unnumbered}
+
+-   Introducción
+
+-   Algoritmos clasificación supervisada
+
+-   Pasos modelado
+
+-   Workflow tidymodels
+
+-   Práctica 3
+
+{{< fa clock size=xl >}} 40min
+
+## Introducción {.special-size}
+
+Conceptos de *machine learning*:
+
+-   **Clasificación**: el objetivo del modelo es predecir una variable categórica (etiqueta, clase) a partir de un conjunto de variables. Para ello se entrena un modelo con datos ya clasificados, que aprende los patrones y los aplica a datos nuevos.
+
+-   **Regresión**: el objetivo del modelo es predecir una variable continua a partir de un conjunto de variables.
+
+```{r}
+reactable(
+  iris,
+  defaultColDef = colDef(
+    header = function(value) gsub(".", " ", value, fixed = TRUE),
+    cell = function(value) format(value, nsmall = 1),
+    align = "center",
+    minWidth = 70,
+    headerStyle = list(background = "#f7f7f8")
+  ),
+  columns = list(
+    Species = colDef(minWidth = 140)  # overrides the default
+  ),
+  bordered = TRUE,
+  highlight = TRUE
+)
+```
+
+## Introducción {.special-size}
+
+Conceptos de *machine learning*:
+
+::::: columns
+::: {.column width="50%"}
+-   **Aprendizaje no supervisado**: algoritmos que trabajan sin etiquetas (clustering, segmentación *mean-shift,* PCA)
+
+-   **Aprendizaje supervisado**: algoritmos que aprenden de datos etiquetados (clasificación, regresión, CNN)
+:::
+
+::: {.column width="50%"}
+![Fuente: @morimoto2021](00_assets/figures/03-geobia/supervised-non-supervised.jpg){fig-cap-location="margin" fig-align="center" width="396"}
+:::
+:::::
+
+## Introducción {.special-size}
+
+Conceptos de *machine learning*:
+
+-   **Clasificación no supervisada** (*clustering*): algoritmos de clasificación que trabajan sin etiquetas. Agrupan los datos según su similitud
+
+-   **Clasificación supervisada**: algoritmos de clasificación que aprenden de datos etiquetados
+
+```{r}
+tibble(
+  `Propiedad` = c(
+    "Datos de entrenamiento", 
+    "Precisión", 
+    "Output", 
+    "Algoritmos", 
+    "Intervención", 
+    "Casos de uso"
+  ),
+  `Clasificación supervisada` = c(
+    "Necesita datos con clases conocidas",
+    "Generalmente mayor",
+    "Clases predefinidas",
+    "Random forest, SVM, XGBoost...",
+    "Se necesita etiquetar datos y entrenar el algoritmo",
+    "Clasificación (usos del suelo, modelos combustible..)"
+  ),
+  `Clasificación no supervisada` = c(
+    "No necesita datos con clases",
+    "Generalmente menor",
+    "Clusters/grupos - post-interpretación",
+    "K-Means, ISODATA, Hierachical clustering",
+    "Mínima",
+    "Identificación de patrones, exploración de datos"
+  ) 
+) |> 
+  gt() |> 
+  opt_stylize(2) |> 
+  gt::opt_table_font(size = "140%")
+```
+
+## Algoritmos clasificación supervisada
+
+-   Regresión logística
+
+-   **K-Nearest Neighbors**
+
+-   Support Vector Machine
+
+-   Naive Bayes
+
+-   Decision tree
+
+-   **Random Forest**
+
+-   XGBoost
+
+::: callout-caution
+## Atención
+
+Un algoritmo **no** es un modelo *sensu stricto*
+:::
+
+## Pasos modelado
+
+![](00_assets/figures/03-geobia/machine-learning-steps.png){fig-align="center" width="2440"}
+
+## Paso 1 - Obtener datos
+
+![](00_assets/figures/03-geobia/qgis-puntos.png){fig-align="center"}
+
+## Paso 2 - Preparar datos
+
+```{r}
+reactable(
+  st_drop_geometry(training_sf),
+  defaultColDef = colDef(
+    header = function(value) gsub(".", " ", value, fixed = TRUE),
+    align = "center",
+    minWidth = 70,
+    headerStyle = list(background = "#f7f7f8"),
+    format = colFormat(digits = 1)
+  ),
+  columns = list(
+    class = colDef(minWidth = 100)
+  ),
+  bordered = TRUE,
+  highlight = TRUE,
+  style = list(fontSize = "1rem")
+)
+```
+
+## Pasos 3, 4 y 5 - Modelado
+
+![](00_assets/figures/03-geobia/model-train.png){fig-align="center"}
+
+## Tidymodels
+
+Colección de paquetes de R para *machine learning*
+
+![](00_assets/figures/03-geobia/package-tidymodels.png){fig-align="center"}
+
+## Separación de datos
+
+-   **Datos de entrenamiento**: el modelo aprende de estos datos (70-80%)
+
+-   **Datos de prueba**: el modelo se evalúa en estos datos (20-30%)
+
+```{r}
+#| label: create_models
+# Set seed for reproducibility
+set.seed(666)
+
+# Generate data: cubic relationship
+n <- 50
+x <- seq(-2, 2, length.out = n)
+y <- x^3 - x + rnorm(n, sd = .8)  # Cubic curve + noise
+data <- data.frame(x = x, y = y)
+
+# data split
+splits    <- initial_split(data, prop = .8)
+train_tbl <- training(splits)
+test_tbl  <- testing(splits)
+
+# Create models
+model_underfit <- lm(y ~ x, data = train_tbl)     
+model_goodfit  <- lm(y ~ poly(x, 3), data = train_tbl)  
+# model_overfit  <- lm(y ~ poly(x, 15), data = train_tbl) 
+model_overfit  <- loess(y ~ x, data = train_tbl, span = .16)
+
+# Create predictions
+train_tbl <- train_tbl %>%
+    mutate(
+        pred_underfit = predict(model_underfit, newdata = train_tbl),
+        pred_goodfit = predict(model_goodfit, newdata = train_tbl),
+        pred_overfit = predict(model_overfit, newdata = train_tbl)
+    )
+
+# Create a function to plot
+plot_fit <- function(pred_column, title, train_r2) {
+    ggplot(train_tbl, aes(x = x, y = y)) +
+        geom_point(color = "black", alpha = 0.6, size = 2) +
+        geom_line(aes(y = !!sym(pred_column)), color = "blue", size = .8) +
+        labs(title = title, x = "x", y = "y") +
+        theme_bw() +
+        theme(
+            plot.title = element_text(
+                family = "Merriweather",
+                hjust  = .5,
+                size   = rel(1.5),
+                face   = "bold"
+            )
+        ) +
+        annotate(
+          "richtext",
+          label = glue::glue("R^2^ = {train_r2}"),
+          x = 1,
+          y = -5
+        )
+}
+
+# Get r2
+underfit.r2 <- round(summary(model_underfit)$r.squared, 2)
+overfit.r2 <- round(yardstick::rsq(train_tbl, y, pred_overfit)$.estimate, 2)
+# overfit.r2 <- round(summary(model_overfit)$r.squared, 2)
+goodfit.r2 <- round(summary(model_goodfit)$r.squared, 2)
+```
+
+```{r}
+# Plot each case
+p1 <- plot_fit("pred_underfit", "Underfitting", underfit.r2)
+p2 <- plot_fit("pred_goodfit", "Good Fit", goodfit.r2)
+p3 <- plot_fit("pred_overfit", "Overfitting", overfit.r2)
+
+# Display them
+p1 + p2 + p3
+```
+
+## Separación de datos
+
+-   **Datos de entrenamiento**: el modelo aprende de estos datos (70-80%)
+
+-   **Datos de prueba**: el modelo se evalúa en estos datos (20-30%)
+
+```{r}
+test_met_tbl <- test_tbl |> 
+  mutate(
+    goodfit  = predict(model_goodfit, test_tbl),
+    overfit  = predict(model_overfit, test_tbl),
+    underfit = predict(model_underfit, test_tbl)
+  )
+
+goodfit.r2 <- round(yardstick::rsq(test_met_tbl, y, goodfit)$.estimate, 2)
+overfit.r2 <- round(yardstick::rsq(test_met_tbl, y, overfit)$.estimate, 2)
+underfit.r2 <- round(yardstick::rsq(test_met_tbl, y, underfit)$.estimate, 2)
+
+# Plot each case
+p1 <- plot_fit("pred_underfit", "Underfitting", underfit.r2) + 
+    geom_point(data = test_tbl, color = "red", size = 3) 
+p2 <- plot_fit("pred_goodfit", "Good Fit", goodfit.r2) + 
+    geom_point(data = test_tbl, color = "red", size = 3)
+p3 <- plot_fit("pred_overfit", "Overfitting", overfit.r2) + 
+    geom_point(data = test_tbl, color = "red", size = 3)
+
+# Display them
+p1 + p2 + p3
+```
+
+## Separación de datos
+
+-   **Datos de entrenamiento**: el modelo aprende de estos datos (70-80%)
+
+-   **Datos de prueba**: el modelo se evalúa en estos datos (20-30%)
+
+```{r}
+test_met_tbl <- test_tbl |> 
+  mutate(
+    goodfit  = predict(model_goodfit, test_tbl),
+    overfit  = predict(model_overfit, test_tbl),
+    underfit = predict(model_underfit, test_tbl)
+  )
+
+goodfit.r2 <- round(yardstick::rsq(test_met_tbl, y, goodfit)$.estimate, 2)
+overfit.r2 <- round(yardstick::rsq(test_met_tbl, y, overfit)$.estimate, 2)
+underfit.r2 <- round(yardstick::rsq(test_met_tbl, y, underfit)$.estimate, 2)
+
+# Plot each case
+p1 <- plot_fit("pred_underfit", "Underfitting", underfit.r2) + 
+    geom_linerange(
+      aes(x = x, ymin = y, ymax = underfit),
+      data = test_met_tbl
+    ) +
+    geom_point(data = test_tbl, color = "red", size = 3) 
+
+p2 <- plot_fit("pred_goodfit", "Good Fit", goodfit.r2) + 
+    geom_linerange(
+      aes(x = x, ymin = y, ymax = goodfit),
+      data = test_met_tbl
+    ) +
+    geom_point(data = test_tbl, color = "red", size = 3)
+
+p3 <- plot_fit("pred_overfit", "Overfitting", overfit.r2) + 
+  geom_linerange(
+    aes(x = x, ymin = overfit, ymax = y),
+    data = test_met_tbl
+  ) +
+  geom_point(data = test_tbl, color = "red", size = 3)
+
+# Display them
+p1 + p2 + p3
+```
+
+## Separación de datos
+
+::::: columns
+::: {.column width="50%"}
+Paquete `rsample`:
+:::
+
+::: {.column width="50%"}
+![](00_assets/figures/03-geobia/package-rsample.png){fig-align="center" width="87"}
+:::
+:::::
+
+```{r}
+#| echo: true
+set.seed(137)
+splits    <- initial_split(annotated_data_tbl, prop = .8, strata = class)
+train_tbl <- training(splits)
+test_tbl  <- testing(splits)
+```
+
+::::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: true
+train_tbl
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+test_tbl
+```
+:::
+:::::
+
+## Feature engineering
+
+-   **Selección de variables**: selección de variables relevantes {{< fa check >}}
+
+-   **Transformación de variables**:
+
+    -   One Hot Encoding: variables categóricas {{< fa xmark >}}
+
+    -   Normalización/estandarización: variables continuas {{< fa check >}}
+
+-   **Creación de variables**: ratios, polinomios, interacciones... {{< fa xmark >}}
+
+-   **Reducción de la dimensionalidad**: PCA, UMAP... {{< fa xmark >}}
+
+::: {.fragment .fade-up}
+Mejores variables --\> mejores modelos
+:::
+
+:::: {.fragment .fade-up}
+::: callout-tip
+En la mayoría de los problemas, *feature engineering* tiene un mayor impacto en el modelo que elegir un algoritmo *cool*.
+:::
+::::
+
+## Feature engineering {.special-size}
+
+Selección de variables:
+
+-   Algunos algoritmos son sensibles a variables irrelevantes (KNN)
+
+-   Algunos algoritmos son sensibles a variables correlacionadas (KNN)
+
+-   Explorar datos y relaciones de variables
+
+```{r}
+training_sf |> 
+  st_drop_geometry() |> 
+  correlation() |> 
+  summary() |> 
+  plot() +
+    ggtitle("Matriz de Correlación")
+```
+
+## Feature engineering
+
+Transformación de variables continuas:
+
+-   Algunos algoritmos son sensibles a diferencias de magnitud
+
+-   Algoritmos basados en distancias (KNN, SVM, ANN)
+
+-   Normalizar (0, 1) / estandarizar ($\mu = 0 \; \ \sigma = 1$)
+
+:::: {.fragment .fade-up}
+::: callout-tip
+Normalizar no tiene relevancia en algoritmos como *Random Forest* o *XGBoost*
+:::
+::::
+
+## Feature engineering
+
+::::: columns
+::: {.column width="50%"}
+Paquete `recipes`:
+:::
+
+::: {.column width="50%"}
+![](00_assets/figures/03-geobia/package-recipes.png){fig-align="center" width="87"}
+:::
+:::::
+
+```{r}
+#| echo: true
+base_rec <- recipe(class ~ ., data = train_tbl) |> 
+  step_zv(all_predictors()) |>  
+  step_lincomb(all_predictors())
+```
+
+```{r}
+#| echo: true
+base_rec |> prep() |> juice()
+```
+
+## Algoritmos
+
+**Árboles de decisión**: en este algoritmo se basan *random forest* y *xgboost*
+
+```{r}
+dt_iris <- rpart(Species ~ ., iris)
+rpart.plot(dt_iris, 5)
+```
+
+## Algoritmos
+
+**Random Forest**: conjunto de árboles de decisión
+
+![Fuente: https://www.turing.com/kb/random-forest-algorithm](00_assets/figures/03-geobia/algo-random-forest-removebg-preview.png){fig-align="center"}
+
+## Algoritmos
+
+**K-Nearest Neighbor (KNN)**: clasifica en la clase más similar según la clase de los vecinos más cercanos
+
+![Fuente: https://intuitivetutorial.com/2023/04/07/k-nearest-neighbors-algorithm/](00_assets/figures/03-geobia/algo-knn.png){fig-align="center"}
+
+## Algoritmos
+
+::::: columns
+::: {.column width="50%"}
+Paquete `parsnip`:
+:::
+
+::: {.column width="50%"}
+![](00_assets/figures/03-geobia/package-parsnip.png){fig-align="center" width="87"}
+:::
+:::::
+
+```{r}
+#| echo: true
+rf_spec <- rand_forest(
+    mode  = "classification",
+    trees = 500,
+    mtry  = tune(),
+    min_n = tune()
+  ) |> 
+  set_engine(
+    engine     = "ranger",
+    importance = "permutation"
+  )
+```
+
+## Remuestreo {.special-size}
+
+**Resampling**: consiste en separar los datos de entrenamiento en dos grupos:
+
+-   Análisis: datos de entrenamiento del modelo
+
+-   Evaluación: datos que se utilizan para evaluar el modelo
+
+V-fold Cross-Validation: el más común.
+
+![Fuente: scikit-learn](00_assets/figures/03-geobia/grid_search_cross_validation.png){fig-align="center" width="650"}
+
+## Remuestreo
+
+::::: columns
+::: {.column width="50%"}
+Paquete `rsample`:
+:::
+
+::: {.column width="50%"}
+![](00_assets/figures/03-geobia/package-rsample.png){fig-align="center" width="87"}
+:::
+:::::
+
+```{r}
+#| echo: true
+set.seed(137)
+folds <- vfold_cv(train_tbl, strata = class, v = 5)
+```
+
+```{r}
+folds
+```
+
+## Hyperparameter tuning
+
+-   Los hiperparámetros no son aprendidos por el modelo
+
+-   Deben probarse distintos valores para elegir los más adecuados
+
+-   Grid search: prueba un número determinado de valores
+
+-   Se prueban durante el entrenamiento del modelo. Una vez entrenado, se eligen los mejores hiperparámetros
+
+-   Evita el sobreajuste
+
+## Hiperparámetros KNN
+
+K: número de vecinos
+
+::::: columns
+::: {.column width="50%"}
+##### Con tuning
+
+```{r}
+#| echo: true
+knn_spec <- nearest_neighbor(
+  mode      = "classification",
+  neighbors = tune()
+)
+```
+:::
+
+::: {.column width="50%"}
+##### Sin tuning
+
+```{r}
+#| echo: true
+knn_spec <- nearest_neighbor(
+  mode      = "classification",
+  neighbors = 5
+)
+```
+:::
+:::::
+
+![](00_assets/figures/03-geobia/algo-knn.png){fig-align="center"}
+
+## Hiperparámetros Random Forest {.special-size}
+
+-   **mtry**: número de variables seleccionadas aleatoriamente
+
+-   **min_n**: número de observaciones mínima para que un nodo se vuelva a separar
+
+-   **trees**: número de árboles de decisión
+
+![](00_assets/figures/03-geobia/algo-random-forest.png){fig-align="center" width="470"}
+
+Variables: color, forma, altura, anchura, peso, volumen, contenido de azúcar, diámetro
+
+## Tunear en tidymodels {.special-size}
+
+##### Sin tuning
+
+```{r}
+#| eval: false
+#| echo: true
+model_fit <- fit_resamples(
+  model_wflw,
+  resamples = folds,
+  metrics   = metric_set(accuracy, f_meas)
+)
+```
+
+##### Tuning 1 modelo
+```{r}
+#| eval: false
+#| echo: true
+model_fit <- tune_grid(
+  model_wflw,
+  resamples = folds,
+  grid      = 20,
+  metrics   = metric_set(accuracy, f_meas)
+)
+```
+
+##### Tuning varios modelos
+```{r}
+#| eval: false
+#| echo: true
+models_fit <- workflow_map(
+  model_wflw,
+  fn        = "tune_grid",
+  resamples = folds,
+  grid      = 20, 
+  metrics   = metric_set(accuracy, f_meas)
+)
+```
+
+
+
+## Evaluación del modelo
+  
+
+## Referencias

@@ -1,0 +1,439 @@
+---
+## Metadatos -----------------------------
+title: "Introducción al análisis geoespacial con R"
+subtitle: "Parte 2"
+author: "Adrián Cidre González"
+institute: "Universidad de Córdoba"
+
+## Presentation --------------------------
+format: 
+  revealjs:
+    preview-links: auto
+    theme: [serif, 00_assets/styles/serif-style.scss]
+    highlight-style: oblivion # Others: haddock, tango, kate
+    transition: fade
+    fig-align: center
+
+# Slides -----------------------------
+title-slide-attributes: 
+    data-background-image: 00_assets/figures/logo-geoforest.png, 00_assets/figures/logo-bosque-digital.png
+    data-background-repeat: no-repeat
+    data-background-position: 15% 90%, 85% 90%
+    data-background-size: 20%, 20%
+slide-number: true
+center-title-slide: true
+
+# Transition ------------------------
+transition: fade
+transition-speed: slow
+background-transition: fade
+
+## Filters -------------------------
+lightbox: true
+fig-responsive: true
+# filters: 
+# webr:
+#   packages: ["dplyr", "ggplot2", "gapminder", "forcats"]
+# revealjs-plugins:
+#   - drop
+bibliography: references.bib
+---
+
+```{r}
+#| label: internal_packages
+#| include: false
+library(pacman)
+
+p_load(sf, terra)
+```
+
+
+
+
+## Adrián Cidre González {.unnumbered}
+
+::::: columns
+::: {.column width="55%"}
+-   Ingeniero Forestal (USC)
+
+-   Máster Geoforest (UCO)
+
+-   Análisis de datos, ciencia de datos, teledetección
+
+-   Estudiante PhD biociencias y ciencias agroalimentarias
+
+{{< fa link size=xl >}} [adrian-cidre.com](https://adrian-cidre.com/)
+
+{{< fa brands youtube size=xl >}} [\@CidreRForest](https://www.youtube.com/@CidreRForest)
+
+{{< fa brands linkedin size=xl >}} [linkedin.com/in/adrian-cidre/](https://www.linkedin.com/in/adrian-cidre-gonz%C3%A1lez-8a50371b0/)
+
+{{< fa brands github size=xl >}} [Cidree](https://github.com/Cidree/)
+:::
+
+::: {.column width="45%"}
+![](00_assets/figures/me-modified.png){style="border-radius:1em;margin-top:auto" fig-alt="Norway picture" fig-align="center"}
+:::
+:::::
+
+
+
+# Objetivos
+
+-   3 ejercicios prácticos (\~ 30min cada uno)
+
+-   Mapas de distribución potencial de especies forestales europeas
+
+-   Cálculo de Índice de Humedad de Thornthwaite
+
+-   Procesado de datos del IFN
+
+# Ejercicio 1 {.main-part .unnumbered}
+
+-   Introducción
+
+-   Modelos EU-Trees4F
+
+-   Descarga de datos a través de `{forestdata}`
+
+-   Generación de mapas de distribución potencial de especies forestales europeas bajo escenarios de cambio climático
+
+{{< fa clock size=xl >}} 20min
+
+## Introducción {.special-size}
+
+Cambio climático: cambios a largo plazo de las temperaturas y los patrones climáticos.
+
+-   Mecánica celeste: Ciclos de Milankovitch
+
+-   Ciclo de calentamiento comenzado hace 18,000 años
+
+-   Mayor concentración de GEI
+
+![@zachos2001](00_assets/figures/02-geospatial-R/climate-evolution.png){fig-align="center" width="577"}
+
+## Especies forestales {.special-size}
+
+**Extinciones pasadas**: especies forestales han sufrido extinciones en episodios de cambio climático
+
+**Desajuste climático**: las especies tienen óptimos de temperatura y precipitación
+
+![Fuente: ChatGPT (GPT-4 model)](00_assets/figures/02-geospatial-R/forest-extinction.PNG){fig-align="center" width="311"}
+
+## Especies forestales
+
+Eventos extremos más frecuentes (sequías, incendios, plagas...)
+
+Especies vulnerables vs Especies resistentes
+
+::::: columns
+::: {.column width="50%"}
+![Incendio en Quiroga, Galicia. Fuente: propia](00_assets/figures/02-geospatial-R/wildfire-galicia.jpg){fig-align="center" width="667"}
+:::
+
+::: {.column width="50%"}
+![Ataques de *Ips typographus* en Sněžka (Chequia). Fuente: propia](00_assets/figures/02-geospatial-R/pest-bark-beetle.jpg){fig-align="center" width="667"}
+:::
+:::::
+
+## Especies forestales
+
+-   **Migración geográfica**: algunas especies se desplazan (lentamente) hacia zonas más al norte o elevadas buscando sus óptimos climáticos.
+
+-   **Fenología**: cambios en el momento de floración, fructificación.. Afectando ciclos ecológicos
+
+-   **Gestión Forestal Adaptativa**: busca favorecer la resiliencia de los bosques
+
+::::: columns
+::: {.column width="50%"}
+![*Abies pinsapo*. Fuente: propia](00_assets/figures/02-geospatial-R/pinsapo-image.jpg){fig-align="center" width="225"}
+:::
+
+::: {.column width="50%"}
+![Ditribución *A. pinsapo*. Fuente: REDIAM](00_assets/figures/02-geospatial-R/pinsapo-distribution.PNG){fig-align="center" width="484"}
+:::
+:::::
+
+## EU-Trees4F {.special-size}
+
+-   Modelos de distribución de especies (`biomod2`)
+
+-   Base de datos pan-europea (EU-Forest) (582,066 ocurrencias)
+
+-   Distribución actual (2005) y futuras (2035, 2065, 2095)
+
+-   Escenarios: RCP 4.5 y RCP 8.5
+
+-   10km de resolución espacial
+
+![@strona2016; @mauri2017](00_assets/figures/02-geospatial-R/euforest-data.png){fig-cap-location="margin" fig-align="center" width="351"}
+
+## Implementación en R {.special-size-2}
+
+::::: columns
+::: {.column width="80%"}
+-   Tipos:
+
+    -   **bin**: mapa de distribución binario. 0 = ausente; 1 = presente
+
+    -   **prob**: mapa de probabilidad de ocurrencia
+
+-   Distribución:
+
+    -   **pot**: distribución potencial
+
+    -   **nat**: nicho realizado
+:::
+
+::: {.column width="20%"}
+![](00_assets/figures/02-geospatial-R/package-forestdata.png){width="200"}
+:::
+:::::
+
+
+
+```{r}
+#| eval: false
+#| code-line-numbers: "1-8|2|3|4|5|6|7"
+ppinaster_rcp45_sr <- fd_forest_eutrees4f(
+  species  = "Pinus pinaster",
+  model    = "clim",
+  period   = "all",
+  scenario = "rcp45",
+  type     = "bin",
+  distrib  = "pot"
+)
+```
+
+
+
+## 💪 Práctica 1 {.exercise}
+
+-   Paquetes a utilizar:
+
+    -   `forestdata`: descarga de datos de EU-Trees4F
+
+    -   `terra`: manipulación de datos ráster
+
+    -   `sf`: paquete base para análisis de datos vectoriales
+
+    -   `tidyverse`: paquetes para análisis y visualización de datos
+
+![](00_assets/figures/02-geospatial-R/ws1-result.png){fig-align="center" width="550"}
+
+# Ejercicio 2 {.main-part .unnumbered}
+
+-   Introducción
+
+-   Indice de Humedad de Thornthwaite
+
+-   Indice de Humedad de Willmott y Feddema
+
+-   Cálculo de los índices en R
+
+{{< fa clock size=xl >}} 30min
+
+## Introducción
+
+**Sequía**: se produce cuando la disponibilidad de agua no es suficiente para abastecer a los seres vivos.
+
+![Fuente: Forest Research, UK](00_assets/figures/02-geospatial-R/drought-forestresearch.jpg){fig-align="center"}
+
+## Riesgos de la sequía
+
+::: incremental
+-   Aumento de la mortalidad de las plantas
+
+-   Vulnerabilidad a plagas (*bark beetles*)
+
+-   Aumento de la biomasa muerta
+
+-   Mayor riesgo de incendio forestal
+:::
+
+![Fuente: Forest Research, UK](00_assets/figures/02-geospatial-R/drought-forestresearch.jpg){fig-align="center"}
+
+## Balance de agua en sistemas forestales
+
+-   Entradas: precipitación
+
+-   Salidas: evaporación, transpiración, interceptación, escorrentía
+
+![](00_assets/figures/02-geospatial-R/tmi-balance.png){fig-align="center"}
+
+## Moisture Index de Thornthwaite
+
+-   Índice climático basado en el balance hídrico
+
+-   Comparación déficit/excesos de agua y ETP
+
+$$
+I{m} \ = \ I_{h} \ - \ 0.6 \ \cdot \ I_{a}
+$$
+
+![](00_assets/figures/02-geospatial-R/tmi-article.png){fig-align="center"}
+
+## Moisture Index de Thornthwaite {.special-size}
+
+::::: columns
+::: {.column width="60%"}
+-   $I_{m}$ = índice global de humedad de Thornthwaite
+
+$$
+I{m} \ = \ I_{h} \ - \ 0.6 \ \cdot \ I_{a}
+$$
+
+-   $I_h$ = índice de humedad estacional de Thornthwaite
+
+$$
+I_h \ = \ \frac{D}{PET} \ \cdot \ 100
+$$
+
+-   $I_a$ = índice de aridez estacional de Thornthwaite
+
+$$
+I_h \ = \ \frac{S}{PET} \ \cdot \ 100
+$$
+:::
+
+::: {.column width="40%"}
+Casos de uso:
+
+-   Clima medio de una zona (1990-2020)
+
+-   Clima de un año particular (2024)
+
+-   Comparación clima medio con año actual
+
+![Fuente: @thornthwaite1948](00_assets/figures/02-geospatial-R/tmi-table.png){fig-align="center"}
+:::
+:::::
+
+## Evapotranspiración Potencial
+
+Total de agua que se evapora y transpiran las plantas.
+
+Método de @georgeh.hargreaves1985:
+
+$$
+PET \ = \ 0.0023 \ \cdot \ RA \ \cdot \ (Tmean \ + \ 17.8) \ \cdot \ TD^{0.5}
+$$
+
+
+
+```{r}
+#| eval: false
+
+## radiación solar
+solar_radiation_sr <- envirem::ETsolradRasters(
+    rasterTemplate = tmean_sr[[1]],
+    year           = 40
+)
+
+## Evapotranspiración potencial
+pet_sr <- envirem::monthlyPET(
+    Tmean = tmean_sr,
+    RA    = solar_radiation_sr,
+    TD    = temp_range_sr
+)
+```
+
+
+
+## Déficit y Surplus
+
+-   Déficit: se produce cuando precipitación \< PET
+
+-   Surplus: se produce cuando precipitación \> PET
+
+![](00_assets/figures/02-geospatial-R/tmi-isdeficit.png){fig-align="center"}
+
+## Moisture Index de @willmott1992 {.special-size}
+
+-   Indice de mejor interpretación (-1, 1)
+
+-   Incluido en el paquete `envirem`
+
+
+
+```{r}
+#| eval: false
+cmi_sr <- envirem::climaticMoistureIndex(
+    annualPrecip = prep_sr,
+    PET          = pet_sr
+)
+```
+
+
+
+| Tipo       | Índice de Humedad |
+|------------|-------------------|
+| Saturado   | 0.66 a 1          |
+| Muy húmedo | 0.33 a 0.66       |
+| Húmedo     | 0 a 0.33          |
+| Seco       | -0.33 a 0         |
+| Semiárido  | -0.66 a -0.33     |
+| Árido      | -1 a -0.66        |
+
+: Tipos de Humedad según @feddema2005
+
+## Worldclim 2.1
+
+::: {.incremental}
+
+* Base de datos global de datos climáticos
+
+* Ampliamente utilizados para mapas y modelos (>15,000 citas desde 2017)
+
+* `{geodata}`: descarga de modelos 1970-2000
+
+* Temperatura (mínima, media, máxima), precipitación...
+
+:::
+
+## 💪 Práctica 2a {.exercise}
+
+-   Paquetes a utilizar:
+
+    -   `envirem`: cálculo de índices bioclimáticos
+
+    -   `geodata`: descarga de datos de Worldclim
+
+    -   `giscoR`: descarga de límites de CCAA de España
+
+    -   `sf`, `terra`, `tidyverse`: paquetes base
+
+::::: columns
+::: {.column width="50%"}
+![](00_assets/figures/02-geospatial-R/tmi-result-map.png){fig-align="center" width="400"}
+:::
+
+::: {.column width="50%"}
+![](00_assets/figures/02-geospatial-R/tmi-result-graph.png){fig-align="center" width="490"}
+:::
+:::::
+
+## 💪 Práctica 2b {.exercise}
+
+-   Paquetes a utilizar:
+
+    -   `envirem`: cálculo de índices bioclimáticos
+
+    -   `geodata`: descarga de datos de Worldclim
+
+    -   `giscoR`: descarga de límites de CCAA de España
+
+    -   `sf`, `terra`, `tidyverse`: paquetes base
+
+::::: columns
+::: {.column width="50%"}
+![](00_assets/figures/02-geospatial-R/cmi-result-map.png){fig-align="center" width="480"}
+:::
+
+::: {.column width="50%"}
+![](00_assets/figures/02-geospatial-R/cmi-result-graph.png){fig-align="center" width="480"}
+:::
+:::::
+
+## Referencias
+

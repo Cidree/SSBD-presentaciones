@@ -214,14 +214,14 @@
     "href": "01_basic.html#otros-formatos-1",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Otros formatos",
-    "text": "Otros formatos\n\nGeoParquet (.parquet):\n\nEl futuro.\nExtensión del formato parquet optimizada para almacenar datos geoespaciales de forma eficiente y escalable.\nSe utiliza a través de los paquetes arrow y geoarrow"
+    "text": "Otros formatos\n\nGeoParquet (.parquet):\n\nEl futuro (y presente)\nExtensión del formato parquet optimizada para almacenar datos geoespaciales de forma eficiente y escalable\nSe utiliza a través de los paquetes arrow y geoarrow"
   },
   {
     "objectID": "01_basic.html#shapefile-vs-geopackage-vs-geoparquet",
     "href": "01_basic.html#shapefile-vs-geopackage-vs-geoparquet",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Shapefile vs GeoPackage vs GeoParquet",
-    "text": "Shapefile vs GeoPackage vs GeoParquet\n\n10,000,000 puntos\n4 columnas numéricas (enteros)"
+    "text": "Shapefile vs GeoPackage vs GeoParquet\n\n10,000,000 puntos\n10 columnas numéricas y 3 columnas character"
   },
   {
     "objectID": "01_basic.html#shapefile-vs-geopackage-vs-geoparquet-1",
@@ -312,7 +312,7 @@
     "href": "01_basic.html#funciones-de-sf-con-crs",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Funciones de sf con CRS",
-    "text": "Funciones de sf con CRS\n\nst_crs(): objeto con todos los metadatos del CRS del objeto\nst_set_crs(): asignar CRS. Se utiliza cuando nos dan datos sin CRS\nst_transform(): transformar de un CRS a otro\n\n\nst_crs(spain_sf)\n\nCoordinate Reference System:\n  User input: EPSG:25830 \n  wkt:\nPROJCRS[\"ETRS89 / UTM zone 30N\",\n    BASEGEOGCRS[\"ETRS89\",\n        ENSEMBLE[\"European Terrestrial Reference System 1989 ensemble\",\n            MEMBER[\"European Terrestrial Reference Frame 1989\"],\n            MEMBER[\"European Terrestrial Reference Frame 1990\"],\n            MEMBER[\"European Terrestrial Reference Frame 1991\"],\n            MEMBER[\"European Terrestrial Reference Frame 1992\"],\n            MEMBER[\"European Terrestrial Reference Frame 1993\"],\n            MEMBER[\"European Terrestrial Reference Frame 1994\"],\n            MEMBER[\"European Terrestrial Reference Frame 1996\"],\n            MEMBER[\"European Terrestrial Reference Frame 1997\"],\n            MEMBER[\"European Terrestrial Reference Frame 2000\"],\n            MEMBER[\"European Terrestrial Reference Frame 2005\"],\n            MEMBER[\"European Terrestrial Reference Frame 2014\"],\n            MEMBER[\"European Terrestrial Reference Frame 2020\"],\n            ELLIPSOID[\"GRS 1980\",6378137,298.257222101,\n                LENGTHUNIT[\"metre\",1]],\n            ENSEMBLEACCURACY[0.1]],\n        PRIMEM[\"Greenwich\",0,\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        ID[\"EPSG\",4258]],\n    CONVERSION[\"UTM zone 30N\",\n        METHOD[\"Transverse Mercator\",\n            ID[\"EPSG\",9807]],\n        PARAMETER[\"Latitude of natural origin\",0,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8801]],\n        PARAMETER[\"Longitude of natural origin\",-3,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8802]],\n        PARAMETER[\"Scale factor at natural origin\",0.9996,\n            SCALEUNIT[\"unity\",1],\n            ID[\"EPSG\",8805]],\n        PARAMETER[\"False easting\",500000,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8806]],\n        PARAMETER[\"False northing\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8807]]],\n    CS[Cartesian,2],\n        AXIS[\"(E)\",east,\n            ORDER[1],\n            LENGTHUNIT[\"metre\",1]],\n        AXIS[\"(N)\",north,\n            ORDER[2],\n            LENGTHUNIT[\"metre\",1]],\n    USAGE[\n        SCOPE[\"Engineering survey, topographic mapping.\"],\n        AREA[\"Europe between 6°W and 0°W: Faroe Islands offshore; Ireland - offshore; Jan Mayen - offshore; Norway including Svalbard - offshore; Spain - onshore and offshore.\"],\n        BBOX[35.26,-6,80.49,0.01]],\n    ID[\"EPSG\",25830]]"
+    "text": "Funciones de sf con CRS\n\nst_crs(): objeto con todos los metadatos del CRS del objeto\nst_set_crs(): asignar CRS. Se utiliza cuando nos dan datos sin CRS\nst_transform(): transformar de un CRS a otro\n\n\nst_crs(spain_sf)\n\nCoordinate Reference System:\n  User input: EPSG:25830 \n  wkt:\nPROJCRS[\"ETRS89 / UTM zone 30N\",\n    BASEGEOGCRS[\"ETRS89\",\n        ENSEMBLE[\"European Terrestrial Reference System 1989 ensemble\",\n            MEMBER[\"European Terrestrial Reference Frame 1989\"],\n            MEMBER[\"European Terrestrial Reference Frame 1990\"],\n            MEMBER[\"European Terrestrial Reference Frame 1991\"],\n            MEMBER[\"European Terrestrial Reference Frame 1992\"],\n            MEMBER[\"European Terrestrial Reference Frame 1993\"],\n            MEMBER[\"European Terrestrial Reference Frame 1994\"],\n            MEMBER[\"European Terrestrial Reference Frame 1996\"],\n            MEMBER[\"European Terrestrial Reference Frame 1997\"],\n            MEMBER[\"European Terrestrial Reference Frame 2000\"],\n            MEMBER[\"European Terrestrial Reference Frame 2005\"],\n            MEMBER[\"European Terrestrial Reference Frame 2014\"],\n            MEMBER[\"European Terrestrial Reference Frame 2020\"],\n            ELLIPSOID[\"GRS 1980\",6378137,298.257222101,\n                LENGTHUNIT[\"metre\",1]],\n            ENSEMBLEACCURACY[0.1]],\n        PRIMEM[\"Greenwich\",0,\n            ANGLEUNIT[\"degree\",0.0174532925199433]],\n        ID[\"EPSG\",4258]],\n    CONVERSION[\"UTM zone 30N\",\n        METHOD[\"Transverse Mercator\",\n            ID[\"EPSG\",9807]],\n        PARAMETER[\"Latitude of natural origin\",0,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8801]],\n        PARAMETER[\"Longitude of natural origin\",-3,\n            ANGLEUNIT[\"degree\",0.0174532925199433],\n            ID[\"EPSG\",8802]],\n        PARAMETER[\"Scale factor at natural origin\",0.9996,\n            SCALEUNIT[\"unity\",1],\n            ID[\"EPSG\",8805]],\n        PARAMETER[\"False easting\",500000,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8806]],\n        PARAMETER[\"False northing\",0,\n            LENGTHUNIT[\"metre\",1],\n            ID[\"EPSG\",8807]]],\n    CS[Cartesian,2],\n        AXIS[\"(E)\",east,\n            ORDER[1],\n            LENGTHUNIT[\"metre\",1]],\n        AXIS[\"(N)\",north,\n            ORDER[2],\n            LENGTHUNIT[\"metre\",1]],\n    USAGE[\n        SCOPE[\"Engineering survey, topographic mapping.\"],\n        AREA[\"Europe between 6°W and 0°W: Faroe Islands offshore; Ireland - offshore; Jan Mayen - offshore; Norway including Svalbard - offshore; Spain - mainland - onshore and offshore.\"],\n        BBOX[35.26,-6,80.49,0.01]],\n    USAGE[\n        SCOPE[\"Pan-European conformal mapping at scales larger than 1:500,000.\"],\n        AREA[\"Europe between 6°W and 0°W and approximately 35°15'N to 80°30'N.\"],\n        BBOX[35.26,-6.01,80.49,0]],\n    ID[\"EPSG\",25830]]"
   },
   {
     "objectID": "01_basic.html#práctica-2",
@@ -417,7 +417,7 @@
     "href": "01_basic.html#introducción-3",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Introducción",
-    "text": "Introducción\n\nEn esencia, son una matriz de datos\n\n\n\n      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]\n [1,]    1   10   10    8   13    1    2    9    3    10\n [2,]    4    4    6    7    9    2    0    6    6     6\n [3,]    1    7   -1    9   10    3    3   10    6     1\n [4,]    9    1    3    5    4    9   -3    7    0     7\n [5,]    8   -5    9   -2   10    5    5    1    5     4\n [6,]    7    3   17   14   -2    4    5    3    5     0\n [7,]    0    3    0    7    6   11    5    9   10    11\n [8,]   13    8    7    3    1    1    7   14   10     0\n [9,]    3    6   -1    7    2   12   11   10    1     5\n[10,]   10    2    3    1    5    6    6    5    2    -4"
+    "text": "Introducción\n\nEn esencia, son una matriz de datos\n\n\n\n      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]\n [1,]    3   -1   -1    7    3    2   12   10    7     2\n [2,]   -5  -15    5    3    1    2    6    9    6     8\n [3,]    4    9    5    3    4    8    6    2    3    13\n [4,]    8    0    7   -1    1   -4    7    6   16     7\n [5,]    5    3    8    7    7   -1    1    1    6    12\n [6,]   -2    9    5    0    2   17    3    4    3    10\n [7,]   16   12    0    0    8    1   12    4   21     9\n [8,]    2  -10   10    7   -1   -2    5   10    8     2\n [9,]    1    0    1    7    0    8    6    7    6     4\n[10,]   -2    0    9    6   10    2    4    8    6     2"
   },
   {
     "objectID": "01_basic.html#introducción-4",
@@ -452,7 +452,7 @@
     "href": "01_basic.html#análisis-de-datos-ráster-1",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Análisis de datos ráster",
-    "text": "Análisis de datos ráster\nSistemas de Referencia de coordenadas:\n\nproject(x, y): transformar el SRC\ncrs(x): consultar el SRC\ncrs(x) &lt;- \"EPSG:25830\": asignar SRC"
+    "text": "Análisis de datos ráster\nSistemas de Referencia de coordenadas:\n\nproject(x, y): transformar el SRC\ncrs(x): consultar el SRC\ncrs(x) &lt;- \"EPSG:25830\": asignar SRC\n\n\ncrs(dem_sr) |&gt; glue::glue()\n\nGEOGCRS[\"WGS 84\",\nENSEMBLE[\"World Geodetic System 1984 ensemble\",\n    MEMBER[\"World Geodetic System 1984 (Transit)\"],\n    MEMBER[\"World Geodetic System 1984 (G730)\"],\n    MEMBER[\"World Geodetic System 1984 (G873)\"],\n    MEMBER[\"World Geodetic System 1984 (G1150)\"],\n    MEMBER[\"World Geodetic System 1984 (G1674)\"],\n    MEMBER[\"World Geodetic System 1984 (G1762)\"],\n    MEMBER[\"World Geodetic System 1984 (G2139)\"],\n    MEMBER[\"World Geodetic System 1984 (G2296)\"],\n    ELLIPSOID[\"WGS 84\",6378137,298.257223563,\n        LENGTHUNIT[\"metre\",1]],\n    ENSEMBLEACCURACY[2.0]],\nPRIMEM[\"Greenwich\",0,\n    ANGLEUNIT[\"degree\",0.0174532925199433]],\nCS[ellipsoidal,2],\n    AXIS[\"geodetic latitude (Lat)\",north,\n        ORDER[1],\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\n    AXIS[\"geodetic longitude (Lon)\",east,\n        ORDER[2],\n        ANGLEUNIT[\"degree\",0.0174532925199433]],\nUSAGE[\n    SCOPE[\"Horizontal component of 3D system.\"],\n    AREA[\"World.\"],\n    BBOX[-90,-180,90,180]],\nID[\"EPSG\",4326]]"
   },
   {
     "objectID": "01_basic.html#análisis-de-datos-ráster-2",
@@ -487,7 +487,7 @@
     "href": "01_basic.html#formatos-ráster",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Formatos ráster",
-    "text": "Formatos ráster\n\n\nGeoTIFF (.tif, .tiff): de los más estandarizados\nCloud Optimized GeoTIFF (.tif): optimizado para la nube\nEnhanced Compression Wavelet (.ecw): alto ratio de lectura y compresión\nASCII (.asc): utiliza números entre 0 y 255 para almacenar datos\nFile Geodatabase (.gdb): base de datos de Esri"
+    "text": "Formatos ráster\n\n\nGeoTIFF (.tif, .tiff): de los más estandarizados\nCloud Optimized GeoTIFF (.tif): optimizado para la nube\nEnhanced Compression Wavelet (.ecw): alto ratio de lectura y compresión\nASCII (.asc): utiliza números entre 0 y 255 para almacenar datos\nFile Geodatabase (.gdb): base de datos de Esri\nNetCDF (.nc, .nc3, .nc4): formato utilizado para almacenar datos climáticos (`NetCDF)"
   },
   {
     "objectID": "01_basic.html#práctica-5",
@@ -557,7 +557,7 @@
     "href": "04_positron.html#ide",
     "title": "Positron - Una IDE para ciencia de datos con R y Python",
     "section": "IDE",
-    "text": "IDE\nUna IDE es…\n\nRStudio\nVS Code\nPyCharm\nSpyder\nMATLAB"
+    "text": "IDE\n\n\nUna IDE es…\n\nRStudio\nVS Code\nPyCharm\nSpyder\nMATLAB\n\n\n\n\n\n\n\n\n\n… un entorno de desarrollo (software) que permite escribir código."
   },
   {
     "objectID": "04_positron.html#positron",
@@ -627,7 +627,7 @@
     "href": "04_positron.html#espacio-de-trabajo",
     "title": "Positron - Una IDE para ciencia de datos con R y Python",
     "section": "Espacio de trabajo",
-    "text": "Espacio de trabajo\n\n\nWorkspace es simplemente una carpeta\nSimilar a un proyecto en RStudio\nPro Tip: trabajar SIEMPRE en un espacio de trabajo"
+    "text": "Espacio de trabajo\n\nWorkspace: es simplemente una carpeta\nPro Tip: trabajar SIEMPRE en un espacio de trabajo"
   },
   {
     "objectID": "04_positron.html#data-explorer-rstudio",
@@ -641,7 +641,7 @@
     "href": "04_positron.html#pizarra-blanca",
     "title": "Positron - Una IDE para ciencia de datos con R y Python",
     "section": "Pizarra blanca",
-    "text": "Pizarra blanca\n\nPositron utiliza por defecto el estilo “pizarra blanca”\n\nR --no-save --no-restore-data"
+    "text": "Pizarra blanca\n\nPositron utiliza por defecto el estilo “pizarra blanca”\n\n\n\nbash\n\nR --no-save --no-restore-data"
   },
   {
     "objectID": "04_positron.html#paleta-de-comandos",
@@ -683,7 +683,7 @@
     "href": "04_positron.html#instalación---requisitos-python",
     "title": "Positron - Una IDE para ciencia de datos con R y Python",
     "section": "Instalación - Requisitos Python",
-    "text": "Instalación - Requisitos Python\n\nVersión 3.9 - 3.13 de Python\nPython kernel:\n\n\n\nCommand Prompt\n\npython3 -m pip install ipykernel\npython -m pip install ipykernel"
+    "text": "Instalación - Requisitos Python\n\nVersión 3.9 - 3.13 de Python\nPython kernel:\n\n\n\nbash\n\npython3 -m pip install ipykernel\npython -m pip install ipykernel"
   },
   {
     "objectID": "04_positron.html#instalación---requisitos-r",
@@ -760,7 +760,7 @@
     "href": "03-geobia.html#objetivos-segmentación",
     "title": "Clasificación de usos del suelo en R",
     "section": "Objetivos segmentación",
-    "text": "Objetivos segmentación\n\nGenerar áreas de un tamaño razonable\nEvitar segmentación excesiva o insuficiente\nGenerar áreas representativas de cada clase\n\n\n\n\n\n\n\nImportante\n\n\nDefinir las clases que queremos predecir con el modelo"
+    "text": "Objetivos segmentación\n\nGenerar áreas de un tamaño razonable\nEvitar segmentación excesiva o insuficiente\nGenerar áreas representativas de cada clase\n\n\n\n\n\n\n\n\n\n\n\n\nImportante\n\n\nDefinir las clases que queremos predecir con el modelo"
   },
   {
     "objectID": "03-geobia.html#ejemplo",
@@ -837,20 +837,300 @@
     "href": "03-geobia.html#region-based",
     "title": "Clasificación de usos del suelo en R",
     "section": "Region-based",
-    "text": "Region-based\n\nLos más utilizados en GEOBIA"
+    "text": "Region-based\n\n\nWatershed:\n\nInterpreta la imagen como una topografía y simula cuánto se llenaría de agua\nLas líneas divisorias son los bordes de la segmentación\n\n\n\n\n\n\n\n\n\nFuente: https://datahacker.rs/007-opencv-projects-image-segmentation-with-watershed-algorithm/"
   },
   {
     "objectID": "03-geobia.html#segment-anything-model-sam",
     "href": "03-geobia.html#segment-anything-model-sam",
     "title": "Clasificación de usos del suelo en R",
     "section": "Segment Anything Model (SAM)",
-    "text": "Segment Anything Model (SAM)\n\n\nModelo pre-entrenado de Meta AI\nDisponible en Python"
+    "text": "Segment Anything Model (SAM)\n\nModelo pre-entrenado de Meta AI\nModelo de Deep Learning encoder-decoder\nDisponible en Python"
   },
   {
     "objectID": "03-geobia.html#segment-anything-model-sam-1",
     "href": "03-geobia.html#segment-anything-model-sam-1",
     "title": "Clasificación de usos del suelo en R",
     "section": "Segment Anything Model (SAM)",
-    "text": "Segment Anything Model (SAM)\n\nModelo pre-entrenado de Meta AI\nDisponible en Python"
+    "text": "Segment Anything Model (SAM)\n\nModelo pre-entrenado de Meta AI\nModelo de Deep Learning encoder-decoder\nDisponible en Python"
+  },
+  {
+    "objectID": "03-geobia.html#region-based-1",
+    "href": "03-geobia.html#region-based-1",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Region based",
+    "text": "Region based\n\n\nMean-shift:\n\nAgrupa píxeles en función de la similitud\nParámetros: spatialr, ranger, minsize\n\nPasos:\n\nPara cada píxel, se define una ventana de búsqueda en el espacio espectral y espacial.\nSe calcula la media de todos los píxeles dentro de esa ventana (en color y posición).\nSe actualiza la posición del centro hacia esa media → repite hasta converger.\nTodos los píxeles que convergen al mismo modo son etiquetados como una región.\n\n\n\n\n\n\n\n\n\nFuente: https://ailephant.com/how-to-program-mean-shift/"
+  },
+  {
+    "objectID": "03-geobia.html#software",
+    "href": "03-geobia.html#software",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Software",
+    "text": "Software\n\n\nOrfeo Toolbox\n\nAlgoritmos para teledetección\nSoftware libre\nQGIS, R, Python, CMD, C++\nSegmentación:\n\nMean-shift\nWatershed\nLarge Scale Meanshift"
+  },
+  {
+    "objectID": "03-geobia.html#práctica-1",
+    "href": "03-geobia.html#práctica-1",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "💪 Práctica 1",
+    "text": "💪 Práctica 1\n\nDescarga Orfeo Toolbox\nSegmentación en R. Paquetes a utilizar:\n\narrow/geoarrow: formato GeoParquet\nlink2GI: acceso a aplicaciones de Orfeo Toolbox\nmapview: visualización interactiva\nOTBsegm: wrapper de las aplicaciones de segmentación de OTB\nsf: manejo de datos vectoriales\nterra: manejo de datos ráster\ntidyverse: paquetes para análisis y visualización de datos"
+  },
+  {
+    "objectID": "03-geobia.html#objetivo",
+    "href": "03-geobia.html#objetivo",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Objetivo",
+    "text": "Objetivo"
+  },
+  {
+    "objectID": "03-geobia.html#objetivo-1",
+    "href": "03-geobia.html#objetivo-1",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Objetivo",
+    "text": "Objetivo"
+  },
+  {
+    "objectID": "03-geobia.html#estadísticas-focales",
+    "href": "03-geobia.html#estadísticas-focales",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Estadísticas focales",
+    "text": "Estadísticas focales"
+  },
+  {
+    "objectID": "03-geobia.html#práctica-2",
+    "href": "03-geobia.html#práctica-2",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "💪 Práctica 2",
+    "text": "💪 Práctica 2\n\nToma de datos en QGIS\nExtracción estadísticas. Paquetes a utilizar\n\narrow/geoarrow: formato GeoParquet\nexactextractr: estadísticas focales\nmapview: visualización interactiva\nsf: manejo de datos vectoriales\nterra: manejo de datos ráster\ntidyverse: paquetes para análisis y visualización de datos"
+  },
+  {
+    "objectID": "03-geobia.html#introducción-1",
+    "href": "03-geobia.html#introducción-1",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Introducción",
+    "text": "Introducción\nConceptos de machine learning:\n\nClasificación: el objetivo del modelo es predecir una variable categórica (etiqueta, clase) a partir de un conjunto de variables. Para ello se entrena un modelo con datos ya clasificados, que aprende los patrones y los aplica a datos nuevos.\nRegresión: el objetivo del modelo es predecir una variable continua a partir de un conjunto de variables."
+  },
+  {
+    "objectID": "03-geobia.html#introducción-2",
+    "href": "03-geobia.html#introducción-2",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Introducción",
+    "text": "Introducción\nConceptos de machine learning:\n\n\n\nAprendizaje no supervisado: algoritmos que trabajan sin etiquetas (clustering, segmentación mean-shift, PCA)\nAprendizaje supervisado: algoritmos que aprenden de datos etiquetados (clasificación, regresión, CNN)\n\n\n\n\n\n\n\n\n\nFuente: Morimoto and Ponton (2021)"
+  },
+  {
+    "objectID": "03-geobia.html#introducción-3",
+    "href": "03-geobia.html#introducción-3",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Introducción",
+    "text": "Introducción\nConceptos de machine learning:\n\nClasificación no supervisada (clustering): algoritmos de clasificación que trabajan sin etiquetas. Agrupan los datos según su similitud\nClasificación supervisada: algoritmos de clasificación que aprenden de datos etiquetados\n\n\n\n\n\n\n\n\n\nPropiedad\nClasificación supervisada\nClasificación no supervisada\n\n\n\n\nDatos de entrenamiento\nNecesita datos con clases conocidas\nNo necesita datos con clases\n\n\nPrecisión\nGeneralmente mayor\nGeneralmente menor\n\n\nOutput\nClases predefinidas\nClusters/grupos - post-interpretación\n\n\nAlgoritmos\nRandom forest, SVM, XGBoost...\nK-Means, ISODATA, Hierachical clustering\n\n\nIntervención\nSe necesita etiquetar datos y entrenar el algoritmo\nMínima\n\n\nCasos de uso\nClasificación (usos del suelo, modelos combustible..)\nIdentificación de patrones, exploración de datos"
+  },
+  {
+    "objectID": "03-geobia.html#algoritmos-clasificación-supervisada",
+    "href": "03-geobia.html#algoritmos-clasificación-supervisada",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Algoritmos clasificación supervisada",
+    "text": "Algoritmos clasificación supervisada\n\nRegresión logística\nK-Nearest Neighbors\nSupport Vector Machine\nNaive Bayes\nDecision tree\nRandom Forest\nXGBoost\n\n\n\n\n\n\n\nAtención\n\n\nUn algoritmo no es un modelo sensu stricto"
+  },
+  {
+    "objectID": "03-geobia.html#referencias",
+    "href": "03-geobia.html#referencias",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Referencias",
+    "text": "Referencias\n\n\n\n\nMorimoto, Juliano, and Fleur Ponton. 2021. “Virtual Reality in Biology: Could We Become Virtual Naturalists?” Evolution: Education and Outreach 14 (1). https://doi.org/10.1186/s12052-021-00147-x."
+  },
+  {
+    "objectID": "03-geobia.html#pasos-modelado",
+    "href": "03-geobia.html#pasos-modelado",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Pasos modelado",
+    "text": "Pasos modelado"
+  },
+  {
+    "objectID": "04_positron.html#múltiples-sesiones",
+    "href": "04_positron.html#múltiples-sesiones",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Múltiples sesiones",
+    "text": "Múltiples sesiones\n\nConsola multisesión\nSesiones de Python y R\nMúltiples versiones"
+  },
+  {
+    "objectID": "03-geobia.html#paso-1---obtener-datos",
+    "href": "03-geobia.html#paso-1---obtener-datos",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Paso 1 - Obtener datos",
+    "text": "Paso 1 - Obtener datos"
+  },
+  {
+    "objectID": "03-geobia.html#paso-2---preparar-datos",
+    "href": "03-geobia.html#paso-2---preparar-datos",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Paso 2 - Preparar datos",
+    "text": "Paso 2 - Preparar datos"
+  },
+  {
+    "objectID": "03-geobia.html#paso-3---entrenar-modelo",
+    "href": "03-geobia.html#paso-3---entrenar-modelo",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Paso 3 - Entrenar modelo",
+    "text": "Paso 3 - Entrenar modelo"
+  },
+  {
+    "objectID": "03-geobia.html#pasos-3-4-y-5---modelado",
+    "href": "03-geobia.html#pasos-3-4-y-5---modelado",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Pasos 3, 4 y 5 - Modelado",
+    "text": "Pasos 3, 4 y 5 - Modelado"
+  },
+  {
+    "objectID": "03-geobia.html#separación-de-datos",
+    "href": "03-geobia.html#separación-de-datos",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Separación de datos",
+    "text": "Separación de datos\n\nDatos de entrenamiento: el modelo aprende de estos datos (70-80%)\nDatos de prueba: el modelo se evalúa en estos datos (20-30%)"
+  },
+  {
+    "objectID": "03-geobia.html#separación-de-datos-1",
+    "href": "03-geobia.html#separación-de-datos-1",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Separación de datos",
+    "text": "Separación de datos\n\nDatos de entrenamiento: el modelo aprende de estos datos (70-80%)\nDatos de prueba: el modelo se evalúa en estos datos (20-30%)"
+  },
+  {
+    "objectID": "03-geobia.html#feature-engineering",
+    "href": "03-geobia.html#feature-engineering",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Feature engineering",
+    "text": "Feature engineering\n\nSelección de variables: selección de variables relevantes \nTransformación de variables:\n\nOne Hot Encoding: variables categóricas \nNormalización/estandarización: variables continuas \n\nCreación de variables: ratios, polinomios, interacciones… \nReducción de la dimensionalidad: PCA, UMAP… \n\n\nMejores variables –&gt; mejores modelos\n\n\n\n\n\n\n\n\nTip\n\n\nEn la mayoría de los problemas, feature engineering tiene un mayor impacto en el modelo que elegir un algoritmo cool."
+  },
+  {
+    "objectID": "03-geobia.html#separación-de-datos-2",
+    "href": "03-geobia.html#separación-de-datos-2",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Separación de datos",
+    "text": "Separación de datos\n\nDatos de entrenamiento: el modelo aprende de estos datos (70-80%)\nDatos de prueba: el modelo se evalúa en estos datos (20-30%)"
+  },
+  {
+    "objectID": "03-geobia.html#separación-de-datos-3",
+    "href": "03-geobia.html#separación-de-datos-3",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Separación de datos",
+    "text": "Separación de datos\n\n\nPaquete rsample:\n\n\n\n\n\n\n\n\nset.seed(137)\nsplits    &lt;- initial_split(annotated_data_tbl, prop = .8, strata = class)\ntrain_tbl &lt;- training(splits)\ntest_tbl  &lt;- testing(splits)\n\n\n\n\ntrain_tbl\n\n# A tibble: 718 × 16\n   class      median.R median.G median.B stdev.R stdev.G stdev.B count.R count.G\n   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n 1 Agroganad…     80.0     139.     99.4    9.11    7.41    9.24   91385   91385\n 2 Agroganad…     84.6     142.    103.     8.60    5.27    8.65   12609   12609\n 3 Agroganad…     88.3     134.    100.    25.3    15.0    19.9   172767  172767\n 4 Agroganad…    106.      143.    111.    11.5     5.72    9.88    6848    6848\n 5 Agroganad…    119.      146.    122.    23.9    15.8    18.8   170767  170767\n 6 Agroganad…    150.      156.    144.    11.3     9.28   11.0    54059   54059\n 7 Agroganad…     88.3     134.    100.    25.3    15.0    19.9   172767  172767\n 8 Agroganad…     88.3     134.    100.    25.3    15.0    19.9   172767  172767\n 9 Agroganad…     78.5     135.     97.3    9.54    7.61    8.53    6396    6396\n10 Agroganad…     78.8     136.     96.0   11.9    12.4     9.97   10021   10021\n# ℹ 708 more rows\n# ℹ 7 more variables: count.B &lt;dbl&gt;, min.R &lt;dbl&gt;, min.G &lt;dbl&gt;, min.B &lt;dbl&gt;,\n#   max.R &lt;dbl&gt;, max.G &lt;dbl&gt;, max.B &lt;dbl&gt;\n\n\n\n\ntest_tbl\n\n# A tibble: 181 × 16\n   class      median.R median.G median.B stdev.R stdev.G stdev.B count.R count.G\n   &lt;chr&gt;         &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n 1 Arbolado       81.5     99.8     91.1   20.2    21.6    22.7      703     703\n 2 Arbolado       35.1     53.5     60.8   19.2    20.4    21.9      245     245\n 3 Arbolado      130.     137.     128.    26.9    24.2    29.0      394     394\n 4 Arbolado       66.5     80.2     68.3   18.2    20.7    18.9     1010    1010\n 5 Agroganad…     80.0    139.      99.4    9.11    7.41    9.24   91385   91385\n 6 Agroganad…    109.     143.     116.    24.7    14.7    18.7    58811   58811\n 7 Arbolado       82.7    102.      92.0   20.5    21.0    21.3      473     473\n 8 Arbolado       73.0     98.5     85.3   20.8    23.4    20.7      750     750\n 9 Arbolado       58.2     87.5     76.7   17.0    21.5    19.7      647     647\n10 Arbolado       46.9     62.1     58.5   16.0    19.6    18.2      243     243\n# ℹ 171 more rows\n# ℹ 7 more variables: count.B &lt;dbl&gt;, min.R &lt;dbl&gt;, min.G &lt;dbl&gt;, min.B &lt;dbl&gt;,\n#   max.R &lt;dbl&gt;, max.G &lt;dbl&gt;, max.B &lt;dbl&gt;"
+  },
+  {
+    "objectID": "03-geobia.html#feature-engineering-1",
+    "href": "03-geobia.html#feature-engineering-1",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Feature engineering",
+    "text": "Feature engineering\nSelección de variables:\n\nAlgunos algoritmos son sensibles a variables irrelevantes (KNN)\nAlgunos algoritmos son sensibles a variables correlacionadas (KNN)\nExplorar datos y relaciones de variables"
+  },
+  {
+    "objectID": "03-geobia.html#tidymodels",
+    "href": "03-geobia.html#tidymodels",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Tidymodels",
+    "text": "Tidymodels\nColección de paquetes de R para machine learning"
+  },
+  {
+    "objectID": "03-geobia.html#feature-engineering-2",
+    "href": "03-geobia.html#feature-engineering-2",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Feature engineering",
+    "text": "Feature engineering\nTransformación de variables continuas:\n\nAlgunos algoritmos son sensibles a diferencias de magnitud\nAlgoritmos basados en distancias (KNN, SVM, ANN)\nNormalizar (0, 1) / estandarizar (\\(\\mu = 0 \\; \\ \\sigma = 1\\))\n\n\n\n\n\n\n\n\nTip\n\n\nNormalizar no tiene relevancia en algoritmos como Random Forest o XGBoost"
+  },
+  {
+    "objectID": "03-geobia.html#feature-engineering-3",
+    "href": "03-geobia.html#feature-engineering-3",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Feature engineering",
+    "text": "Feature engineering\n\n\nPaquete recipes:\n\n\n\n\n\n\n\n\nbase_rec &lt;- recipe(class ~ ., data = train_tbl) |&gt; \n  step_zv(all_predictors()) |&gt;  \n  step_lincomb(all_predictors())\n\n\nbase_rec |&gt; prep() |&gt; juice()\n\n# A tibble: 718 × 14\n   median.R median.G median.B stdev.R stdev.G stdev.B count.R min.R min.G min.B\n      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1     80.0     139.     99.4    9.11    7.41    9.24   91385  13.0  32.8 26.5 \n 2     84.6     142.    103.     8.60    5.27    8.65   12609  53.8 103.  65.2 \n 3     88.3     134.    100.    25.3    15.0    19.9   172767  11    35.1  6.72\n 4    106.      143.    111.    11.5     5.72    9.88    6848  27.7  48.1 52.5 \n 5    119.      146.    122.    23.9    15.8    18.8   170767  14.2  37.4 14   \n 6    150.      156.    144.    11.3     9.28   11.0    54059  20.7  39.0 27.8 \n 7     88.3     134.    100.    25.3    15.0    19.9   172767  11    35.1  6.72\n 8     88.3     134.    100.    25.3    15.0    19.9   172767  11    35.1  6.72\n 9     78.5     135.     97.3    9.54    7.61    8.53    6396  20.1  39.9 32.9 \n10     78.8     136.     96.0   11.9    12.4     9.97   10021  16.9  39.2 32.2 \n# ℹ 708 more rows\n# ℹ 4 more variables: max.R &lt;dbl&gt;, max.G &lt;dbl&gt;, max.B &lt;dbl&gt;, class &lt;fct&gt;"
+  },
+  {
+    "objectID": "03-geobia.html#algoritmos",
+    "href": "03-geobia.html#algoritmos",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Algoritmos",
+    "text": "Algoritmos\nÁrboles de decisión: en este algoritmo se basan random forest y xgboost"
+  },
+  {
+    "objectID": "03-geobia.html#algoritmos-1",
+    "href": "03-geobia.html#algoritmos-1",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Algoritmos",
+    "text": "Algoritmos\nRandom Forest: conjunto de árboles de decisión\n\n\n\n\n\n\n\nFuente: https://www.turing.com/kb/random-forest-algorithm"
+  },
+  {
+    "objectID": "03-geobia.html#algoritmos-2",
+    "href": "03-geobia.html#algoritmos-2",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Algoritmos",
+    "text": "Algoritmos\nK-Nearest Neighbor (KNN): clasifica en la clase más similar según la clase de los vecinos más cercanos\n\n\n\n\n\n\n\nFuente: https://intuitivetutorial.com/2023/04/07/k-nearest-neighbors-algorithm/"
+  },
+  {
+    "objectID": "03-geobia.html#algoritmos-3",
+    "href": "03-geobia.html#algoritmos-3",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Algoritmos",
+    "text": "Algoritmos\n\n\nPaquete parsnip:\n\n\n\n\n\n\n\n\nrf_spec &lt;- rand_forest(\n    mode  = \"classification\",\n    trees = 500,\n    mtry  = tune(),\n    min_n = tune()\n  ) |&gt; \n  set_engine(\n    engine     = \"ranger\",\n    importance = \"permutation\"\n  )"
+  },
+  {
+    "objectID": "03-geobia.html#algoritmos-4",
+    "href": "03-geobia.html#algoritmos-4",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Algoritmos",
+    "text": "Algoritmos\n\n\nPaquete parsnip:\n\n\n\n\n\n\n\n\nrf_spec &lt;- rand_forest(\n    mode  = \"classification\",\n    trees = 500,\n    mtry  = tune(),\n    min_n = tune()\n  ) |&gt; \n  set_engine(\n    engine     = \"ranger\",\n    importance = \"permutation\"\n  )"
+  },
+  {
+    "objectID": "03-geobia.html#remuestreo",
+    "href": "03-geobia.html#remuestreo",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Remuestreo",
+    "text": "Remuestreo\nResampling: consiste en separar los datos de entrenamiento en dos grupos:\n\nAnálisis: datos de entrenamiento del modelo\nEvaluación: datos que se utilizan para evaluar el modelo\n\nV-fold Cross-Validation: el más común.\n\n\n\n\n\n\n\nFuente: scikit-learn"
+  },
+  {
+    "objectID": "03-geobia.html#remuestreo-1",
+    "href": "03-geobia.html#remuestreo-1",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Remuestreo",
+    "text": "Remuestreo\n\n\nPaquete rsample:\n\n\n\n\n\n\n\n\nset.seed(137)\nfolds &lt;- vfold_cv(train_tbl, strata = class, v = 5)\n\n\n\n#  5-fold cross-validation using stratification \n# A tibble: 5 × 2\n  splits            id   \n  &lt;list&gt;            &lt;chr&gt;\n1 &lt;split [573/145]&gt; Fold1\n2 &lt;split [574/144]&gt; Fold2\n3 &lt;split [575/143]&gt; Fold3\n4 &lt;split [575/143]&gt; Fold4\n5 &lt;split [575/143]&gt; Fold5"
+  },
+  {
+    "objectID": "03-geobia.html#remuestreo-2",
+    "href": "03-geobia.html#remuestreo-2",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Remuestreo",
+    "text": "Remuestreo\n\n\nPaquete rsample:\n\n\n\n\n\n\n\n\n\n#  5-fold cross-validation using stratification \n# A tibble: 5 × 2\n  splits            id   \n  &lt;list&gt;            &lt;chr&gt;\n1 &lt;split [389/100]&gt; Fold1\n2 &lt;split [390/99]&gt;  Fold2\n3 &lt;split [392/97]&gt;  Fold3\n4 &lt;split [392/97]&gt;  Fold4\n5 &lt;split [393/96]&gt;  Fold5"
+  },
+  {
+    "objectID": "03-geobia.html#hyperparameter-tuning",
+    "href": "03-geobia.html#hyperparameter-tuning",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Hyperparameter tuning",
+    "text": "Hyperparameter tuning\n\nLos hiperparámetros no son aprendidos por el modelo\nDeben probarse distintos valores para elegir los más adecuados\nGrid search: prueba un número determinado de valores\nSe prueban durante el entrenamiento del modelo. Una vez entrenado, se eligen los mejores hiperparámetros\nEvita el sobreajuste"
+  },
+  {
+    "objectID": "03-geobia.html#evaluación-resamples",
+    "href": "03-geobia.html#evaluación-resamples",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Evaluación resamples",
+    "text": "Evaluación resamples"
+  },
+  {
+    "objectID": "03-geobia.html#hiperparámetros-random-forest",
+    "href": "03-geobia.html#hiperparámetros-random-forest",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Hiperparámetros Random Forest",
+    "text": "Hiperparámetros Random Forest\n\nmtry: número de variables seleccionadas aleatoriamente\nmin_n: número de observaciones mínima para que un nodo se vuelva a separar\ntrees: número de árboles de decisión\n\n\n\n\n\n\nVariables: color, forma, altura, anchura, peso, volumen, contenido de azúcar, diámetro"
+  },
+  {
+    "objectID": "03-geobia.html#hiperparámetros-knn",
+    "href": "03-geobia.html#hiperparámetros-knn",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Hiperparámetros KNN",
+    "text": "Hiperparámetros KNN\nK: número de vecinos\n\n\nCon tuning\n\nknn_spec &lt;- nearest_neighbor(\n  mode      = \"classification\",\n  neighbors = tune()\n)\n\n\nSin tuning\n\nknn_spec &lt;- nearest_neighbor(\n  mode      = \"classification\",\n  neighbors = 5\n)"
+  },
+  {
+    "objectID": "03-geobia.html#tunear-en-tidymodels",
+    "href": "03-geobia.html#tunear-en-tidymodels",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Tunear en tidymodels",
+    "text": "Tunear en tidymodels\nSin tuning\n\nmodel_fit &lt;- fit_resamples(\n  model_wflw,\n  resamples = folds,\n  metrics   = metric_set(accuracy, f_meas)\n)\n\nTuning 1 modelo\n\nmodel_fit &lt;- tune_grid(\n  model_wflw,\n  resamples = folds,\n  grid      = 20,\n  metrics   = metric_set(accuracy, f_meas)\n)\n\nTuning varios modelos\n\nmodels_fit &lt;- workflow_map(\n  model_wflw,\n  fn        = \"tune_grid\",\n  resamples = folds,\n  grid      = 20, \n  metrics   = metric_set(accuracy, f_meas)\n)"
   }
 ]

@@ -157,12 +157,19 @@ mapview(andalucia_sf, layer.name = "Provincias", zcol = "prov.shortname.es") +
 
 ## Paquetes de R para análisis espacial
 
+::::: {.columns style="display: flex !important;"}
+::: {.column style="display: flex; justify-content: center; align-items: center; width: 20%;"}
+![](00_assets/figures/01-geospatial-R/meme-fake-happy.png){fig-align="center" width="327"}
+:::
+
+::: {.column width="80%"}
 ![](00_assets/figures/01-geospatial-R/rpackages-spatial-2025.jpg){fig-alt="R packages" fig-align="center" width="800"}
+:::
+:::::
 
 ## Paquete sf
 
-::: {.incremental}
-
+::: incremental
 -   Paquete principal para datos vectoriales con interfaz a GDAL, PROJ y GEOS. Optimización a través de `Rcpp`
 
 -   TODAS las funciones empiezan por `st_`
@@ -174,7 +181,6 @@ mapview(andalucia_sf, layer.name = "Provincias", zcol = "prov.shortname.es") +
 -   Datos guardados como `data.frame` o `tibble` con columna de geometría
 
 -   Datos `tidy`. Manipulación de tabla de atributos con `tidyverse`
-
 :::
 
 ![](00_assets/figures/01-geospatial-R/simple-feature.png){fig-alt="Simple Feature" fig-align="center"}
@@ -221,21 +227,13 @@ mapview(andalucia_sf, layer.name = "Provincias", zcol = "prov.shortname.es") +
 
 -   **GeoParquet (.parquet):**
 
-    -   El futuro.
+    -   El futuro (y presente)
 
-    -   Extensión del formato parquet optimizada para almacenar datos geoespaciales de forma eficiente y escalable.
+    -   Extensión del formato parquet optimizada para almacenar datos geoespaciales de forma eficiente y escalable
 
     -   Se utiliza a través de los paquetes `arrow` y `geoarrow`
 
-## Shapefile vs GeoPackage vs GeoParquet
-
--   10,000,000 puntos
-
--   4 columnas numéricas (enteros)
-
-![](00_assets/figures/01-geospatial-R/tictoc-gpkg-shp-parquet.png){fig-align="center"}
-
-![](00_assets/figures/01-geospatial-R/size-gpkg-shp-parquet.png){fig-align="center"}
+![](00_assets/figures/01-geospatial-R/meme-geoparquet.PNG){fig-align="center" width="548"}
 
 ## Shapefile vs GeoPackage vs GeoParquet
 
@@ -346,8 +344,6 @@ spain_sf <- read_sf("spain.gpkg", layer = "spain")
 :::
 :::::
 
-
-
 ## Definiciones
 
 -   **Proyección**: transformación de un sistema angular tridimensional a un sistema plano bidimensional conocido como sistema cartesiano.
@@ -356,8 +352,7 @@ spain_sf <- read_sf("spain.gpkg", layer = "spain")
 
 ## Entonces, qué debo hacer?
 
-::: {.incremental}
-
+::: incremental
 -   Comprobar que tus datos están proyectados (tienen CRS)
 
 -   Si no están proyectados, preguntar al autor de los datos cuál es el CRS de éstos y **asignar el CRS**
@@ -365,7 +360,6 @@ spain_sf <- read_sf("spain.gpkg", layer = "spain")
 -   Si están proyectados, continuar trabajando con ese CRS si el adecuado para mi proyecto
 
 -   Si están proyectados, pero quiero trabajar con otro CRS, **reproyectar el CRS** (transformar a otro)
-
 :::
 
 ## Uso incorrecto de SRC
@@ -414,7 +408,7 @@ ggplot(spain_sf) +
 
 -   Coordenadas UTM: EPSG:25828, EPSG:25829, EPSG:25830, EPSG:25831
 
-![](00_assets/figures/01-geospatial-R/crs-utm-spain.png){fig-align="center" width="526"}
+![](00_assets/figures/01-geospatial-R/crs-utm-spain.png){fig-align="center" width="460"}
 
 ## Funciones de `sf` con CRS
 
@@ -427,7 +421,6 @@ ggplot(spain_sf) +
 ```{r}
 st_crs(spain_sf)
 ```
-
 
 ## 💪 Práctica 2 {.exercise}
 
@@ -487,6 +480,8 @@ tibble(
         locations = cells_column_labels()
     )
 ```
+
+![](00_assets/figures/01-geospatial-R/meme-homer-entender.jpg){fig-align="center" width="300"}
 
 ## 💪 Práctica 3 {.exercise}
 
@@ -576,7 +571,7 @@ cordoba_sf <- esp_get_prov() |>
 
 ::: {.fragment .fade-in}
 ```{r}
-#| code-line-numbers: "3"
+#| code-line-numbers: "1-4|3"
 mapview(cordoba_sf) +
   mapview(
     rivers_sf[rivers_idx[[1]], ]
@@ -796,7 +791,9 @@ r <- rast(nrows = 10, ncols = 10)
 values(r) <- rnorm(ncell(r), mean = 5, sd = 5)
 
 # Plot the raster
-plot(r, col = terrain.colors(10))  # "classes" style keeps it simple
+withr::with_par(list(mfrow = c(1, 1), bg = "transparent"), {
+    plot(r, col = terrain.colors(10)) 
+})
 ```
 
 ## Introducción
@@ -806,10 +803,14 @@ plot(r, col = terrain.colors(10))  # "classes" style keeps it simple
 ```{r}
 #| echo: false 
 # Plot the raster
-plot(r, col = terrain.colors(10))  # "classes" style keeps it simple
+withr::with_par(list(mfrow = c(1, 1), bg = "transparent"), {
+    
+    plot(r, col = terrain.colors(10)) 
 
-# Add text labels at cell centers
-text(r, labels = values(r))
+    # Add text labels at cell centers
+    text(r, labels = values(r))
+})
+
 ```
 
 ## Introducción
@@ -827,7 +828,7 @@ matrix(r, nrow = 10) |> round(0)
 
     -   Cuánto más pequeños mayor resolución (HD, 4K)
 
-    -   Cuánto más grandes menor resolución (144p, 480p)
+    -   Cuánto más grandes menor resolución (144p, 240p)
 
 ::: {.fragment .fade-in}
 -   Resolución espacial: se mide en las unidades del SRC (grados, metros)
@@ -944,6 +945,10 @@ Sistemas de Referencia de coordenadas:
 -   `crs(x)`: consultar el SRC
 
 -   `crs(x) <- "EPSG:25830"`: asignar SRC
+
+```{r}
+crs(dem_sr) |> glue::glue()
+```
 
 ## Análisis de datos ráster {.special-size}
 
@@ -1093,25 +1098,23 @@ Estas funciones tienen el argumento `method` que es de importancia:
 
 ## Formatos ráster
 
-::: {.incremental}
+::: incremental
+-   GeoTIFF (.tif, .tiff): de los más estandarizados
 
-* GeoTIFF (.tif, .tiff): de los más estandarizados
+-   Cloud Optimized GeoTIFF (.tif): optimizado para la nube
 
-* Cloud Optimized GeoTIFF (.tif): optimizado para la nube
+-   Enhanced Compression Wavelet (.ecw): alto ratio de lectura y compresión
 
-* Enhanced Compression Wavelet (.ecw): alto ratio de lectura y compresión
+-   ASCII (.asc): utiliza números entre 0 y 255 para almacenar datos
 
-* ASCII (.asc): utiliza números entre 0 y 255 para almacenar datos
+-   File Geodatabase (.gdb): base de datos de Esri
 
-* File Geodatabase (.gdb): base de datos de Esri
-
+-   NetCDF (.nc, .nc3, .nc4): formato utilizado para almacenar datos climáticos
 :::
 
 ## 💪 Práctica 5 {.exercise}
 
 -   Importar/Exportar datos ráster
-
--   Exploración básica de datos ráster
 
 -   Descarga y cálculo de modelos del terreno
 
@@ -1123,18 +1126,18 @@ Estas funciones tienen el argumento `method` que es de importancia:
 
 -   Extraer valores de un ráster
 
--   Modificar resolución espacial
-
 -   Paquetes a utilizar:
 
-    -   `geodata`: descarga de datos (GBIF, Worldclim, elevación...)
-    
+    -   `geodata`: descarga de datos (Worldclim, elevación...)
+
     -   `geoperu`: descarga de áreas protegidas de Perú
-    
+
     -   `mapview`: visualización interactiva de datos
-    
-    -   `terra`: paquete base para datos ráster
 
     -   `sf`: paquete base para datos vectoriales
+    
+    -   `spocc`: descarga de ocurrencias
+
+    -   `terra`: paquete base para datos ráster
 
     -   `tidyverse`: paquetes para análisis de datos
