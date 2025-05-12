@@ -94,9 +94,7 @@ Una IDE es...
 
 -   Múltiples versiones
 
-```{=html}
 <br>
-```
 
 ::::: columns
 ::: {.column width="50%"}
@@ -110,7 +108,7 @@ Una IDE es...
 
 ## Interactive built-in console
 
--   Ctrl + Enter para ejecutar código
+-   <kbd>Ctrl + Enter</kbd> para ejecutar código
 
 -   Autocompletado de funciones
 
@@ -214,6 +212,14 @@ R --no-save --no-restore-data
 ## Paleta de comandos
 
 ![](00_assets/figures/04-positron/ide-slate-palette-settings-rstu.png){fig-align="center"}
+
+## Version control
+
+![](00_assets/figures/04-positron/version-control.png){fig-align="center"}
+
+## Version control
+
+![](00_assets/figures/04-positron/version-control-explorer.png){fig-align="center"}
 
 ## Extensiones
 

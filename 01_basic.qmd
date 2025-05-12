@@ -51,6 +51,8 @@ par(bg = "transparent")
 
 # Objetivos
 
+-   Descarga material: [https://github.com/Cidree/SSBD-R-geospatial](https://github.com/Cidree/SSBD-R-geospatial)
+
 -   Manejar datos vectoriales con `sf`
 
 -   Manejar datos raster con `terra`
@@ -169,7 +171,6 @@ mapview(andalucia_sf, layer.name = "Provincias", zcol = "prov.shortname.es") +
 
 ## Paquete sf
 
-::: incremental
 -   Paquete principal para datos vectoriales con interfaz a GDAL, PROJ y GEOS. Optimización a través de `Rcpp`
 
 -   TODAS las funciones empiezan por `st_`
@@ -181,7 +182,6 @@ mapview(andalucia_sf, layer.name = "Provincias", zcol = "prov.shortname.es") +
 -   Datos guardados como `data.frame` o `tibble` con columna de geometría
 
 -   Datos `tidy`. Manipulación de tabla de atributos con `tidyverse`
-:::
 
 ![](00_assets/figures/01-geospatial-R/simple-feature.png){fig-alt="Simple Feature" fig-align="center"}
 
@@ -352,7 +352,6 @@ spain_sf <- read_sf("spain.gpkg", layer = "spain")
 
 ## Entonces, qué debo hacer?
 
-::: incremental
 -   Comprobar que tus datos están proyectados (tienen CRS)
 
 -   Si no están proyectados, preguntar al autor de los datos cuál es el CRS de éstos y **asignar el CRS**
@@ -360,7 +359,7 @@ spain_sf <- read_sf("spain.gpkg", layer = "spain")
 -   Si están proyectados, continuar trabajando con ese CRS si el adecuado para mi proyecto
 
 -   Si están proyectados, pero quiero trabajar con otro CRS, **reproyectar el CRS** (transformar a otro)
-:::
+
 
 ## Uso incorrecto de SRC
 
@@ -593,8 +592,6 @@ mapview(cordoba_sf) +
     -   Filtrar los municipios con los cuáles interseca el nuevo parque nacional.
 
     -   Filtrar las parcelas que son colindantes con mi parcela.
-
-    -   Filtrar las áreas de servicio que se encuentran en la ciudad de Madrid.
 :::
 
 ::: {.fragment .fade-in}
@@ -602,7 +599,6 @@ mapview(cordoba_sf) +
 
     -   Unir parcelas de muestreo con el cantón en el que se encuentran
 
-    -   Unir datos de especies en en peligro de extinción con los polígonos de regiones del bosque donde se encuentran
 :::
 
 ## Filtros
@@ -830,9 +826,8 @@ matrix(r, nrow = 10) |> round(0)
 
     -   Cuánto más grandes menor resolución (144p, 240p)
 
-::: {.fragment .fade-in}
 -   Resolución espacial: se mide en las unidades del SRC (grados, metros)
-:::
+
 
 ```{r}
 #| echo: false

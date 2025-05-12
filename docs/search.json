@@ -417,14 +417,14 @@
     "href": "01_basic.html#introducción-3",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Introducción",
-    "text": "Introducción\n\nEn esencia, son una matriz de datos\n\n\n\n      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]\n [1,]    3   -1   -1    7    3    2   12   10    7     2\n [2,]   -5  -15    5    3    1    2    6    9    6     8\n [3,]    4    9    5    3    4    8    6    2    3    13\n [4,]    8    0    7   -1    1   -4    7    6   16     7\n [5,]    5    3    8    7    7   -1    1    1    6    12\n [6,]   -2    9    5    0    2   17    3    4    3    10\n [7,]   16   12    0    0    8    1   12    4   21     9\n [8,]    2  -10   10    7   -1   -2    5   10    8     2\n [9,]    1    0    1    7    0    8    6    7    6     4\n[10,]   -2    0    9    6   10    2    4    8    6     2"
+    "text": "Introducción\n\nEn esencia, son una matriz de datos\n\n\n\n      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10]\n [1,]    8    7   10    9    6   -1    0    6    7    -2\n [2,]    3    7   12    3    1    6    1    0   20    10\n [3,]    7   -1    7    8   -5    3    4    3   -1    -2\n [4,]    7    0    9   16    5    6    4    7    3     6\n [5,]   10    5    0   -3   10   20    6    2   -1     3\n [6,]    9   10    8    3    6    4   17   12    0     1\n [7,]    2    5    6   -4    8    2   -1    1    5     5\n [8,]    7    7    6    8    4    6    1   11    6     8\n [9,]    9    8   11    1    3   -3    0   -1    4     0\n[10,]    4    0    3    1   -5    4    2    9    7     8"
   },
   {
     "objectID": "01_basic.html#introducción-4",
     "href": "01_basic.html#introducción-4",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Introducción",
-    "text": "Introducción\n\nResolución: se refiere al tamaño del píxel.\n\nCuánto más pequeños mayor resolución (HD, 4K)\nCuánto más grandes menor resolución (144p, 480p)\n\n\n\n\nResolución espacial: se mide en las unidades del SRC (grados, metros)"
+    "text": "Introducción\n\nResolución: se refiere al tamaño del píxel.\n\nCuánto más pequeños mayor resolución (HD, 4K)\nCuánto más grandes menor resolución (144p, 240p)\n\n\n\n\nResolución espacial: se mide en las unidades del SRC (grados, metros)"
   },
   {
     "objectID": "01_basic.html#datos-ráster-con-terra",
@@ -487,14 +487,14 @@
     "href": "01_basic.html#formatos-ráster",
     "title": "Introducción al análisis geoespacial con R",
     "section": "Formatos ráster",
-    "text": "Formatos ráster\n\n\nGeoTIFF (.tif, .tiff): de los más estandarizados\nCloud Optimized GeoTIFF (.tif): optimizado para la nube\nEnhanced Compression Wavelet (.ecw): alto ratio de lectura y compresión\nASCII (.asc): utiliza números entre 0 y 255 para almacenar datos\nFile Geodatabase (.gdb): base de datos de Esri\nNetCDF (.nc, .nc3, .nc4): formato utilizado para almacenar datos climáticos (`NetCDF)"
+    "text": "Formatos ráster\n\n\nGeoTIFF (.tif, .tiff): de los más estandarizados\nCloud Optimized GeoTIFF (.tif): optimizado para la nube\nEnhanced Compression Wavelet (.ecw): alto ratio de lectura y compresión\nASCII (.asc): utiliza números entre 0 y 255 para almacenar datos\nFile Geodatabase (.gdb): base de datos de Esri\nNetCDF (.nc, .nc3, .nc4): formato utilizado para almacenar datos climáticos"
   },
   {
     "objectID": "01_basic.html#práctica-5",
     "href": "01_basic.html#práctica-5",
     "title": "Introducción al análisis geoespacial con R",
     "section": "💪 Práctica 5",
-    "text": "💪 Práctica 5\n\nImportar/Exportar datos ráster\nExploración básica de datos ráster\nDescarga y cálculo de modelos del terreno\nCortar/Enmascarar\nReproyectar SRC\nReclasificar valores de un ráster\nExtraer valores de un ráster\nModificar resolución espacial\nPaquetes a utilizar:\n\ngeodata: descarga de datos (GBIF, Worldclim, elevación…)\ngeoperu: descarga de áreas protegidas de Perú\nmapview: visualización interactiva de datos\nterra: paquete base para datos ráster\nsf: paquete base para datos vectoriales\ntidyverse: paquetes para análisis de datos"
+    "text": "💪 Práctica 5\n\nImportar/Exportar datos ráster\nDescarga y cálculo de modelos del terreno\nCortar/Enmascarar\nReproyectar SRC\nReclasificar valores de un ráster\nExtraer valores de un ráster\nPaquetes a utilizar:\n\ngeodata: descarga de datos (Worldclim, elevación…)\ngeoperu: descarga de áreas protegidas de Perú\nmapview: visualización interactiva de datos\nsf: paquete base para datos vectoriales\nspocc: descarga de ocurrencias\nterra: paquete base para datos ráster\ntidyverse: paquetes para análisis de datos"
   },
   {
     "objectID": "index.html",
@@ -760,7 +760,7 @@
     "href": "03-geobia.html#objetivos-segmentación",
     "title": "Clasificación de usos del suelo en R",
     "section": "Objetivos segmentación",
-    "text": "Objetivos segmentación\n\nGenerar áreas de un tamaño razonable\nEvitar segmentación excesiva o insuficiente\nGenerar áreas representativas de cada clase\n\n\n\n\n\n\n\n\n\n\n\n\nImportante\n\n\nDefinir las clases que queremos predecir con el modelo"
+    "text": "Objetivos segmentación\n\n\n\nGenerar áreas de un tamaño razonable\nEvitar segmentación excesiva o insuficiente\nGenerar áreas representativas de cada clase\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nImportante\n\n\nDefinir las clases que queremos predecir con el modelo"
   },
   {
     "objectID": "03-geobia.html#ejemplo",
@@ -900,7 +900,7 @@
     "href": "03-geobia.html#práctica-2",
     "title": "Clasificación de usos del suelo en R",
     "section": "💪 Práctica 2",
-    "text": "💪 Práctica 2\n\nToma de datos en QGIS\nExtracción estadísticas. Paquetes a utilizar\n\narrow/geoarrow: formato GeoParquet\nexactextractr: estadísticas focales\nmapview: visualización interactiva\nsf: manejo de datos vectoriales\nterra: manejo de datos ráster\ntidyverse: paquetes para análisis y visualización de datos"
+    "text": "💪 Práctica 2\n\nToma de datos en QGIS\nExtracción estadísticas. Paquetes a utilizar\n\narrow/geoarrow: formato GeoParquet\nexactextractr: estadísticas zonales\nmapview: visualización interactiva\nsf: manejo de datos vectoriales\nterra: manejo de datos ráster\ntidyverse: paquetes para análisis y visualización de datos"
   },
   {
     "objectID": "03-geobia.html#introducción-1",
@@ -1089,14 +1089,14 @@
     "href": "03-geobia.html#remuestreo-1",
     "title": "Clasificación de usos del suelo en R",
     "section": "Remuestreo",
-    "text": "Remuestreo\n\n\nPaquete rsample:\n\n\n\n\n\n\n\n\nset.seed(137)\nfolds &lt;- vfold_cv(train_tbl, strata = class, v = 5)\n\n\n\n#  5-fold cross-validation using stratification \n# A tibble: 5 × 2\n  splits            id   \n  &lt;list&gt;            &lt;chr&gt;\n1 &lt;split [573/145]&gt; Fold1\n2 &lt;split [574/144]&gt; Fold2\n3 &lt;split [575/143]&gt; Fold3\n4 &lt;split [575/143]&gt; Fold4\n5 &lt;split [575/143]&gt; Fold5"
+    "text": "Remuestreo"
   },
   {
     "objectID": "03-geobia.html#remuestreo-2",
     "href": "03-geobia.html#remuestreo-2",
     "title": "Clasificación de usos del suelo en R",
     "section": "Remuestreo",
-    "text": "Remuestreo\n\n\nPaquete rsample:\n\n\n\n\n\n\n\n\n\n#  5-fold cross-validation using stratification \n# A tibble: 5 × 2\n  splits            id   \n  &lt;list&gt;            &lt;chr&gt;\n1 &lt;split [389/100]&gt; Fold1\n2 &lt;split [390/99]&gt;  Fold2\n3 &lt;split [392/97]&gt;  Fold3\n4 &lt;split [392/97]&gt;  Fold4\n5 &lt;split [393/96]&gt;  Fold5"
+    "text": "Remuestreo\n\n\nPaquete rsample:\n\n\n\n\n\n\n\n\nset.seed(137)\nfolds &lt;- vfold_cv(train_tbl, strata = class, v = 5)\n\n\n\n#  5-fold cross-validation using stratification \n# A tibble: 5 × 2\n  splits            id   \n  &lt;list&gt;            &lt;chr&gt;\n1 &lt;split [573/145]&gt; Fold1\n2 &lt;split [574/144]&gt; Fold2\n3 &lt;split [575/143]&gt; Fold3\n4 &lt;split [575/143]&gt; Fold4\n5 &lt;split [575/143]&gt; Fold5"
   },
   {
     "objectID": "03-geobia.html#hyperparameter-tuning",
@@ -1132,5 +1132,96 @@
     "title": "Clasificación de usos del suelo en R",
     "section": "Tunear en tidymodels",
     "text": "Tunear en tidymodels\nSin tuning\n\nmodel_fit &lt;- fit_resamples(\n  model_wflw,\n  resamples = folds,\n  metrics   = metric_set(accuracy, f_meas)\n)\n\nTuning 1 modelo\n\nmodel_fit &lt;- tune_grid(\n  model_wflw,\n  resamples = folds,\n  grid      = 20,\n  metrics   = metric_set(accuracy, f_meas)\n)\n\nTuning varios modelos\n\nmodels_fit &lt;- workflow_map(\n  model_wflw,\n  fn        = \"tune_grid\",\n  resamples = folds,\n  grid      = 20, \n  metrics   = metric_set(accuracy, f_meas)\n)"
+  },
+  {
+    "objectID": "03-geobia.html#evaluación-del-modelo",
+    "href": "03-geobia.html#evaluación-del-modelo",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Evaluación del modelo",
+    "text": "Evaluación del modelo\n\n\nPaquete yardstick: métricas que comparan valores reales con valores predichos."
+  },
+  {
+    "objectID": "03-geobia.html#evaluación-del-modelo-1",
+    "href": "03-geobia.html#evaluación-del-modelo-1",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Evaluación del modelo",
+    "text": "Evaluación del modelo\n\nDatos de entrenamiento:\n\nDatos de análisis: no se utilizan las métricas\nDatos de evaluación: para elegir hiperparámetros (promedio de los folds)\n\nDatos de prueba: para evaluar el modelo"
+  },
+  {
+    "objectID": "03-geobia.html#evaluación-del-modelo-2",
+    "href": "03-geobia.html#evaluación-del-modelo-2",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Evaluación del modelo",
+    "text": "Evaluación del modelo\n\nDatos de entrenamiento:\n\nDatos de análisis: no se utilizan las métricas\nDatos de evaluación: para elegir hiperparámetros (promedio de los folds)\n\nDatos de prueba: para evaluar el modelo"
+  },
+  {
+    "objectID": "03-geobia.html#pasos",
+    "href": "03-geobia.html#pasos",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Pasos",
+    "text": "Pasos\n\n\n5-fold cross-validation -&gt; 5 métricas de evaluación\nGrilla de 20 hiperparámetros -&gt; 5 métricas de evaluación por conjunto\nSe promedian las métricas para cada conjunto -&gt; 20 métricas promediadas\nSe elige el mejor"
+  },
+  {
+    "objectID": "03-geobia.html#evaluación",
+    "href": "03-geobia.html#evaluación",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Evaluación",
+    "text": "Evaluación\nÚltimo ajuste:\n\nAjusta el modelo a TODOS los datos de entrenamiento\nEvalúa en los datos de prueba (reportar este valor)"
+  },
+  {
+    "objectID": "03-geobia.html#métricas-de-evaluación",
+    "href": "03-geobia.html#métricas-de-evaluación",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Métricas de evaluación",
+    "text": "Métricas de evaluación\n\nAccuracy (precisión): proporción de aciertos. No usar con clases desbalanceadas.\nF1 Score: balance óptimo entre precision y recall. Usar con clases desbalanceadas."
+  },
+  {
+    "objectID": "03-geobia.html#caso-práctico",
+    "href": "03-geobia.html#caso-práctico",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Caso práctico",
+    "text": "Caso práctico\n\n\nEvaluación:\n\n800 casos negativos de tumor\n20 casos positivos de tumor\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\nAccuracy = \\frac{800 + 1}{800 + 19 + 1 + 0} = 0.977\n\\]\n\\[\nF1 = \\frac{1 \\cdot 0.05}{1 + 0.05} = 0.095\n\\]"
+  },
+  {
+    "objectID": "03-geobia.html#estadísticas-zonales",
+    "href": "03-geobia.html#estadísticas-zonales",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Estadísticas zonales",
+    "text": "Estadísticas zonales"
+  },
+  {
+    "objectID": "03-geobia.html#sobreajuste",
+    "href": "03-geobia.html#sobreajuste",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Sobreajuste",
+    "text": "Sobreajuste"
+  },
+  {
+    "objectID": "03-geobia.html#recapitulación",
+    "href": "03-geobia.html#recapitulación",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "Recapitulación",
+    "text": "Recapitulación"
+  },
+  {
+    "objectID": "03-geobia.html#práctica-3",
+    "href": "03-geobia.html#práctica-3",
+    "title": "Clasificación de usos del suelo en R",
+    "section": "💪 Práctica 3",
+    "text": "💪 Práctica 3\n\nGenerar modelo con tidymodels\nEvaluar modelo\n\ncorrplot: gráfico de correlación\nkknn: algoritmo KNN en tidymodels\nranger: algoritmo Random Forest en tidymodels\nsf: manejo de datos vectoriales\nterra: manejo de datos ráster\ntidymodels: paquetes para modelado\ntidyverse: paquetes para análisis y visualización de datos\nvip: cálculo importancia de variables"
+  },
+  {
+    "objectID": "04_positron.html#version-control",
+    "href": "04_positron.html#version-control",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Version control",
+    "text": "Version control"
+  },
+  {
+    "objectID": "04_positron.html#version-control-1",
+    "href": "04_positron.html#version-control-1",
+    "title": "Positron - Una IDE para ciencia de datos con R y Python",
+    "section": "Version control",
+    "text": "Version control"
   }
 ]

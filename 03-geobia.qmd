@@ -53,6 +53,12 @@ image_sr <- rast("00_assets/data/tenerife-rgb-sample.tiff")
 training_sf <- read_sf("00_assets/data/training-points-stats.gpkg")
 annotated_data_tbl <- st_drop_geometry(training_sf)
 
+## predictions
+preds_tbl <- read_csv("00_assets/data/predictions.csv")
+
+## metrics
+metrics_tbl <- read_csv("00_assets/data/metrics.csv")
+
 ## ggplot theme
 theme_set(
   theme_minimal() +
@@ -82,7 +88,7 @@ theme_set(
 
 -   Toma de datos
 
--   Clasificación
+-   Modelo de clasificación
 
 -   Implementación del modelo
 
@@ -96,7 +102,7 @@ theme_set(
 
 -   GEOBIA vs Pixel-Based
 
-{{< fa clock size=xl >}} 5min
+{{< fa clock size=xl >}} 10min
 
 ## Introducción
 
@@ -258,13 +264,19 @@ Elementos útiles para la interpretación de una imagen aérea:
 
 ## Objetivos segmentación
 
+::::: columns
+::: {.column width="50%"}
 -   Generar áreas de un tamaño razonable
 
 -   Evitar segmentación excesiva o insuficiente
 
 -   Generar áreas representativas de cada clase
+:::
 
+::: {.column width="50%"}
 ![](00_assets/figures/03-geobia/rgb-good-segment.png){fig-align="center" width="405"}
+:::
+:::::
 
 ::: callout-important
 ## Importante
@@ -478,7 +490,7 @@ Orfeo Toolbox
 
 -   Toma de datos
 
--   Estadísticas focales
+-   Estadísticas zonales
 
 -   Práctica 2
 
@@ -492,7 +504,7 @@ Orfeo Toolbox
 
 ![](00_assets/figures/03-geobia/qgis-puntos.png){fig-align="center"}
 
-## Estadísticas focales
+## Estadísticas zonales
 
 ::::: {.columns style="display: flex !important; height: 90%;"}
 ::: {.column width="50%" style="display: flex; justify-content: center; align-items: center;"}
@@ -512,7 +524,7 @@ Orfeo Toolbox
 
     -   `arrow/geoarrow`: formato GeoParquet
 
-    -   `exactextractr`: estadísticas focales
+    -   `exactextractr`: estadísticas zonales
 
     -   `mapview`: visualización interactiva
 
@@ -522,7 +534,7 @@ Orfeo Toolbox
 
     -   `tidyverse`: paquetes para análisis y visualización de datos
 
-# Clasificación {.main-part .unnumbered}
+# Modelo de clasificación {.main-part .unnumbered}
 
 -   Introducción
 
@@ -534,7 +546,7 @@ Orfeo Toolbox
 
 -   Práctica 3
 
-{{< fa clock size=xl >}} 40min
+{{< fa clock size=xl >}} 60min
 
 ## Introducción {.special-size}
 
@@ -829,6 +841,10 @@ p3 <- plot_fit("pred_overfit", "Overfitting", overfit.r2) +
 p1 + p2 + p3
 ```
 
+## Sobreajuste
+
+![](00_assets/figures/03-geobia/overfitting-bed.jpg){fig-align="center"}
+
 ## Separación de datos
 
 ::::: columns
@@ -1009,6 +1025,10 @@ V-fold Cross-Validation: el más común.
 
 ## Remuestreo
 
+![](00_assets/figures/03-geobia/resampling.svg){fig-align="center"}
+
+## Remuestreo
+
 ::::: columns
 ::: {.column width="50%"}
 Paquete `rsample`:
@@ -1040,6 +1060,8 @@ folds
 -   Se prueban durante el entrenamiento del modelo. Una vez entrenado, se eligen los mejores hiperparámetros
 
 -   Evita el sobreajuste
+
+![](00_assets/figures/03-geobia/package-tune.png){fig-align="center" width="130"}
 
 ## Hiperparámetros KNN
 
@@ -1100,6 +1122,7 @@ model_fit <- fit_resamples(
 ```
 
 ##### Tuning 1 modelo
+
 ```{r}
 #| eval: false
 #| echo: true
@@ -1112,6 +1135,7 @@ model_fit <- tune_grid(
 ```
 
 ##### Tuning varios modelos
+
 ```{r}
 #| eval: false
 #| echo: true
@@ -1124,9 +1148,173 @@ models_fit <- workflow_map(
 )
 ```
 
-
-
 ## Evaluación del modelo
-  
+
+::::: columns
+::: {.column width="50%"}
+Paquete `yardstick`: métricas que comparan valores reales con valores predichos.
+:::
+
+::: {.column width="50%"}
+![](00_assets/figures/03-geobia/package-yardstick.png){fig-align="center" width="87"}
+:::
+:::::
+
+```{r}
+reactable(
+  preds_tbl |> select(.pred_class:class),
+  defaultColDef = colDef(
+    header = function(value) gsub(".", " ", value, fixed = TRUE),
+    align = "center",
+    minWidth = 70,
+    headerStyle = list(background = "#f7f7f8"),
+    format = colFormat(digits = 3)
+  ),
+  columns = list(
+    class = colDef(minWidth = 100)
+  ),
+  bordered = TRUE,
+  highlight = TRUE,
+  style = list(fontSize = "1rem")
+)
+```
+
+## Evaluación del modelo {.special-size}
+
+-   Datos de entrenamiento:
+
+    -   Datos de análisis: no se utilizan las métricas
+
+    -   Datos de evaluación: para elegir hiperparámetros (promedio de los folds)
+
+-   Datos de prueba: para evaluar el modelo
+
+![](00_assets/figures/03-geobia/resampling.svg){fig-align="center" width="659"}
+
+## Pasos
+
+-   5-fold cross-validation -\> 5 métricas de evaluación
+
+-   Grilla de 20 hiperparámetros -\> 5 métricas de evaluación por conjunto
+
+-   Se promedian las métricas para cada conjunto -\> 20 métricas promediadas
+
+-   Se elige el mejor
+
+```{r}
+reactable(
+  metrics_tbl |> select(-.config),
+  defaultColDef = colDef(
+    header = function(value) gsub(".", " ", value, fixed = TRUE),
+    align = "center",
+    minWidth = 70,
+    headerStyle = list(background = "#f7f7f8"),
+    format = colFormat(digits = 0)
+  ),
+  columns = list(
+    class = colDef(minWidth = 100),
+    std_err = colDef(format = colFormat(digits = 3)),
+    mean = colDef(format = colFormat(digits = 3))
+  ),
+  bordered = TRUE,
+  highlight = TRUE,
+  style = list(fontSize = "1rem")
+)
+```
+
+## Evaluación {.special-size}
+
+Último ajuste:
+
+-   Ajusta el modelo a TODOS los datos de entrenamiento
+
+-   Evalúa en los datos de prueba (**reportar este valor**)
+
+```{r}
+#| eval: false
+test_res <- last_fit(
+  best_wflow,
+  split   = splits,
+  metrics = metric_set(accuracy, f_meas)
+)
+```
+
+![](00_assets/figures/03-geobia/confmat.png){fig-align="center"}
+
+## Métricas de evaluación {.special-size}
+
+-   *Accuracy* (precisión): proporción de aciertos. No usar con clases desbalanceadas.
+
+-   F1 Score: balance óptimo entre *precision* y *recall*. Usar con clases desbalanceadas.
+
+![](00_assets/figures/03-geobia/eval-metrics.png){fig-align="center" width="640"}
+
+## Caso práctico {.special-size}
+
+::::: columns
+::: {.column width="50%"}
+Evaluación:
+
+-   800 casos negativos de tumor
+
+-   20 casos positivos de tumor
+:::
+
+::: {.column width="50%"}
+```{r}
+#| fig-height: 6
+conf_matrix <- data.frame(
+  Real = factor(rep(c("Positivo", "Negativo"), each = 2), levels = c("Positivo", "Negativo")),
+  Predicho = factor(rep(c("Negativo", "Positivo"), 2), levels = c("Negativo", "Positivo")),
+  Casos = c(19, 1, 800, 0)
+)
+
+# Visualización
+ggplot(conf_matrix, aes(x = Predicho, y = Real, fill = Casos)) +
+  geom_tile(color = "white", show.legend = FALSE) +
+  geom_text(aes(label = Casos), color = "black", size = 6) +
+  scale_fill_gradient(low = "gray70", high = "gray50") +
+  labs(
+       x = "Predicción del Modelo",
+       y = "Valor Real") +
+  theme_minimal(base_size = 14) +
+    scale_x_discrete(expand = expansion(0)) +
+    scale_y_discrete(expand = expansion(0)) 
+
+```
+:::
+:::::
+
+$$
+Accuracy = \frac{800 + 1}{800 + 19 + 1 + 0} = 0.977
+$$
+
+$$
+F1 = \frac{1 \cdot 0.05}{1 + 0.05} = 0.095
+$$
+
+## Recapitulación
+
+## 💪 Práctica 3 {.exercise}
+
+-   Generar modelo con tidymodels
+
+-   Evaluar modelo
+
+    -   `corrplot`: gráfico de correlación
+
+    -   `kknn`: algoritmo KNN en *tidymodels*
+
+    -   `ranger`: algoritmo Random Forest en *tidymodels*
+
+    -   `sf`: manejo de datos vectoriales
+
+    -   `terra`: manejo de datos ráster
+
+    -   `tidymodels`: paquetes para modelado
+
+    -   `tidyverse`: paquetes para análisis y visualización de datos
+
+    -   `vip`: cálculo importancia de variables
 
 ## Referencias
